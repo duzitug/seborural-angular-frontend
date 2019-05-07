@@ -9,30 +9,48 @@ import { HttpClient } from '@angular/common/http';
 export class BookListComponent implements OnInit {
 
   name: string = 'celia';
+  username: string = 'celia_piaui';
+  password: string = 'admin';
   
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
+  
+  window.console.log("Testando!");
+  
   }
 
   listBook () {
-    window.console.log(this.http.get('http://grails-workspace-merciofilho.c9users.io:8080/book').subscribe(
+    window.console.log(this.http.get('http://localhost:8080/book').subscribe(
       response => window.console.log(response)
     ));
   }
 
-  listUser () {
-    window.console.log(this.http.get('http://grails-workspace-merciofilho.c9users.io:8080/student').subscribe(
+  listStudent () {
+    window.console.log(this.http.get('http://localhost:8080/student').subscribe(
       response => window.console.log(response)
     ));
   }
 
-  createUser () {
-    window.console.log(this.http.post('http://grails-workspace-merciofilho.c9users.io:8080/student', {
-      name: this.name
+  createStudent () {
+    window.console.log(this.http.post('http://localhost:8080/student', {
+      name: this.name,
+      username: this.username,
+      password: this.password
     }).subscribe(
       response => window.console.log(response)
     ));
   }
+
+  createBook () {
+    window.console.log(this.http.post('http://localhost:8080/book', {
+      titulo: "faxineiro",
+      autor: "pastana",
+      student: "1"
+    }).subscribe(
+      response => window.console.log(response)
+    ));
+  }
+
 
 }
