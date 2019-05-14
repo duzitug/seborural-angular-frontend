@@ -10,6 +10,8 @@ import { CreateBookComponent } from './create-book/create-book.component';
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { FooterComponent } from './home-page/footer/footer.component';
 import { NavbarComponent } from './home-page/navbar/navbar.component';
+import { MainComponent } from './home-page/main/main.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { NavbarComponent } from './home-page/navbar/navbar.component';
     CreateBookComponent,
     CreateStudentComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    MainComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

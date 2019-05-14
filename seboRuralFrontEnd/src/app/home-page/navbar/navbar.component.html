@@ -34,8 +34,21 @@
   </div>
 </nav> -->
 
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Início</a>
+  
+  
+ 
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['/createBook']">Anunciar<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" [routerLink]="['/createStudent']">Cadastrar-se</a>
+     
+    </div>
+  </div>
+
+  
+  
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn btn-light my-2 my-sm-0" type="submit">Search</button>

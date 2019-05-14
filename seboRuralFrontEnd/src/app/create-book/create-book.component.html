@@ -1,80 +1,79 @@
 
-     <div class="container">
+     <div class="container" style="margin-top:20px; margin-bottom: 20px">
         <div class="row justify-content-center">
           <form class="col-md-4">
             
              <!-- Form Name -->
             <legend>Anunciar Livro</legend>
             
-            <!-- Text input-->
+            <!-- TÍTULO-->
             <div class="form-group">
-
 
                 <label class=" control-label" for="tituloLivro">Título</label>  
                
-                <input id="tituloLivro" name="tituloLivro" type="text" placeholder="" class="form-control input-md" required="">
+                <input id="tituloLivro" name="tituloLivro" type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="titulo" >
             
             </div>
           
-            <!-- Text input-->
+            <!-- AUTOR-->
             <div class="form-group">
               <label class="control-label" for="autorLivro">Autor</label>  
              
-              <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="autor">
               
               
             </div>
 
 
-              <!-- Select Basic -->
+              <!-- CURSO -->
         <div class="form-group">
           <label class=" control-label" for="selectbasic">Curso</label>
         
-            <select id="selectbasic" name="selectbasic" class="form-control">
+            <select id="selectbasic" name="selectbasic" class="form-control" [(ngModel)]="curso">
               <option value="1">Option one</option>
               <option value="2">Option two</option>
             </select>
           
         </div>
 
-        <!-- Select Basic -->
+        <!-- PERÌODO-->
         <div class="form-group">
           <label class=" control-label" for="selectbasic">Período</label>
           <div class="">
-            <select id="selectbasic" name="selectbasic" class="form-control">
+            <select id="selectbasic" name="selectbasic" class="form-control" [(ngModel)]="periodo">
               <option value="1">1º</option>
               <option value="2">2º</option>
             </select>
           </div>
         </div>
         
-        <!-- Text input-->
+        <!-- DISCIPLINA-->
         <div class="form-group">
           <label class=" control-label" for="disciplinaLivro">Disciplina</label>  
           <div class="">
-          <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="" class="form-control input-md">
+          <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="disciplina">
           <span class="help-block">disciplina na qual o livro é usado</span>  
           </div>
         </div>
          
-        <!-- Textarea -->
+        <!-- DESCRIÇÂO -->
         <div class="form-group">
           <label class=" control-label" for="descricaoLivro">Descrição</label>
           <div class="">                     
-            <textarea class="form-control" id="descricaoLivro" name="descricaoLivro">insira uma breve descrição</textarea>
+            <textarea class="form-control" id="descricaoLivro" name="descricaoLivro" [(ngModel)]="descricao">insira uma breve descrição </textarea>
           </div>
         </div>
         
-        <!-- Text input-->
+        <!-- URL FOTO-->
         <div class="form-group">
-          <label class=" control-label" for="urlFotoLivro">URL da Foto</label>  
+          <label class=" control-label" for="urlFotoLivro" [(ngModel)]="urlFoto">URL da Foto</label>  
           <div class="">
           <input id="urlFotoLivro" name="urlFotoLivro" type="text" placeholder="" class="form-control input-md">
           <span class="help-block">URL de foto do livro</span>  
           </div>
         </div>
         
-        <!-- Button -->
+        <!-- BOTÂO SUBMETER -->
         <div class="form-group">
           <label class=" control-label" for="criarLivroBotao"></label>
           <div class="">
