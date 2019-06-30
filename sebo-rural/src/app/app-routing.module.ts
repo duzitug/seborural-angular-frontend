@@ -1,7 +1,36 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainBooksViewComponent } from './commons/main-books-view/main-books-view.component';
+import { CreateBookComponent } from './create-book/create-book.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'createStudent',
+    component: CreateUserComponent
+  },
+  {
+    path: 'createBook',
+    component: CreateBookComponent
+  },
+  {
+    path: 'home',
+    component: MainBooksViewComponent
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  // {
+  //   path: '404',
+  //   component: PageNotFoundComponent
+  // },
+  { path: '**',
+    redirectTo: '/home'
+  }
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
