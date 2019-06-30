@@ -9,6 +9,7 @@ import { ListBookComponent } from './list-book/list-book.component';
 import { NavbarComponent } from './commons/navbar/navbar.component';
 import { FooterComponent } from './commons/footer/footer.component';
 import { MainBooksViewComponent } from './commons/main-books-view/main-books-view.component';
+import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MainBooksViewComponent } from './commons/main-books-view/main-books-vie
     ListBookComponent,
     NavbarComponent,
     FooterComponent,
-    MainBooksViewComponent
+    MainBooksViewComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
