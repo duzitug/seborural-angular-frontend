@@ -7,6 +7,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { ListBookComponent } from './list-book/list-book.component';
 import { NavbarComponent } from './commons/navbar/navbar.component';
+import { FooterComponent } from './commons/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NavbarComponent } from './commons/navbar/navbar.component';
     CreateUserComponent,
     CreateBookComponent,
     ListBookComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
