@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainBooksViewComponent } from './commons/main-books-view/main-books-view.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ListBookComponent } from './list-book/list-book.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: MainBooksViewComponent
+  },
+  {
+    path: 'listBook',
+    component: ListBookComponent
   },
   {
     path: '',
