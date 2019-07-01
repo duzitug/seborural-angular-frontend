@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBookComponent implements OnInit {
 
+  titulo: string;
+  autor: string;
+  curso: string;
+  periodo: number;
+  disciplina: string;
+  descricao: string;
+  urlFoto: string;
+
   constructor() { }
 
   ngOnInit() {
