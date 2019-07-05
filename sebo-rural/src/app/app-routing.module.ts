@@ -5,6 +5,7 @@ import { CreateBookComponent } from './create-book/create-book.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ListBookComponent } from './list-book/list-book.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { PhotoListComponent } from './photo-list/photo-list.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'fileUpload',
     component: FileUploadComponent
+  },
+  {
+    path: 'photoList',
+    component: PhotoListComponent
   },
   {
     path: '',

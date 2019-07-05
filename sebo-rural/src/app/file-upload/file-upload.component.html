@@ -1,15 +1,8 @@
 <div id="direct_upload" ng2FileDrop [uploader]="uploader" (fileOver)="fileOverBase($event)" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}">
-        <h1>New Photo</h1>
-        <h2>Direct upload from the browser with Angular File Upload</h2>
-        <p>You can also drag and drop an image file into the dashed area.</p>
+        
         <form>
-            <div class="form_line">
-                <label path="title">Title:</label>
-                <div class="form_controls">
-                    <input type="text" class="form-control" #title placeholder="Title" (keyup.enter)="updateTitle(title.value)" (blur)="updateTitle(title.value)"
-                    />
-                </div>
-            </div>
+            
+
             <div class="form_line">
                 <label>Image:</label>
                 <div class="form_controls">
@@ -23,41 +16,31 @@
                 </div>
             </div>
         </form>
+        
         <h2>Status</h2>
+        
         <div class="file" *ngFor="let response of responses; let i = index">
             <h3>{{response.file.name}}</h3>
-        <button class="delete-image" *ngIf="!!response.data.delete_token" (click)="deleteImage(response.data, i)">Delete image</button>
+        
             <div class="status">
-                Uploading... {{response.progress}}%
-                <div *ngIf="!response.status">In progress</div>
-                <div class="status-code" *ngIf="response.status">Upload completed with status code {{response.status}}</div>
+                Enviando... {{response.progress}}%
+                <div *ngIf="!response.status">Em progresso</div>
+                <div class="status-code" *ngIf="response.status">Upload da foto Completo {{response.status}}</div>
             </div>
+            
             <div class="progress-bar">
                 <div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
             </div>
-            <div class="form_line">
-                <div class="form_controls">
-                    <div class="preview">
-                        <!-- Consider using https://github.com/valor-software/ng2-file-upload/issues/461 for image preview -->
-                    </div>
-                </div>
-            </div>
+            
             <div class="info">
                 <table>
                     <tr *ngFor="let property of getFileProperties(response.data)">
-                        
-                        <!-- <div *ngIf="property.key == 'secure_url'; else show_data" >
-                                <td> {{ property.key }} </td>
-                                <td> {{ property.value | json}} </td>
-                        </div> -->
- 
+
                         <ng-template #show_data>
                                 <td> {{ property.key }} </td>
                                 <td> {{ property.value | json}} </td>
                         </ng-template>
 
-
-                       
                     </tr>
                 </table>
             </div>
@@ -65,4 +48,4 @@
     
     </div>
     
-    <a routerLink="" class="back_link">Back to list</a>
+

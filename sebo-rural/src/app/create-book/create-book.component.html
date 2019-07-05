@@ -20,11 +20,24 @@
          
           <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="autor">
           
-          
         </div>
 
+        <!-- URL FOTO-->
+    <!-- <div class="form-group">
+      <label class=" control-label" for="urlFotoLivro">URL da Foto</label>  
+      <div class="">
+      <input id="urlFotoLivro" name="urlFotoLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="urlFoto">
+      <span class="help-block">URL de foto do livro</span>  
+      </div>
+    </div> -->
+
+    <input type="file" (change)="fileChange($event)">
+
+    <h3>{{urlFoto}}</h3>
+    
+
           <!-- CURSO -->
-          <div class="form-group">
+          <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
             <label class="control-label" for="curso">Curso</label>  
             <div class="">
             <input id="curso" name="curso" type="text" placeholder="" class="form-control input-md" [(ngModel)]="curso">
@@ -58,18 +71,6 @@
       </div>
     </div>
     
-    <!-- URL FOTO-->
-    <div class="form-group">
-      <label class=" control-label" for="urlFotoLivro">URL da Foto</label>  
-      <div class="">
-      <input id="urlFotoLivro" name="urlFotoLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="urlFoto">
-      <span class="help-block">URL de foto do livro</span>  
-      </div>
-    </div>
-
-
-    <input type="file" (change)="uploadFile($event.target.files)">
-    
     
     <!-- BOTÂO SUBMETER -->
     <div class="form-group">
@@ -78,7 +79,60 @@
         <button id="criarLivroBotao" name="criarLivroBotao" class="btn btn-primary" (change)="createBook()">Submeter</button>
       </div>
     </div>
+
+    
     
       </form>   
     </div>
   </div>
+
+
+  <!-- **************************************** -->
+
+  <div id="direct_upload">
+        
+    <form>
+        
+        <div class="form_line">
+            <div class="form_controls">
+                <div class="upload_button_holder">
+                    
+                    <!-- onChange hanlder resets the input value to get the change event when uploading the same file consecutively -->
+                    <input type="file" id="fileupload" #fileInput ng2FileSelect  [uploader]="uploader" />
+                </div>
+
+            </div>
+        </div>
+    </form>
+    
+
+        <div class="file" *ngFor="let response of responses; let i = index">
+        <!-- <h3>{{response.file.name}}</h3> -->
+    
+        <div class="status">
+            Enviando... {{response.progress}}%
+            <div *ngIf="!response.status">Em progresso</div>
+            <div class="status-code" *ngIf="response.status">Upload da foto Completo</div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
+        </div>
+        
+        <div class="info">
+            <table>
+                <tr *ngFor="let property of getFileProperties(response.data)">
+
+                   
+                            <td> {{ property.key }} </td>
+                            <td> {{ property.value | json}} </td>
+                  
+
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+

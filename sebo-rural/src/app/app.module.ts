@@ -23,6 +23,8 @@ import { FooterComponent } from './commons/footer/footer.component';
 import { MainBooksViewComponent } from './commons/main-books-view/main-books-view.component';
 import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { PhotoListComponent } from './photo-list/photo-list.component';
+import { PhotoAlbum } from './model/photo-album.service';
 
 
 
@@ -36,7 +38,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     FooterComponent,
     MainBooksViewComponent,
     PageNotFoundComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    PhotoListComponent
     
   ],
   imports: [
@@ -47,7 +50,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
     FileUploadModule
   ],
-  providers: [],
+  providers: [PhotoAlbum],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
