@@ -4,6 +4,7 @@ import { MainBooksViewComponent } from './commons/main-books-view/main-books-vie
 import { CreateBookComponent } from './create-book/create-book.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ListBookComponent } from './list-book/list-book.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'listBook',
     component: ListBookComponent
+  },
+  {
+    path: 'fileUpload',
+    component: FileUploadComponent
   },
   {
     path: '',
