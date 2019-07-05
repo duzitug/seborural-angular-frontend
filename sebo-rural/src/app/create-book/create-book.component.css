@@ -1,0 +1,12 @@
+.upload_details { font-size: 12px; margin: 20px; border-top: 1px solid #ccc; word-wrap: break-word; }
+
+.progress-bar{
+  width: 100px;
+  position: relative;
+  height: 4px;
+}
+.progress-bar .progress{
+  height: 4px;
+  background-color: #ff0000;
+  width: 0;
+}
