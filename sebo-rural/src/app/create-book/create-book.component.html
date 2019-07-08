@@ -1,138 +1,112 @@
 <div class="container" style="margin-top:20px; margin-bottom: 20px">
-    <div class="row justify-content-center">
-      <form class="col-md-4" (ngSubmit)=createBook()>
-        
-         <!-- Form Name -->
-        <legend>Anunciar Livro</legend>
-        
-        <!-- TÍTULO-->
-        <div class="form-group">
-
-            <label class=" control-label" for="tituloLivro">Título</label>  
-           
-            <input id="tituloLivro" type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="titulo" name="tituloLivro">
-        
-        </div>
+  <div class="row justify-content-center">
+    <form class="col-md-4" (ngSubmit)=createBook()>
       
-        <!-- AUTOR-->
-        <div class="form-group">
-          <label class="control-label" for="autorLivro">Autor</label>  
+       <!-- Form Name -->
+      <legend>Anunciar Livro</legend>
+      
+      <!-- TÍTULO-->
+      <div class="form-group">
+
+          <label class=" control-label" for="tituloLivro">Título</label>  
          
-          <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="autor">
-          
+          <input id="tituloLivro" type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="titulo" name="tituloLivro">
+      
+      </div>
+    
+      <!-- AUTOR-->
+      <div class="form-group">
+        <label class="control-label" for="autorLivro">Autor</label>  
+       
+        <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="autor">
+        
+      </div>
+
+      <!-- URL FOTO-->
+  <!-- <div class="form-group">
+    <label class=" control-label" for="urlFotoLivro">URL da Foto</label>  
+    <div class="">
+    <input id="urlFotoLivro" name="urlFotoLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="urlFoto">
+    <span class="help-block">URL de foto do livro</span>  
+    </div>
+  </div> -->
+      
+        <!--  UPLOAD DA FOTO DO LIVRO   -->
+      <input type="file" id="fileupload" #fileInput ng2FileSelect  [uploader]="uploader" style="margin-top: 20px; margin-bottom: 20px;"/>
+      
+      <div class="file" *ngFor="let response of responses; let i = index">
+      
+        <!-- <h3>{{response.file.name}}</h3> -->
+  
+      <div class="status">
+          Enviando... {{response.progress}}%
+          <div *ngIf="!response.status">Em progresso</div>
+          <div class="status-code" *ngIf="response.status">Upload da foto Completo</div>
+      </div>
+      
+      <div class="progress-bar">
+          <div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
+      </div>
+      
+      <div style="margin-bottom: 20px";>
+          <table>
+              <tr *ngFor="let property of getFileProperties(response.data)">
+
+                          <td> {{ property.key }} </td>
+                          <td> {{ property.value | json}} </td>
+              </tr>
+          </table>
+      </div>   
+  </div>
+
+        <!-- CURSO -->
+        <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
+          <label class="control-label" for="curso">Curso</label>  
+          <div class="">
+          <input id="curso" name="curso" type="text" placeholder="" class="form-control input-md" [(ngModel)]="curso">
+          <span class="help-block">disciplina na qual o livro é usado</span>  
+          </div>
         </div>
 
-        <!-- URL FOTO-->
-    <!-- <div class="form-group">
-      <label class=" control-label" for="urlFotoLivro">URL da Foto</label>  
-      <div class="">
-      <input id="urlFotoLivro" name="urlFotoLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="urlFoto">
-      <span class="help-block">URL de foto do livro</span>  
-      </div>
-    </div> -->
-
-    <input type="file" (change)="fileChange($event)">
-
-    <h3>{{urlFoto}}</h3>
-    
-
-          <!-- CURSO -->
-          <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
-            <label class="control-label" for="curso">Curso</label>  
-            <div class="">
-            <input id="curso" name="curso" type="text" placeholder="" class="form-control input-md" [(ngModel)]="curso">
-            <span class="help-block">disciplina na qual o livro é usado</span>  
-            </div>
-          </div>
-
-    <!-- PERÌODO-->
-    <div class="form-group">
-      <label class="control-label" for="periodo">Período</label>  
-      <div class="">
-      <input id="periodo" name="periodo" type="text" placeholder="" class="form-control input-md" [(ngModel)]="periodo">
-      <span class="help-block">disciplina na qual o livro é usado</span>  
-      </div>
-    </div>
-
-    <!-- DISCIPLINA-->
-    <div class="form-group">
-      <label class=" control-label" for="disciplinaLivro">Disciplina</label>  
-      <div class="">
-      <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="disciplina">
-      <span class="help-block">disciplina na qual o livro é usado</span>  
-      </div>
-    </div>
-     
-    <!-- DESCRIÇÂO -->
-    <div class="form-group">
-      <label class=" control-label" for="descricaoLivro">Descrição</label>
-      <div class="">                     
-        <textarea class="form-control" id="descricaoLivro" name="descricaoLivro" [(ngModel)]="descricao">insira uma breve descrição </textarea>
-      </div>
-    </div>
-    
-    
-    <!-- BOTÂO SUBMETER -->
-    <div class="form-group">
-      <label class=" control-label" for="criarLivroBotao"></label>
-      <div class="">                                                                <!--diretiva (change) executa função apenas uma vez--> 
-        <button id="criarLivroBotao" name="criarLivroBotao" class="btn btn-primary" (change)="createBook()">Submeter</button>
-      </div>
-    </div>
-
-    
-    
-      </form>   
+  <!-- PERÌODO-->
+  <div class="form-group">
+    <label class="control-label" for="periodo">Período</label>  
+    <div class="">
+    <input id="periodo" name="periodo" type="text" placeholder="" class="form-control input-md" [(ngModel)]="periodo">
+    <span class="help-block">disciplina na qual o livro é usado</span>  
     </div>
   </div>
 
-
-  <!-- **************************************** -->
-
-  <div id="direct_upload">
-        
-    <form>
-        
-        <div class="form_line">
-            <div class="form_controls">
-                <div class="upload_button_holder">
-                    
-                    <!-- onChange hanlder resets the input value to get the change event when uploading the same file consecutively -->
-                    <input type="file" id="fileupload" #fileInput ng2FileSelect  [uploader]="uploader" />
-                </div>
-
-            </div>
-        </div>
-    </form>
-    
-
-        <div class="file" *ngFor="let response of responses; let i = index">
-        <!-- <h3>{{response.file.name}}</h3> -->
-    
-        <div class="status">
-            Enviando... {{response.progress}}%
-            <div *ngIf="!response.status">Em progresso</div>
-            <div class="status-code" *ngIf="response.status">Upload da foto Completo</div>
-        </div>
-        
-        <div class="progress-bar">
-            <div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
-        </div>
-        
-        <div class="info">
-            <table>
-                <tr *ngFor="let property of getFileProperties(response.data)">
-
-                   
-                            <td> {{ property.key }} </td>
-                            <td> {{ property.value | json}} </td>
-                  
-
-                </tr>
-            </table>
-        </div>
+  <!-- DISCIPLINA-->
+  <div class="form-group">
+    <label class=" control-label" for="disciplinaLivro">Disciplina</label>  
+    <div class="">
+    <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="disciplina">
+    <span class="help-block">disciplina na qual o livro é usado</span>  
     </div>
+  </div>
+   
+  <!-- DESCRIÇÂO -->
+  <div class="form-group">
+    <label class=" control-label" for="descricaoLivro">Descrição</label>
+    <div class="">                     
+      <textarea class="form-control" id="descricaoLivro" name="descricaoLivro" [(ngModel)]="descricao">insira uma breve descrição </textarea>
+    </div>
+  </div>
+  
+  
+  <!-- BOTÂO SUBMETER -->
+  <div class="form-group">
+    <label class=" control-label" for="criarLivroBotao"></label>
+    <div class="">                                                                <!--diretiva (change) executa função apenas uma vez--> 
+      <button id="criarLivroBotao" name="criarLivroBotao" class="btn btn-primary" (change)="createBook()">Submeter</button>
+    </div>
+  </div>
 
+    </form>   
+  </div>
 </div>
+
+
 
 
