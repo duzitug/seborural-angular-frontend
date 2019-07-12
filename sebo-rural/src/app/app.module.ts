@@ -25,6 +25,7 @@ import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.c
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { PhotoListComponent } from './photo-list/photo-list.component';
 import { PhotoAlbum } from './model/photo-album.service';
+import { NewHomepageComponent } from './new-homepage/new-homepage.component';
 
 
 
@@ -39,7 +40,8 @@ import { PhotoAlbum } from './model/photo-album.service';
     MainBooksViewComponent,
     PageNotFoundComponent,
     FileUploadComponent,
-    PhotoListComponent
+    PhotoListComponent,
+    NewHomepageComponent
     
   ],
   imports: [
