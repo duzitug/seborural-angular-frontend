@@ -18,6 +18,8 @@ export class CreateBookComponent implements OnInit {
   disciplina: string;
   descricao: string;
   urlFoto: string = "nulo";
+  preco: number;
+  data: Date;
   cloudName = 'dxxxwkv7t';
   unsignedUploadPreset = 'skzrnf97';
   aux: boolean = true;
@@ -47,6 +49,8 @@ export class CreateBookComponent implements OnInit {
      }
 
   ngOnInit() {
+
+    this.data = new Date(); 
     let aux = true;
 
     // Create the file uploader, wire it to upload to your account
@@ -139,33 +143,24 @@ export class CreateBookComponent implements OnInit {
     
   }
 
-  public salvarUrl(xhr) {
-
-    this.urlFoto = JSON.parse(xhr.responseText).secure_url;
-
-    window.console.log("urlFoto: " + this.urlFoto);
-
-    this.urlFoto = "mudou 2";
-
-    window.console.log("urlFoto: " + this.urlFoto);
-
-
-  }
-
   createBook () {
     // //A diretiva (click) executa a função duas vezes
-    // window.console.log(this.http.post('http://localhost:8080/book', {
-    //   titulo: this.titulo,
-    //   autor: this.autor
-    // }).subscribe(
-    //   response => window.console.log(response)
-    // ));
+    window.console.log(this.http.post('http://localhost:8080/book', {
+      titulo: this.titulo,
+      autor: this.autor,
+      descricao: this.descricao,
+      urlFoto: this.urlFoto,
+      curso: this.curso,
+      periodo: this.periodo,
+      disciplina: this.disciplina,
+      preco: this.preco
 
-    window.console.info("BOTÃO CLICADO!");
-    window.console.info(this.urlFoto);
-
+    }).subscribe(
+      response => window.console.log(response)
+    ));
   }
 
+  //Código JavaScript puro
   uploadFile(files: FileList) {
 
     let file = files[0];
@@ -190,17 +185,12 @@ export class CreateBookComponent implements OnInit {
       console.log(`fileuploadprogress data.loaded: ${e.loaded},
     data.total: ${e.total}`);
     });
-  
-
-  
 
       xhr.onreadystatechange = function(e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
   
           window.console.info("Arquivo enviado com sucesso!");
-
-          CreateBookComponent.prototype.urlFoto = JSON.parse(xhr.responseText).secure_url;
-          
+    
           //temp = JSON.parse(xhr.responseText).secure_url;
   
           //window.console.log(temp);
@@ -209,26 +199,13 @@ export class CreateBookComponent implements OnInit {
           // https://res.cloudinary.com/cloudName/image/upload/v1483481128/public_id.jpg
           //var url = response.secure_url; 
 
-          CreateBookComponent.prototype.salvarUrl(xhr);
-
-
         }
       };
-
-    //window.console.log(this.urlFoto);
   
     fd.append('upload_preset', 'skzrnf97');
     fd.append('teste', 'browser_upload'); // Optional - add tag for image admin in Cloudinary
     fd.append('file', file);
     xhr.send(fd);
-
-
-
-    // window.console.log(xhr.send(fd));
-
-    // this.salvarUrl(xhr);
-
-
 
   }
 
@@ -248,14 +225,10 @@ export class CreateBookComponent implements OnInit {
           // /** In Angular 5, including the header Content-Type can invalidate your request */
           // headers.append('Content-Type', 'multipart/form-data');
           // headers.append('Accept', 'application/json');
-          
-         
-          
+
           this.http.post(`https://api.cloudinary.com/v1_1/${this.cloudName}/upload`, formData, headers)
-    
               .subscribe(
-                response => window.console.log(response)
-                
+                response => window.console.log(response)    
             )
     }
   }
@@ -264,39 +237,37 @@ export class CreateBookComponent implements OnInit {
   // Delete an uploaded image
   // Requires setting "Return delete token" to "Yes" in your upload preset configuration
   // See also https://support.cloudinary.com/hc/en-us/articles/202521132-How-to-delete-an-image-from-the-client-side-
-  deleteImage = function (data: any, index: number) {
-    const url = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/delete_by_token`;
-    const headers = new Headers({ 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' });
-    const options = { headers: headers };
-    const body = {
-      token: data.delete_token
-    };
-    this.http.post(url, body, options).subscribe(response => {
-      console.log(`Deleted image - ${data.public_id} ${response.result}`);
-      // Remove deleted item for responses
-      this.responses.splice(index, 1);
-    });
-  };
+  // deleteImage = function (data: any, index: number) {
+  //   const url = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/delete_by_token`;
+  //   const headers = new Headers({ 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' });
+  //   const options = { headers: headers };
+  //   const body = {
+  //     token: data.delete_token
+  //   };
+  //   this.http.post(url, body, options).subscribe(response => {
+  //     console.log(`Deleted image - ${data.public_id} ${response.result}`);
+  //     // Remove deleted item for responses
+  //     this.responses.splice(index, 1);
+  //   });
+  // };
 
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
+  // fileOverBase(e: any): void {
+  //   this.hasBaseDropZoneOver = e;
+  // }
 
+  /*****************************************/
   getFileProperties(fileProperties: any) {
     
-
     // Transforms Javascript Object to an iterable to be used by *ngFor
     if (!fileProperties) {
       return null;
     } 
 
-      if (fileProperties.secure_url != undefined && this.aux) {
+    if (fileProperties.secure_url != undefined && this.aux) {
         //recuperação da url da foto para salvar no servidor 
-        this.url = fileProperties.secure_url;
-        window.console.log(this.url);
+        this.urlFoto = fileProperties.secure_url;
         this.aux = false;
-      }
-
+    }
 
     return Object.keys(fileProperties)
       .map((key) => ({ 'key': key, 'value': fileProperties[key] }));

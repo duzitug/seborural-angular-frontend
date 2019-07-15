@@ -21,6 +21,8 @@
   
   .jumbotron .container {
     max-width: 40rem;
+    margin-left: 30px;
+  
   }
   
   footer {
