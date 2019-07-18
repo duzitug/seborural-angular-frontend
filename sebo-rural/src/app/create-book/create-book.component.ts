@@ -153,7 +153,8 @@ export class CreateBookComponent implements OnInit {
       curso: this.curso,
       periodo: this.periodo,
       disciplina: this.disciplina,
-      preco: this.preco
+      preco: this.preco,
+      dataCriacaoAnuncio: this.data
 
     }).subscribe(
       response => window.console.log(response)
