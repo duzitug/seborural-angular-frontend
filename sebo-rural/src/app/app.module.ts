@@ -12,6 +12,9 @@ import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@clo
 //cloudnary config file
 import cloudinaryConfiguration from './config';
 
+//An Angular component which reads the dataURL and optionally resizes the selected input file image.
+import { ImageToDataUrlModule } from "ngx-image2dataurl";
+
 import * as cloudinary from 'cloudinary-core';
 
 import { AppComponent } from './app.component';
@@ -26,7 +29,6 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { PhotoListComponent } from './photo-list/photo-list.component';
 import { PhotoAlbum } from './model/photo-album.service';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
-
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { NewHomepageComponent } from './new-homepage/new-homepage.component';
     HttpClientModule,
     FormsModule,
     CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
-    FileUploadModule
+    FileUploadModule,
+    ImageToDataUrlModule
   ],
   providers: [PhotoAlbum],
   bootstrap: [AppComponent]
