@@ -24,7 +24,7 @@
 
       </div>
 
-      <!-- AUTOR-->
+      <!-- PRECO-->
       <div class="form-group">
         <label class="control-label" for="precoLivro">Preco</label>
 
@@ -49,35 +49,14 @@
 
 
       <!--  UPLOAD DA FOTO DO LIVRO   -->
-      <label class="control-label" for="fileupload">Foto do Livro</label>
+      <label class="control-label" for="file">Foto do Livro</label><br>
       
-      <input type="file" id="fileupload"  ng2FileSelect [uploader]="uploader" style="margin-bottom: 20px;" />
+      <input type="file" id="file"  style="margin-bottom: 20px;" /><br>
 
+      <progress value="0" id="uploader" max="100">0%</progress>
 
-      <div class="file" *ngFor="let response of responses; let i = index">
+      <div id="envioImagem" ></div>
 
-    
-
-        <div class="status">
-          Enviando... {{response.progress}}%
-          <div *ngIf="!response.status">Em progresso</div>
-          <div class="status-code" *ngIf="response.status">Upload da foto Completo</div>
-        </div>
-
-        <div class="progress-bar">
-          <div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
-        </div>
-
-        <div style="margin-bottom: 20px">
-          <table>
-            <tr *ngFor="let property of getFileProperties(response.data)">
-
-              <!-- <td> {{ property.key }} </td>
-              <td> {{ property.value | json}} </td> -->
-            </tr>
-          </table>
-        </div>
-      </div>
 
       <!-- CURSO -->
       <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
