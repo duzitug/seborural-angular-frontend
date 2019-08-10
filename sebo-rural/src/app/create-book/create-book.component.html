@@ -35,10 +35,10 @@
 
       <!-- URL FOTO-->
       <!-- <div class="form-group">
-    <label class=" control-label" for="urlFotoLivro">URL da Foto</label>  
+    <label class=" control-label" for="urlFotoLivro">URL da Foto</label>
     <div class="">
     <input id="urlFotoLivro" name="urlFotoLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="urlFoto">
-    <span class="help-block">URL de foto do livro</span>  
+    <span class="help-block">URL de foto do livro</span>
     </div>
   </div> -->
 
@@ -50,12 +50,16 @@
 
       <!--  UPLOAD DA FOTO DO LIVRO   -->
       <label class="control-label" for="file">Foto do Livro</label><br>
-      
-      <input type="file" id="file"  style="margin-bottom: 20px;" /><br>
+
+      <!-- chamando a função handleFileSelect() desta forma os atributos do objeto - do componente - são alterados-->
+      <input type="file" id="file"  style="margin-bottom: 20px;" (change)='handleFileSelect($event)'/>
+
+      <br>
 
       <progress value="0" id="uploader" max="100">0%</progress>
 
       <div id="envioImagem" ></div>
+
 
 
       <!-- CURSO -->
@@ -99,14 +103,9 @@
 
       <!-- BOTÂO SUBMETER -->
       <div class="form-group">
-        <label class=" control-label" for="criarLivroBotao"></label>
-        <div class="">
           <!--diretiva (change) executa função apenas uma vez-->
-          <button id="criarLivroBotao" name="criarLivroBotao" class="btn btn-primary"
-            (change)="createBook()">Submeter</button>
-        </div>
+          <button class="btn btn-primary"  type="button" (click)="createBook()">Submeter</button>
       </div>
-
     </form>
   </div>
 </div>

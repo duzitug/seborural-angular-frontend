@@ -11,11 +11,9 @@ import 'firebase/storage';
 })
 export class CreateBookFirebaseComponent implements OnInit {
 
-   firebaseConfig: Object;
+   firebaseConfig: object;
    fileUrl;
-   
-
-  constructor() { 
+  constructor() {
      this.firebaseConfig = {
       apiKey: "AIzaSyD_RJeXxSxpw7LXZ5RWK_zUWwGXR7nv3M4",
       authDomain: "projeto-teste-7dcf3.firebaseapp.com",
@@ -26,25 +24,25 @@ export class CreateBookFirebaseComponent implements OnInit {
       appId: "1:64536651121:web:362d662ea98524bf"
     };
     // Initialize Firebase
-    firebase.initializeApp(this.firebaseConfig);
+     firebase.initializeApp(this.firebaseConfig);
 
   }
 
   ngOnInit() {
 
-  let auth = firebase.auth();
+  const auth = firebase.auth();
 
-    document.getElementById('file').addEventListener('change', this.handleFileSelect, false);
-    ( <HTMLInputElement> document.getElementById('file') ).disabled = true;
+  document.getElementById('file').addEventListener('change', this.handleFileSelect, false);
+  ( document.getElementById('file') as HTMLInputElement ).disabled = true;
 
-      auth.onAuthStateChanged( function(user) {
+  auth.onAuthStateChanged( user => {
         if (user) {
           console.log('Anonymous user signed-in.', user);
-          ( <HTMLInputElement> document.getElementById('file') ).disabled = false;
+          (  document.getElementById('file') as HTMLInputElement).disabled = false;
         } else {
           console.log('There was no anonymous session. Creating a new anonymous user.');
           // Sign the user in anonymously since accessing Storage requires the user to be authorized.
-          auth.signInAnonymously().catch( function(error) {
+          auth.signInAnonymously().catch( error => {
             if (error.code === 'auth/operation-not-allowed') {
               window.alert('Anonymous Sign-in failed. Please make sure that you have enabled anonymous ' +
                   'sign-in on your Firebase project.');
@@ -57,68 +55,48 @@ export class CreateBookFirebaseComponent implements OnInit {
 
    async handleFileSelect(evt) {
 
-    //! variável usada para guardar temporariamente a url do arquivo
+    // ! variável usada para guardar temporariamente a url do arquivo
     let aux;
 
-    let storageRef = firebase.storage().ref();
+    const storageRef = firebase.storage().ref();
 
       // Your web app's Firebase configuration
-  
-      
     evt.stopPropagation();
     evt.preventDefault();
 
-    var file = evt.target.files[0];
+    const file = evt.target.files[0];
 
-    var metadata = {
-      'contentType': file.type
+    const metadata = {
+      contentType: file.type
     };
 
     // Push to child path.
     // [START oncomplete]
-     await storageRef.child('images/' + file.name).put(file, metadata)
-    .then( async function(snapshot) {
-      
+    await storageRef.child('images/' + file.name).put(file, metadata)
+    .then( async snapshot => {
       console.log('Uploaded', snapshot.totalBytes, 'bytes.');
       console.log('File metadata:', snapshot.metadata);
-      
       // Let's get a download URL for the file.
       await snapshot.ref.getDownloadURL()
-      .then( function(url) {
-        
+      .then( url => {
         aux = url;
-         
         console.log('File available at', aux);
         // [START_EXCLUDE]
         document.getElementById('linkbox').innerHTML = '<a href="' +  url + '">Click For File</a>';
         // [END_EXCLUDE]
       });
     })
-    .catch(function(error) {
+    .catch( error => {
       // [START onfailure]
       console.error('Upload failed:', error);
       // [END onfailure]
     });
     // [END oncomplete]
-
-    // setTimeout(() => {
-
-    // this.fileUrl = aux;
-
-    // console.log(this.fileUrl);
-    
-    // }, 1000)
-
-    console.log("finalizado??");
-    
+    console.log('finalizado??');
     this.fileUrl = aux;
 
     console.log(this.fileUrl);
-    
 
- 
   }
-
-  
 
 }

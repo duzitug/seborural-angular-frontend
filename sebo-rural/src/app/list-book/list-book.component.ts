@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Book } from './book';
+
 
 @Component({
   selector: 'app-list-book',
@@ -12,11 +14,17 @@ export class ListBookComponent implements OnInit {
   name: string;
   username: string;
   password: string;
+  livros;
+  isCollapsed = false;
 
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
-    this.listBook();
+   this.listBook();
+
+   
+
+    
 
     //this.listStudent();
 
@@ -27,7 +35,7 @@ export class ListBookComponent implements OnInit {
 
   listBook () {
     window.console.log(this.http.get('http://localhost:8080/book').subscribe(
-      response => window.console.log(response)
+      response => window.console.log(this.livros = response)
     ));
   }
 

@@ -24,18 +24,18 @@ export class CreateBookComponent implements OnInit {
   periodo: number;
   disciplina: string;
   descricao: string;
-  urlFoto: string = "nulo";
+  urlFoto;
   preco: number;
   data: Date;
-  aux: boolean = true;
-  firebaseConfig: Object;
+  firebaseConfig: object;
+  teste;
+  testeUm;
+  testeDois;
 
- 
   constructor(
     private http: HttpClient
-    
   ) {
-    
+    this.data = new Date();
     this.firebaseConfig = {
       apiKey: "AIzaSyD_RJeXxSxpw7LXZ5RWK_zUWwGXR7nv3M4",
       authDomain: "projeto-teste-7dcf3.firebaseapp.com",
@@ -52,19 +52,19 @@ export class CreateBookComponent implements OnInit {
 
   ngOnInit() {
 
-    let auth = firebase.auth();
+    const auth = firebase.auth();
+    // chamando a função handleFileSelect desta forma as variáveis do objeto não são alteradas.
+    // document.getElementById('file').addEventListener('change', this.handleFileSelect, false);
+    ( document.getElementById('file') as HTMLInputElement ).disabled = true;
 
-    document.getElementById('file').addEventListener('change', this.handleFileSelect, false);
-    ( <HTMLInputElement> document.getElementById('file') ).disabled = true;
-
-      auth.onAuthStateChanged( function(user) {
+    auth.onAuthStateChanged( user => {
         if (user) {
           console.log('Anonymous user signed-in.', user);
-          ( <HTMLInputElement> document.getElementById('file') ).disabled = false;
+          ( document.getElementById('file') as HTMLInputElement ).disabled = false;
         } else {
           console.log('There was no anonymous session. Creating a new anonymous user.');
           // Sign the user in anonymously since accessing Storage requires the user to be authorized.
-          auth.signInAnonymously().catch( function(error) {
+          auth.signInAnonymously().catch( error => {
             if (error.code === 'auth/operation-not-allowed') {
               window.alert('Anonymous Sign-in failed. Please make sure that you have enabled anonymous ' +
                   'sign-in on your Firebase project.');
@@ -75,95 +75,79 @@ export class CreateBookComponent implements OnInit {
 
   }
 
-
-  createBook() {
-    window.console.log(this.http.post('http://localhost:8080/book', {
-      titulo: this.titulo,
-      autor: this.autor,
-      descricao: this.descricao,
-      urlFoto: this.urlFoto,
-      curso: this.curso,
-      periodo: this.periodo,
-      disciplina: this.disciplina,
-      preco: this.preco,
-      dataCriacaoAnuncio: this.data
-
-    }).subscribe(
-      response => window.console.log(response)
-    ));
-  }
-
+  // Chamar através de um botão
   async handleFileSelect(evt) {
 
-    //! variável usada para guardar temporariamente a url do arquivo
-    let aux;
 
-    let storageRef = firebase.storage().ref();
-
+    // variável usada para guardar temporariamente a url do arquivo
+    const storageRef = firebase.storage().ref();
       // Your web app's Firebase configuration
-  
     evt.stopPropagation();
     evt.preventDefault();
-
-    var file = evt.target.files[0];
-
-    var metadata = {
-      'contentType': file.type
+    const file = evt.target.files[0];
+    const metadata = {
+      contentType: file.type
     };
-
     // Push to child path.
     // [START oncomplete]
-     await storageRef.child('images/' + file.name).put(file, metadata)
-    .then( async function(snapshot) {
-      
+    await storageRef.child('images/' + file.name).put(file, metadata)
+    .then( async snapshot => {
       console.log('Uploaded', snapshot.totalBytes, 'bytes.');
       console.log('File metadata:', snapshot.metadata);
-      
       // Let's get a download URL for the file.
       await snapshot.ref.getDownloadURL()
-      .then( function(url) {
-        
-        aux = url;
-         
-        console.log('File available at', aux);
+      .then( url => {
+          this.urlFoto = url;
+          console.log('this.urlFoto: ' + url);
+          console.log('File available at', this.urlFoto);
         // [START_EXCLUDE]
-        
-        document.getElementById('envioImagem').innerHTML = '<p>Imagem enviada com sucesso.</p>';
+          document.getElementById('envioImagem').innerHTML = '<p>Imagem enviada com sucesso.</p>';
         // [END_EXCLUDE]
       });
     })
-    .catch(function(error) {
+    .catch( error => {
       // [START onfailure]
       console.error('Upload failed:', error);
       // [END onfailure]
     });
     // [END oncomplete]
-
-    await storageRef.child('images/' + file.name).put(file, metadata).on('state_changed', function ( snapshot ) { 
-            
-      var progress =  ( snapshot.bytesTransferred / snapshot.totalBytes ) * 100; 
-      var uploader = ( <HTMLInputElement> document.getElementById('uploader') ); 
-      uploader.value = progress.toString(); 
-        
-    }, function ( error ) {
-
+    await storageRef.child('images/' + file.name).put(file, metadata).on('state_changed', snapshot => {
+      const progress =  ( snapshot.bytesTransferred / snapshot.totalBytes ) * 100;
+      const uploader = ( document.getElementById('uploader') as HTMLInputElement);
+      uploader.value = progress.toString();
+    }, error => {
       console.error('Upload failed:', error);
-
     });
-
-    console.log("finalizado??");
-    
-    this.urlFoto = aux;
-
-    console.log(this.urlFoto);
-
-
 
   }
 
+  async createBook() {
+
+    // this.http.post('https://peaceful-earth-24536.herokuapp.com/book', {
+    //   titulo: this.titulo,
+    //   autor: this.autor,
+    //   descricao: this.descricao,
+    //   // A url está retornando como undefined
+    //   urlFoto: this.urlFoto,
+    //   curso: this.curso,
+    //   periodo: this.periodo,
+    //   disciplina: this.disciplina,
+    //   preco: this.preco,
+    //   dataCriacaoAnuncio: this.data
+    // }).subscribe(
+    //   response => window.console.log(response)
+    // );
+
+    console.log(this.urlFoto);
+  }
+
+  async metodoUm() {
+    this.testeUm = 'testeUm';
+    console.log('Botao um clicado!');
+  }
+
+  metodoDois() {
+    console.log(this.testeUm);
+  }
 
 }
-  
-
-
-

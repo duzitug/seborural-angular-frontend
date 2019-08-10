@@ -5,17 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-// File upload module
-import {FileUploadModule} from 'ng2-file-upload';
-// Cloudinary module
-import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
-//cloudnary config file
-import cloudinaryConfiguration from './config';
 
-//An Angular component which reads the dataURL and optionally resizes the selected input file image.
-import { ImageToDataUrlModule } from "ngx-image2dataurl";
+//! INÌCIO imports do angularFire
 
-import * as cloudinary from 'cloudinary-core';
+import { AngularFireModule, FirebaseOptionsToken } from '@angular/fire';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
+import { firebaseConfig } from '../environments/environment';
+
+//! FIM imports do angularFire
+
+// ! ngx-bootstrap
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
+
+//Angular 2 module to resize images down to a certain width and height or to reduce the quality to fit a certain maximal filesize - all in the browser.
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 import { AppComponent } from './app.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -25,10 +31,10 @@ import { NavbarComponent } from './commons/navbar/navbar.component';
 import { FooterComponent } from './commons/footer/footer.component';
 import { MainBooksViewComponent } from './commons/main-books-view/main-books-view.component';
 import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.component';
-import { FileUploadComponent } from './file-upload/file-upload.component';
-import { PhotoListComponent } from './photo-list/photo-list.component';
 import { PhotoAlbum } from './model/photo-album.service';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
+import { CreateBookFirebaseComponent } from './create-book-firebase/create-book-firebase.component';
+import { CreateBookAngularFireComponent } from './create-book-angular-fire/create-book-angular-fire.component';
 
 
 @NgModule({
@@ -41,21 +47,20 @@ import { NewHomepageComponent } from './new-homepage/new-homepage.component';
     FooterComponent,
     MainBooksViewComponent,
     PageNotFoundComponent,
-    FileUploadComponent,
-    PhotoListComponent,
-    NewHomepageComponent
-    
+    NewHomepageComponent,
+    CreateBookFirebaseComponent,
+    CreateBookAngularFireComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration),
-    FileUploadModule,
-    ImageToDataUrlModule
+    BrowserAnimationsModule,
+    CollapseModule.forRoot(),
   ],
-  providers: [PhotoAlbum],
+  providers: [PhotoAlbum, { provide: FirebaseOptionsToken, useValue: firebaseConfig }, { provide: StorageBucket, useValue: 'projeto-teste-7dcf3.appspot.com' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
