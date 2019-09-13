@@ -5,12 +5,11 @@ import { CreateBookComponent } from './create-book/create-book.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ListBookComponent } from './list-book/list-book.component';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
-import { CreateBookFirebaseComponent } from './create-book-firebase/create-book-firebase.component';
-import { CreateBookAngularFireComponent } from './create-book-angular-fire/create-book-angular-fire.component';
+
 
 const routes: Routes = [
   {
-    path: 'createStudent',
+    path: 'createUser',
     component: CreateUserComponent
   },
   {
@@ -28,14 +27,6 @@ const routes: Routes = [
   {
     path: 'newHomePage',
     component: NewHomepageComponent
-  },
-  {
-    path: 'createBookFirebase',
-    component: CreateBookFirebaseComponent
-  },
-  {
-    path: 'createBookAngularFire',
-    component: CreateBookAngularFireComponent
   },
   {
     path: '',

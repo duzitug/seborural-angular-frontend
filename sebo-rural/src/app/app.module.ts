@@ -8,8 +8,6 @@ import { FormsModule } from '@angular/forms';
 
 //! INÌCIO imports do angularFire
 
-import { AngularFireModule, FirebaseOptionsToken } from '@angular/fire';
-import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { firebaseConfig } from '../environments/environment';
 
 //! FIM imports do angularFire
@@ -33,8 +31,7 @@ import { MainBooksViewComponent } from './commons/main-books-view/main-books-vie
 import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.component';
 import { PhotoAlbum } from './model/photo-album.service';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
-import { CreateBookFirebaseComponent } from './create-book-firebase/create-book-firebase.component';
-import { CreateBookAngularFireComponent } from './create-book-angular-fire/create-book-angular-fire.component';
+
 
 
 @NgModule({
@@ -47,10 +44,7 @@ import { CreateBookAngularFireComponent } from './create-book-angular-fire/creat
     FooterComponent,
     MainBooksViewComponent,
     PageNotFoundComponent,
-    NewHomepageComponent,
-    CreateBookFirebaseComponent,
-    CreateBookAngularFireComponent
-
+    NewHomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +54,7 @@ import { CreateBookAngularFireComponent } from './create-book-angular-fire/creat
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
   ],
-  providers: [PhotoAlbum, { provide: FirebaseOptionsToken, useValue: firebaseConfig }, { provide: StorageBucket, useValue: 'projeto-teste-7dcf3.appspot.com' } ],
+  providers: [PhotoAlbum],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
