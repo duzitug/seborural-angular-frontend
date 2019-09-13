@@ -31,6 +31,7 @@ import { MainBooksViewComponent } from './commons/main-books-view/main-books-vie
 import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.component';
 import { PhotoAlbum } from './model/photo-album.service';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 
@@ -44,7 +45,8 @@ import { NewHomepageComponent } from './new-homepage/new-homepage.component';
     FooterComponent,
     MainBooksViewComponent,
     PageNotFoundComponent,
-    NewHomepageComponent
+    NewHomepageComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

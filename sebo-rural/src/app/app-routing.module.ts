@@ -5,12 +5,17 @@ import { CreateBookComponent } from './create-book/create-book.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ListBookComponent } from './list-book/list-book.component';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 const routes: Routes = [
   {
     path: 'createUser',
     component: CreateUserComponent
+  },
+  {
+    path: 'userLogin',
+    component: UserLoginComponent
   },
   {
     path: 'createBook',
