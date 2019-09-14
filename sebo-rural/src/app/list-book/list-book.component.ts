@@ -34,7 +34,7 @@ export class ListBookComponent implements OnInit {
   }
 
   listBook () {
-    window.console.log(this.http.get('http://localhost:8080/book').subscribe(
+    window.console.log(this.http.get('https://sebo-rural.herokuapp.com/book').subscribe(
       response => window.console.log(this.livros = response)
     ));
   }
