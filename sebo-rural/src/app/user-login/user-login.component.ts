@@ -17,13 +17,13 @@ export class UserLoginComponent implements OnInit {
   }
 
   userLogin() {
-    this.http.post('https://sebo-rural.herokuapp.com/api/login', {
+    this.http.post<any>('https://sebo-rural.herokuapp.com/api/login', {
       username: this.username,
       password: this.password
     }).subscribe(
       response => {
         window.console.log(response.access_token);
-        window.console.log(response.username);
+         window.console.log(response.username);
         
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('username', response.username);

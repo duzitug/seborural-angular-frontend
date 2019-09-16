@@ -123,22 +123,13 @@ export class CreateBookComponent implements OnInit {
 
   async createBook() {
 
-    // this.http.post('https://peaceful-earth-24536.herokuapp.com/book', {
-    //   titulo: this.titulo,
-    //   autor: this.autor,
-    //   descricao: this.descricao,
-    //   // A url está retornando como undefined
-    //   urlFoto: this.urlFoto,
-    //   curso: this.curso,
-    //   periodo: this.periodo,
-    //   disciplina: this.disciplina,
-    //   preco: this.preco,
-    //   dataCriacaoAnuncio: this.data
-    // }).subscribe(
-    //   response => window.console.log(response)
-    // );
+    this.http.post('https://sebo-rural.herokuapp.com/book', {
+      titulo: this.titulo,
+      autor: this.autor
+    }).subscribe(
+      response => window.console.log(response)
+    );
 
-    console.log(this.urlFoto);
   }
 
   async metodoUm() {
