@@ -28,14 +28,13 @@ export class CreateBookComponent implements OnInit {
   preco: number;
   data: Date;
   firebaseConfig: object;
-  teste;
-  testeUm;
-  testeDois;
+  student;
+  
 
-  constructor(
-    private http: HttpClient
-  ) {
+  constructor(private http: HttpClient) {
+   
     this.data = new Date();
+
     this.firebaseConfig = {
       apiKey: "AIzaSyD_RJeXxSxpw7LXZ5RWK_zUWwGXR7nv3M4",
       authDomain: "projeto-teste-7dcf3.firebaseapp.com",
@@ -51,6 +50,8 @@ export class CreateBookComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log(localStorage.getItem('username'));
 
     const auth = firebase.auth();
     // chamando a função handleFileSelect desta forma as variáveis do objeto não são alteradas.
@@ -121,24 +122,27 @@ export class CreateBookComponent implements OnInit {
 
   }
 
-  async createBook() {
+
+  // colocarno cabeçalho  Content-Type
+  createBook() {
+
+    console.log("executando createBook");
 
     this.http.post('https://sebo-rural.herokuapp.com/book', {
       titulo: this.titulo,
-      autor: this.autor
+      autor: this.autor,
+      curso: this.curso,
+      periodo: this.periodo,
+      disciplina: this.disciplina,
+      descricao: this.descricao,
+      urlFoto: this.urlFoto,
+      preco: this.preco,
+      data: this.data,
+      student: this.student
     }).subscribe(
       response => window.console.log(response)
     );
 
-  }
-
-  async metodoUm() {
-    this.testeUm = 'testeUm';
-    console.log('Botao um clicado!');
-  }
-
-  metodoDois() {
-    console.log(this.testeUm);
   }
 
 }

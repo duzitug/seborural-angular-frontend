@@ -55,14 +55,14 @@ export class ListBookComponent implements OnInit {
     ));
   }
 
-  createBook () {
-    window.console.log(this.http.post('http://localhost:8080/book', {
-      titulo: "faxineiro",
-      autor: "pastana",
-      student: "1"
-    }).subscribe(
-      response => window.console.log(response)
-    ));
-  }
+  // createBook () {
+  //   window.console.log(this.http.post('http://localhost:8080/book', {
+  //     titulo: "faxineiro",
+  //     autor: "pastana",
+  //     student: "1"
+  //   }).subscribe(
+  //     response => window.console.log(response)
+  //   ));
+  // }
 
 }

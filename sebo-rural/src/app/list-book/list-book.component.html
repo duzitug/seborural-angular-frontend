@@ -102,6 +102,7 @@
     
     
         </aside> <!-- col.// -->
+        
         <main class="col-sm-9">
     
             <tr *ngFor="let livro of livros">
@@ -109,7 +110,7 @@
                     <div class="card-body">
                     <div class="row">
                         <aside class="col-sm-3">
-                            <div class="img-wrap"><img src="images/items/2.jpg"></div>
+                            <div class="img-wrap"><img src="{{livro.urlFoto}}" style="width: 150px; height: 150px;"></div>
                         </aside> <!-- col.// -->
                         <article class="col-sm-6">
                                 <h4 class="title"> {{livro.titulo}} </h4>
