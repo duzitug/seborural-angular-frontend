@@ -51,7 +51,16 @@ export class CreateBookComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(localStorage.getItem('username'));
+    let username = localStorage.getItem('username');
+
+    this.http.get<any>('https://sebo-rural.herokuapp.com/api/student/getStudentByUsername/' + username, {
+    }).subscribe(
+      response => { 
+        this.student = response.id
+        console.log(this.student)
+      }
+    );
+
 
     const auth = firebase.auth();
     // chamando a função handleFileSelect desta forma as variáveis do objeto não são alteradas.

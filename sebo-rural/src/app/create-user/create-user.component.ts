@@ -23,7 +23,7 @@ export class CreateUserComponent implements OnInit {
 
   createUser() {
     
-    this.http.post('https://sebo-rural.herokuapp.com/user', {
+    this.http.post('https://sebo-rural.herokuapp.com/api/student', {
       username: this.username,
       password: this.password
     }).subscribe(
