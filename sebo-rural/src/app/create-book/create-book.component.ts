@@ -3,12 +3,13 @@ import {
   OnInit,
 } from '@angular/core';
 import {
-  HttpClient
+  HttpClient, HttpHeaders
 } from '@angular/common/http';
 
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -29,10 +30,10 @@ export class CreateBookComponent implements OnInit {
   data: Date;
   firebaseConfig: object;
   student;
-  
 
-  constructor(private http: HttpClient) {
-   
+
+  constructor(private http: HttpClient, private router: Router) {
+
     this.data = new Date();
 
     this.firebaseConfig = {
@@ -55,7 +56,7 @@ export class CreateBookComponent implements OnInit {
 
     this.http.get<any>('https://sebo-rural.herokuapp.com/api/student/getStudentByUsername/' + username, {
     }).subscribe(
-      response => { 
+      response => {
         this.student = response.id
         console.log(this.student)
       }
@@ -65,33 +66,32 @@ export class CreateBookComponent implements OnInit {
     const auth = firebase.auth();
     // chamando a função handleFileSelect desta forma as variáveis do objeto não são alteradas.
     // document.getElementById('file').addEventListener('change', this.handleFileSelect, false);
-    ( document.getElementById('file') as HTMLInputElement ).disabled = true;
+    (document.getElementById('file') as HTMLInputElement).disabled = true;
 
-    auth.onAuthStateChanged( user => {
-        if (user) {
-          console.log('Anonymous user signed-in.', user);
-          ( document.getElementById('file') as HTMLInputElement ).disabled = false;
-        } else {
-          console.log('There was no anonymous session. Creating a new anonymous user.');
-          // Sign the user in anonymously since accessing Storage requires the user to be authorized.
-          auth.signInAnonymously().catch( error => {
-            if (error.code === 'auth/operation-not-allowed') {
-              window.alert('Anonymous Sign-in failed. Please make sure that you have enabled anonymous ' +
-                  'sign-in on your Firebase project.');
-            }
-          });
-        }
-      });
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log('Anonymous user signed-in.', user);
+        (document.getElementById('file') as HTMLInputElement).disabled = false;
+      } else {
+        console.log('There was no anonymous session. Creating a new anonymous user.');
+        // Sign the user in anonymously since accessing Storage requires the user to be authorized.
+        auth.signInAnonymously().catch(error => {
+          if (error.code === 'auth/operation-not-allowed') {
+            window.alert('Anonymous Sign-in failed. Please make sure that you have enabled anonymous ' +
+              'sign-in on your Firebase project.');
+          }
+        });
+      }
+    });
 
   }
 
   // Chamar através de um botão
   async handleFileSelect(evt) {
 
-
     // variável usada para guardar temporariamente a url do arquivo
     const storageRef = firebase.storage().ref();
-      // Your web app's Firebase configuration
+    // Your web app's Firebase configuration
     evt.stopPropagation();
     evt.preventDefault();
     const file = evt.target.files[0];
@@ -101,29 +101,29 @@ export class CreateBookComponent implements OnInit {
     // Push to child path.
     // [START oncomplete]
     await storageRef.child('images/' + file.name).put(file, metadata)
-    .then( async snapshot => {
-      console.log('Uploaded', snapshot.totalBytes, 'bytes.');
-      console.log('File metadata:', snapshot.metadata);
-      // Let's get a download URL for the file.
-      await snapshot.ref.getDownloadURL()
-      .then( url => {
-          this.urlFoto = url;
-          console.log('this.urlFoto: ' + url);
-          console.log('File available at', this.urlFoto);
-        // [START_EXCLUDE]
-          document.getElementById('envioImagem').innerHTML = '<p>Imagem enviada com sucesso.</p>';
-        // [END_EXCLUDE]
+      .then(async snapshot => {
+        console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+        console.log('File metadata:', snapshot.metadata);
+        // Let's get a download URL for the file.
+        await snapshot.ref.getDownloadURL()
+          .then(url => {
+            this.urlFoto = url;
+            console.log('this.urlFoto: ' + url);
+            console.log('File available at', this.urlFoto);
+            // [START_EXCLUDE]
+            document.getElementById('envioImagem').innerHTML = '<p>Imagem enviada com sucesso.</p>';
+            // [END_EXCLUDE]
+          });
+      })
+      .catch(error => {
+        // [START onfailure]
+        console.error('Upload failed:', error);
+        // [END onfailure]
       });
-    })
-    .catch( error => {
-      // [START onfailure]
-      console.error('Upload failed:', error);
-      // [END onfailure]
-    });
     // [END oncomplete]
     await storageRef.child('images/' + file.name).put(file, metadata).on('state_changed', snapshot => {
-      const progress =  ( snapshot.bytesTransferred / snapshot.totalBytes ) * 100;
-      const uploader = ( document.getElementById('uploader') as HTMLInputElement);
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      const uploader = (document.getElementById('uploader') as HTMLInputElement);
       uploader.value = progress.toString();
     }, error => {
       console.error('Upload failed:', error);
@@ -134,6 +134,15 @@ export class CreateBookComponent implements OnInit {
 
   // colocarno cabeçalho  Content-Type
   createBook() {
+
+    let headers = new HttpHeaders();
+
+    if (localStorage.getItem('access_token')) {
+      headers = headers.set('Authorization', localStorage.getItem('access_token'));
+    } else {
+      alert("Você precisa estar logado para criar um anúncio.")
+      this.router.navigate(['/userLogin'])
+    }
 
     console.log("executando createBook");
 
@@ -148,7 +157,7 @@ export class CreateBookComponent implements OnInit {
       preco: this.preco,
       data: this.data,
       student: this.student
-    }).subscribe(
+    }, { headers: headers }).subscribe(
       response => window.console.log(response)
     );
 
