@@ -1,120 +1,82 @@
 <div class="container" style="margin-top:20px; margin-bottom: 20px">
-  <div class="row justify-content-center">
-    <form class="col-md-4" (ngSubmit)=createBook()>
-
-      <!-- Form Name -->
-      <legend>Anunciar Livro</legend>
-
-      <!-- TÍTULO-->
-      <div class="form-group">
-
-        <label class=" control-label" for="tituloLivro">Título</label>
-
-        <input id="tituloLivro" type="text" placeholder="" class="form-control input-md" required=""
-          [(ngModel)]="titulo" name="tituloLivro">
-
-      </div>
-
-      <!-- AUTOR-->
-      <div class="form-group">
-        <label class="control-label" for="autorLivro">Autor</label>
-
-        <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required=""
-          [(ngModel)]="autor">
-
-      </div>
-
-      <!-- PRECO-->
-      <div class="form-group">
-        <label class="control-label" for="precoLivro">Preco</label>
-
-        <input id="precoLivro" name="precoLivro" type="text" placeholder="" class="form-control input-md" required=""
-          [(ngModel)]="preco">
-
-      </div>
-
-      <!-- URL FOTO-->
-      <!-- <div class="form-group">
-    <label class=" control-label" for="urlFotoLivro">URL da Foto</label>
-    <div class="">
-    <input id="urlFotoLivro" name="urlFotoLivro" type="text" placeholder="" class="form-control input-md" [(ngModel)]="urlFoto">
-    <span class="help-block">URL de foto do livro</span>
-    </div>
-  </div> -->
-
-
-      <!--  UPLOAD DA FOTO DO LIVRO   -->
-      <!-- <label class="control-label" for="fileupload">Foto do Livro</label>
-      <input type="file" id="fileupload" accept="image/*" (change)="uploadFile($event.target.files[0])" style="margin-bottom: 20px;" /> -->
-
-
-      <!--  UPLOAD DA FOTO DO LIVRO   -->
-      <label class="control-label" for="file">Foto do Livro</label><br>
-
-      <!-- chamando a função handleFileSelect() desta forma os atributos do objeto - do componente - são alterados-->
-      <input type="file" id="file"  style="margin-bottom: 20px;" (change)='handleFileSelect($event)'/>
-
-      <br>
-
-      <progress value="0" id="uploader" max="100">0%</progress>
-
-      <div id="envioImagem" ></div>
-
-
-
-      <!-- CURSO -->
-      <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
-        <label class="control-label" for="curso">Curso</label>
-        <div class="">
-          <input id="curso" name="curso" type="text" placeholder="" class="form-control input-md" [(ngModel)]="curso">
-          <span class="help-block">disciplina na qual o livro é usado</span>
-        </div>
-      </div>
-
-      <!-- PERÌODO-->
-      <div class="form-group">
-        <label class="control-label" for="periodo">Período</label>
-        <div class="">
-          <input id="periodo" name="periodo" type="text" placeholder="" class="form-control input-md"
-            [(ngModel)]="periodo">
-          <span class="help-block">disciplina na qual o livro é usado</span>
-        </div>
-      </div>
-
-      <!-- DISCIPLINA-->
-      <div class="form-group">
-        <label class=" control-label" for="disciplinaLivro">Disciplina</label>
-        <div class="">
-          <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="" class="form-control input-md"
-            [(ngModel)]="disciplina">
-          <span class="help-block">disciplina na qual o livro é usado</span>
-        </div>
-      </div>
-
-      <!-- DESCRIÇÂO -->
-      <div class="form-group">
-        <label class=" control-label" for="descricaoLivro">Descrição</label>
-        <div class="">
-          <textarea class="form-control" id="descricaoLivro" name="descricaoLivro"
-            [(ngModel)]="descricao">insira uma breve descrição </textarea>
-        </div>
-      </div>
-
-      <!-- Id provisorio-->
-      <div class="form-group">
-        <label class="control-label" for="autorLivro">ID</label>
-
-        <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required=""
-          [(ngModel)]="student">
-
-      </div>
-
-
-      <!-- BOTÂO SUBMETER -->
-      <div class="form-group">
-          <!--diretiva (change) executa função apenas uma vez-->
-          <button class="btn btn-primary"  type="button" (click)="createBook()">Submeter</button>
-      </div>
+    <div class="row justify-content-center">
+        <form class="col-md-4" (ngSubmit)=createBook()>
+            
+            <!-- Form Name -->
+            <legend>Anunciar Livro</legend>
+            
+            <!-- TÍTULO-->
+            <div class="form-group">
+                <label class=" control-label" for="tituloLivro">Título</label>
+                <input id="tituloLivro" type="text" placeholder="" class="form-control input-md" required=""
+                [(ngModel)]="titulo" name="tituloLivro">
+            </div>
+            
+            <!-- AUTOR-->
+            <div class="form-group">
+                <label class="control-label" for="autorLivro">Autor</label>
+                <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required=""
+                [(ngModel)]="autor">
+            </div>
+            
+            <!-- PRECO-->
+            <div class="form-group">
+                <label class="control-label" for="precoLivro">Preco</label>
+                <input id="precoLivro" name="precoLivro" type="text" placeholder="" class="form-control input-md" required=""
+                [(ngModel)]="preco">
+            </div>
+            
+            <!--  UPLOAD DA FOTO DO LIVRO   -->
+            <label class="control-label" for="file">Foto do Livro</label><br>
+            <!-- chamando a função handleFileSelect() desta forma os atributos do objeto - do componente - são alterados-->
+            <input type="file" id="file"  style="margin-bottom: 20px;" (change)='handleFileSelect($event)'/>
+            <br>
+            <progress value="0" id="uploader" max="100">0%</progress>
+            <div id="envioImagem" ></div>
+        
+            <!-- CURSO -->
+            <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
+                <label class="control-label" for="curso">Curso</label>
+                <div class="">
+                    <input id="curso" name="curso" type="text" placeholder="" class="form-control input-md" [(ngModel)]="curso">
+                    <span class="help-block">disciplina na qual o livro é usado</span>
+                </div>
+            </div>
+            
+            <!-- PERÌODO-->
+            <div class="form-group">
+                <label class="control-label" for="periodo">Período</label>
+                <div class="">
+                    <input id="periodo" name="periodo" type="text" placeholder="" class="form-control input-md"
+                    [(ngModel)]="periodo">
+                    <span class="help-block">disciplina na qual o livro é usado</span>
+                </div>
+            </div>
+            
+            <!-- DISCIPLINA-->
+            <div class="form-group">
+                <label class=" control-label" for="disciplinaLivro">Disciplina</label>
+                <div class="">
+                    <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="" class="form-control input-md"
+                    [(ngModel)]="disciplina">
+                    <span class="help-block">disciplina na qual o livro é usado</span>
+                </div>
+            </div>
+            
+            <!-- DESCRIÇÂO -->
+            <div class="form-group">
+                <label class=" control-label" for="descricaoLivro">Descrição</label>
+                <div class="">
+                    <textarea class="form-control" id="descricaoLivro" name="descricaoLivro"
+                    [(ngModel)]="descricao">insira uma breve descrição </textarea>
+                </div>
+            </div>
+            
+            <!-- BOTÂO SUBMETER -->
+            <div class="form-group">
+                <!--diretiva (change) executa função apenas uma vez-->
+                <button class="btn btn-primary"  type="button" (click)="createBook()">Submeter</button>
+            </div>
     </form>
-  </div>
+</div>
 </div>

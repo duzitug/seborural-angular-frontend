@@ -13,11 +13,17 @@ export class CreateUserComponent implements OnInit {
   
   username: string;
   password: string;
-  
+  courses: any[];
+  courseName: string;
+
   
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course', {
+    }).subscribe(
+      courses => this.courses = courses
+    );
   }
 
 

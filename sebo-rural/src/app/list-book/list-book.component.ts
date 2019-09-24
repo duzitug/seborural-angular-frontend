@@ -22,9 +22,6 @@ export class ListBookComponent implements OnInit {
   ngOnInit() {
    this.listBook();
 
-   
-
-    
 
     //this.listStudent();
 

@@ -3,13 +3,11 @@
     <form class="col-md-4" (ngSubmit)=createBook()>
 
       <!-- Form Name -->
-      <legend>Cadastrar Usuário</legend>
+      <legend>Cadastre-se</legend>
 
       <!-- NOME-->
       <div class="form-group">
-
         <label class=" control-label" for="nomeUsuario">Nome</label>
-
         <input id="nomeUsuario" type="text" placeholder="" class="form-control input-md" required=""
           [(ngModel)]="nome" name="nomeUsuario">
 
@@ -35,19 +33,27 @@
       </div>
 
       <!-- USERNAME-->
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label class=" control-label" for="username">Username</label>
         <div class="">
           <input id="username" name="username" type="text" placeholder="" class="form-control input-md"
             [(ngModel)]="username">
         </div>
-      </div>
+      </div> -->
+
+              <label>Curso</label>
+              <div>
+                <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
+                  <option *ngFor="let course of courses"> {{course.nome}} </option>
+                </select>
+              </div>
 
       <!-- BOTÂO SUBMETER -->
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 20px;">
           <!--diretiva (change) executa função apenas uma vez-->
           <button class="btn btn-primary"  type="button" (click)="createBook()">Submeter</button>
       </div>
+
     </form>
   </div>
 </div>
