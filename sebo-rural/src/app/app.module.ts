@@ -3,23 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 //! INÌCIO imports do angularFire
 
 import { firebaseConfig } from '../environments/environment';
 
-//! FIM imports do angularFire
+
 
 // ! ngx-bootstrap
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
-
-//Angular 2 module to resize images down to a certain width and height or to reduce the quality to fit a certain maximal filesize - all in the browser.
-import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 import { AppComponent } from './app.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -55,6 +53,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
     FormsModule,
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
+    ReactiveFormsModule,
+    NgxCaptchaModule
   ],
   providers: [PhotoAlbum],
   bootstrap: [AppComponent]

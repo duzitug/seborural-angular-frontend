@@ -52,9 +52,10 @@ export class CreateBookComponent implements OnInit {
 
   ngOnInit() {
 
-    let username = localStorage.getItem('username');
+    let usernameLocal = localStorage.getItem('username');
 
-    this.http.get<any>('https://sebo-rural.herokuapp.com/api/student/getStudentByUsername/' + username, {
+    this.http.post<any>('https://sebo-rural.herokuapp.com/api/student/getStudentByUsername', {
+      username: usernameLocal
     }).subscribe(
       response => {
         this.student = response.id

@@ -27,7 +27,7 @@
       <div class="form-group">
         <label class="control-label" for="password">Senha</label>
         <div class="">
-          <input id="password" name="password" type="text" placeholder="" class="form-control input-md"
+          <input id="password" name="password" type="password" placeholder="" class="form-control input-md"
             [(ngModel)]="password">
         </div>
       </div>
@@ -44,17 +44,36 @@
               <label>Curso</label>
               <div>
                 <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
-                  <option *ngFor="let course of courses"> {{course.nome}} </option>
+                  <option label=" "></option>
+                  <option *ngFor="let course of courses" placeholder=" "> {{course.nome}} </option>
                 </select>
               </div>
+
+
 
       <!-- BOTÂO SUBMETER -->
       <div class="form-group" style="margin-top: 20px;">
           <!--diretiva (change) executa função apenas uma vez-->
-          <button class="btn btn-primary"  type="button" (click)="createBook()">Submeter</button>
+          <button class="btn btn-primary"  type="button" (click)="createUser()">Submeter</button>
       </div>
 
     </form>
+
+    <!-- <form [formGroup]="aFormGroup">
+        <ngx-recaptcha2 #captchaElem
+          [siteKey]="'6LcuMboUAAAAAPYceG4FsqTMRhxtTJZtLn078vv-'"
+          (reset)="handleReset()"
+          (expire)="handleExpire()"
+          (load)="handleLoad()"
+          (success)="handleSuccess($event)"
+          [useGlobalDomain]="false"
+          [size]="size"
+          [hl]="lang"
+          [theme]="theme"
+          [type]="type"
+          formControlName="recaptcha">    
+        </ngx-recaptcha2>
+      </form> -->
   </div>
 </div>
 
