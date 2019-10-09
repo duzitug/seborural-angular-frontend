@@ -6,6 +6,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ListBookComponent } from './list-book/list-book.component';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
+
 
 
 const routes: Routes = [
@@ -34,8 +36,12 @@ const routes: Routes = [
     component: NewHomepageComponent
   },
   {
+    path: 'bookDetails',
+    component: BookDetailsComponent
+  },
+  {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/newHomePage',
     pathMatch: 'full'
   },
   // {
@@ -43,7 +49,7 @@ const routes: Routes = [
   //   component: PageNotFoundComponent
   // },
   { path: '**',
-    redirectTo: '/home'
+    redirectTo: '/newHomePage'
   }
 ];
 

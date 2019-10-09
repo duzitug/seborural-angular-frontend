@@ -27,9 +27,9 @@ import { NavbarComponent } from './commons/navbar/navbar.component';
 import { FooterComponent } from './commons/footer/footer.component';
 import { MainBooksViewComponent } from './commons/main-books-view/main-books-view.component';
 import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.component';
-import { PhotoAlbum } from './model/photo-album.service';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 
 
@@ -44,7 +44,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
     MainBooksViewComponent,
     PageNotFoundComponent,
     NewHomepageComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     ReactiveFormsModule,
     NgxCaptchaModule
   ],
-  providers: [PhotoAlbum],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

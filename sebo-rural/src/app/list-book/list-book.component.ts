@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Book } from './book';
 
 
@@ -17,7 +18,7 @@ export class ListBookComponent implements OnInit {
   livros;
   isCollapsed = false;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, public router: Router) { }
 
   ngOnInit() {
    this.listBook();
@@ -31,9 +32,20 @@ export class ListBookComponent implements OnInit {
   }
 
   listBook () {
-    window.console.log(this.http.get('https://sebo-rural.herokuapp.com/book').subscribe(
+
+    let headers = new HttpHeaders();
+
+    headers = headers.set('Authorization', localStorage.getItem('access_token'));
+
+    window.console.log(this.http.get('https://sebo-rural.herokuapp.com/api/book', { headers: headers }).subscribe(
       response => window.console.log(this.livros = response)
     ));
+  }
+
+  botaoClicado(livroId) {
+    //passar id do livro
+    window.console.log(livroId);
+    this.router.navigate(['bookDetails'], { state: { example: livroId } });
   }
 
   listStudent () {
@@ -41,25 +53,4 @@ export class ListBookComponent implements OnInit {
       response => window.console.log(response)
     ));
   }
-
-  createStudent () {
-    window.console.log(this.http.post('http://localhost:8080/student', {
-      name: this.name,
-      username: this.username,
-      password: this.password
-    }).subscribe(
-      response => window.console.log(response)
-    ));
-  }
-
-  // createBook () {
-  //   window.console.log(this.http.post('http://localhost:8080/book', {
-  //     titulo: "faxineiro",
-  //     autor: "pastana",
-  //     student: "1"
-  //   }).subscribe(
-  //     response => window.console.log(response)
-  //   ));
-  // }
-
 }
