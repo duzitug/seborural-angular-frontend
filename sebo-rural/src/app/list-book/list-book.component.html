@@ -7,12 +7,14 @@
     <div class="card card-filter">
         <article class="card-group-item">
             <header class="card-header">
-                <a class="" aria-expanded="true" href="#" data-toggle="collapse" data-target="#collapse22">
-                    <i class="icon-action fa fa-chevron-down"></i>
-                    <h6 class="title">Por Curso</h6>
+
+                <a class="title" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapse22">
+                    <i class="icon-action fa fa-chevron-down"  ></i>
+                    <h6>Por Curso</h6>
                 </a>
             </header>
-            <div style="" class="filter-content collapse show" id="collapse22">
+            <div style="" class="filter-content collapse show" id="collapse22" data-target="#collapse22" [collapse]="isCollapsed" [isAnimated]="true" >
                 <div class="card-body">
                     <form class="pb-3">
                     <div class="input-group">
@@ -23,17 +25,17 @@
                     </div>
                     </form>
     
-                    <ul class="list-unstyled list-lg">
-                        <li><a href="#">Cras justo odio <span class="float-right badge badge-light round">142</span> </a></li>
-                        <li><a href="#">Dapibus ac facilisis  <span class="float-right badge badge-light round">3</span>  </a></li>
-                        <li><a href="#">Morbi leo risus <span class="float-right badge badge-light round">32</span>  </a></li>
-                        <li><a href="#">Another item <span class="float-right badge badge-light round">12</span>  </a></li>
+                    <ul class="list-unstyled list-lg" *ngFor="let course of courses">
+                        <li><a (click)="listBookByCourse(course.nome)">{{course.nome}} <span class="float-right badge badge-light round">142</span> </a></li>
+                        
                     </ul>  
                 </div> <!-- card-body.// -->
             </div> <!-- collapse .// -->
-        </article> <!-- card-group-item.// -->
+        </article> <!-- card-group-item.// -->  
         <article class="card-group-item">
             <header class="card-header">
+
+                
                 <a href="#" data-toggle="collapse" data-target="#collapse33">
                     <i class="icon-action fa fa-chevron-down"></i>
                     <h6 class="title">Por Preço </h6>
@@ -109,15 +111,6 @@
             </tr>
   
         </main> <!-- col.// -->
-
-        <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
-        </button>
-        <hr>
-        <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-          <div class="well well-lg card card-block card-header">Some content</div>
-        </div>
-
 
     </div>
     

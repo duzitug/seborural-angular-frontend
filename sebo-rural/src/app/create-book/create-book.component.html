@@ -35,13 +35,22 @@
             <div id="envioImagem" ></div>
         
             <!-- CURSO -->
-            <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
+
+            <label>Curso</label>
+              <div>
+                <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
+                  <option label=" "></option>
+                  <option *ngFor="let course of courses" placeholder=" "> {{course.nome}} </option>
+                </select>
+              </div>
+              
+            <!-- <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
                 <label class="control-label" for="curso">Curso</label>
                 <div class="">
                     <input id="curso" name="curso" type="text" placeholder="" class="form-control input-md" [(ngModel)]="curso">
                     <span class="help-block">disciplina na qual o livro é usado</span>
                 </div>
-            </div>
+            </div> -->
             
             <!-- PERÌODO-->
             <div class="form-group">

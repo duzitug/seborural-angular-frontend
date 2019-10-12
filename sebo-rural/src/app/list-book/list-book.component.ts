@@ -17,6 +17,7 @@ export class ListBookComponent implements OnInit {
   password: string;
   livros;
   isCollapsed = false;
+  courses;
 
   constructor(private http:HttpClient, public router: Router) { }
 
@@ -40,6 +41,15 @@ export class ListBookComponent implements OnInit {
     window.console.log(this.http.get('https://sebo-rural.herokuapp.com/api/book', { headers: headers }).subscribe(
       response => window.console.log(this.livros = response)
     ));
+
+    this.http.get('https://sebo-rural.herokuapp.com/api/course', { headers: headers }).subscribe(
+      response => window.console.log(this.courses = response)
+    )
+
+  }
+
+  listBookByCourse(courseName) {
+    //listBookByCourseName
   }
 
   botaoClicado(livroId) {

@@ -21,7 +21,7 @@ export class CreateBookComponent implements OnInit {
 
   titulo: string;
   autor: string;
-  curso: string;
+  course: string;
   periodo: number;
   disciplina: string;
   descricao: string;
@@ -30,6 +30,8 @@ export class CreateBookComponent implements OnInit {
   data: Date;
   firebaseConfig: object;
   student;
+  courses;
+  courseName;
 
 
   constructor(private http: HttpClient, private router: Router) {
@@ -52,11 +54,20 @@ export class CreateBookComponent implements OnInit {
 
   ngOnInit() {
 
+    let headers = new HttpHeaders();
+
+    headers = headers.set('Authorization', localStorage.getItem('access_token'));
+
+
+    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course', { headers: headers}).subscribe(
+      courses => this.courses = courses
+    );
+
     let usernameLocal = localStorage.getItem('username');
 
     this.http.post<any>('https://sebo-rural.herokuapp.com/api/student/getStudentByUsername', {
       username: usernameLocal
-    }).subscribe(
+    }, { headers: headers}).subscribe(
       response => {
         this.student = response.id
         console.log(this.student)
@@ -141,16 +152,26 @@ export class CreateBookComponent implements OnInit {
     if (localStorage.getItem('access_token')) {
       headers = headers.set('Authorization', localStorage.getItem('access_token'));
     } else {
-      alert("Você precisa estar logado para criar um anúncio.")
+      alert("Você precisa estar logado para anunciar um livro.")
       this.router.navigate(['/userLogin'])
     }
 
     console.log("executando createBook");
 
+    //pega o id do curso
+    this.http.post<any>('https://sebo-rural.herokuapp.com/api/course/getCourseByNome', {
+      nome: this.courseName
+    },{ headers: headers }).subscribe(
+      response => {
+        this.course = response.id
+        console.log(this.course)
+      }
+    );
+
     this.http.post('https://sebo-rural.herokuapp.com/book', {
       titulo: this.titulo,
       autor: this.autor,
-      curso: this.curso,
+      course: this.course,
       periodo: this.periodo,
       disciplina: this.disciplina,
       descricao: this.descricao,
