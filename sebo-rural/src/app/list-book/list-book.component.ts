@@ -42,16 +42,48 @@ export class ListBookComponent implements OnInit {
       response => window.console.log(this.livros = response)
     ));
 
-    this.http.get('https://sebo-rural.herokuapp.com/api/course', { headers: headers }).subscribe(
-      response => window.console.log(this.courses = response)
+    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course', { headers: headers }).subscribe(
+      response => window.console.log(this.courses = response.sort(function(a, b){
+                                                                    if(a.nome < b.nome) { return -1; }
+                                                                    if(a.nome > b.nome) { return 1; }
+                                                                    return 0;
+                                                                    }))
     )
 
   }
 
   listBookByCourse(courseName) {
-    //listBookByCourseName
-    console.log(courseName);
+
+
+    let headers = new HttpHeaders();
+
+    headers = headers.set('Authorization', localStorage.getItem('access_token'));
+    
+    let course;
+
+    //pega o id do curso a partir do nome do mesmo
+    this.http.post<any>('https://sebo-rural.herokuapp.com/api/course/getCourseByNome', {
+      nome: courseName
+    },{ headers: headers }).subscribe(
+      response => {
+        course = response.id
+        console.log(course)
+
+        this.http.get<any>('https://sebo-rural.herokuapp.com/api/book/listBooksByCourseId/' + course , { headers: headers }).subscribe(
+          response => window.console.log(this.livros = response)
+        )
+
+        window.console.log(courseName);
+
+      }
+    );
+
+
+
+   
+    
   }
+
 
   botaoClicado(livroId) {
     //passar id do livro

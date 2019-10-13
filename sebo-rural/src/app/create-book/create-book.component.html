@@ -56,9 +56,21 @@
             <div class="form-group">
                 <label class="control-label" for="periodo">Período</label>
                 <div class="">
-                    <input id="periodo" name="periodo" type="text" placeholder="" class="form-control input-md"
+                    <!-- <input id="periodo" name="periodo" type="text" placeholder="" class="form-control input-md"
                     [(ngModel)]="periodo">
-                    <span class="help-block">disciplina na qual o livro é usado</span>
+                    <span class="help-block">disciplina na qual o livro é usado</span> -->
+                    <select class="form-control" [(ngModel)]="periodo" name="periodoSelection">
+                      <option label=" "></option>
+                      <option placeholder=" " value="1º"> 1º </option>
+                      <option placeholder=" " value="2º"> 2º </option>
+                      <option placeholder=" " value="3º"> 3º </option>
+                      <option placeholder=" " value="4º"> 4º </option>
+                      <option placeholder=" " value="5º"> 5º </option>
+                      <option placeholder=" " value="6º"> 6º </option>
+                      <option placeholder=" " value="7º"> 7º </option>
+                      <option placeholder=" " value="8º"> 8º </option>
+                      <option placeholder=" " value="9º"> 9º </option>
+                    </select>
                 </div>
             </div>
             

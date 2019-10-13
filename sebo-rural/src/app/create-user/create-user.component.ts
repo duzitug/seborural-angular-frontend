@@ -53,7 +53,7 @@ export class CreateUserComponent implements OnInit {
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
-    //pega o id do curso
+    //pega o id do curso a partir do nome do mesmo
     this.http.post<any>('https://sebo-rural.herokuapp.com/api/course/getCourseByNome', {
       nome: this.courseName
     },{ headers: headers }).subscribe(

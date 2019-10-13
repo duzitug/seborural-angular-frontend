@@ -60,7 +60,11 @@ export class CreateBookComponent implements OnInit {
 
 
     this.http.get<any>('https://sebo-rural.herokuapp.com/api/course', { headers: headers}).subscribe(
-      courses => this.courses = courses
+      response => this.courses = response.sort(function(a, b){
+                                                                    if(a.nome < b.nome) { return -1; }
+                                                                    if(a.nome > b.nome) { return 1; }
+                                                                    return 0;
+                                                                    })
     );
 
     let usernameLocal = localStorage.getItem('username');
@@ -168,7 +172,7 @@ export class CreateBookComponent implements OnInit {
       }
     );
 
-    this.http.post('https://sebo-rural.herokuapp.com/book', {
+    this.http.post('https://sebo-rural.herokuapp.com/api/book', {
       titulo: this.titulo,
       autor: this.autor,
       course: this.course,
@@ -180,7 +184,10 @@ export class CreateBookComponent implements OnInit {
       data: this.data,
       student: this.student
     }, { headers: headers }).subscribe(
-      response => window.console.log(response)
+      response =>  { 
+        window.console.log(response)
+        this.router.navigate(['/listBook'])
+      }
     );
 
   }
