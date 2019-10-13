@@ -22,8 +22,6 @@ export class UserLoginComponent implements OnInit {
 
     let headers = new HttpHeaders();
 
-    headers = headers.set('Authorization', localStorage.getItem('access_token'));
-
     //if(this.isEmailVerified) {
       
     this.http.post<any>('https://sebo-rural.herokuapp.com/api/login', {
@@ -36,6 +34,8 @@ export class UserLoginComponent implements OnInit {
         
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('username', response.username);
+
+        headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
         //console.log(localStorage.getItem('username'));
 

@@ -11,7 +11,7 @@
                 <a class="title" (click)="isCollapsed = !isCollapsed"
           [attr.aria-expanded]="!isCollapsed" aria-controls="collapse22">
                     <i class="icon-action fa fa-chevron-down"  ></i>
-                    <h6>Por Curso</h6>
+                    <h6 class="fakeLink">Por Curso</h6>
                 </a>
             </header>
             <div style="" class="filter-content collapse show" id="collapse22" data-target="#collapse22" [collapse]="isCollapsed" [isAnimated]="true" >
@@ -26,7 +26,7 @@
                     </form>
     
                     <ul class="list-unstyled list-lg" *ngFor="let course of courses">
-                        <li><a (click)="listBookByCourse(course.nome)">{{course.nome}} <span class="float-right badge badge-light round">142</span> </a></li>
+                        <li (click)="listBookByCourse(course.nome)"><a class="fakeLink" id="listCourse">{{course.nome}}</a> <span class="float-right badge badge-light round">142</span> </li>
                         
                     </ul>  
                 </div> <!-- card-body.// -->

@@ -50,6 +50,7 @@ export class ListBookComponent implements OnInit {
 
   listBookByCourse(courseName) {
     //listBookByCourseName
+    console.log(courseName);
   }
 
   botaoClicado(livroId) {

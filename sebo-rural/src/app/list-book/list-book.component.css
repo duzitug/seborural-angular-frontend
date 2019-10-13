@@ -1,0 +1,15 @@
+.fakeLink {
+    color: blue;
+    
+    cursor: pointer;
+}
+
+#listCourse:hover {
+    text-decoration: underline;
+
+}
+
+#listCourse {
+    color: blue;
+    
+}
