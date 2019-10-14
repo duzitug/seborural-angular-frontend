@@ -25,7 +25,7 @@ export class BookDetailsComponent implements OnInit {
 
     window.console.log("BookId: " + this.bookId);
 
-    this.http.get('https://sebo-rural.herokuapp.com/api/book/14'  , { headers: headers }).subscribe(
+    this.http.get('https://sebo-rural.herokuapp.com/api/book/' + this.bookId , { headers: headers }).subscribe(
       response => {
           
         window.console.log("Livro retornado: " + (this.livro = response));

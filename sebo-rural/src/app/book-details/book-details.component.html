@@ -5,22 +5,22 @@
     <div class="row">
         
         
-        <main class="col-sm-9">
+        <main class="col-sm-9" style="margin-left: 13%; margin-bottom: 10%;">
     
             <tr>
-                <article class="card card-product">
+                <article class="card card-product" style="margin-top: 5%;">
                     <div class="card-body">
                     <div class="row">
-                        <aside class="col-sm-3">
-                            <div class="img-wrap"><img src="" style="width: 150px; height: 150px;"></div>
+                        <aside class="col-sm-3" style="margin-top: 2%;">
+                            <div class="img-wrap"><img src="{{livro['urlFoto']}}" style="width: 200px; height: 160px; transform: rotate(90deg);"></div>
                         </aside> <!-- col.// -->
                         <article class="col-sm-6">
-                                <h4 class="title">Título  </h4>
+                                <h4 class="title">{{livro['titulo']}}</h4>
                               
-                                <p>Descrição </p>
+                                <p>{{livro['descricao']}} </p>
                                 <dl class="dlist-align">
                                   <dt>Autor</dt>
-                                  <dd>{{livro['id']}}</dd>
+                                  <dd>{{livro['autor']}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
                                   <dt>Curso</dt>
@@ -28,11 +28,11 @@
                                 </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
                                   <dt>Disciplina</dt>
-                                  <dd>{{course.nome}}</dd>
+                                  <dd>{{livro['disciplina']}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
                                   <dt>Período</dt>
-                                  <dd>{{course.nome}}</dd>
+                                  <dd>{{livro['periodo']}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
                                   <dt>Estudante</dt>
@@ -43,14 +43,11 @@
                         <aside class="col-sm-3 border-left">
                             <div class="action-wrap">
                                 <div class="price-wrap h4">
-                                    <span class="price"> R$  </span>	
+                                    <span class="price"> R$ {{livro['preco']}} </span>	
                                     <!-- <del class="price-old"> $98</del> -->
                                 </div> <!-- info-price-detail // -->
                                 <br>
-                                <p>
-                                    <!-- <a href="#" class="btn btn-primary"> Buy now </a> -->
-                                    <input type="button" name="" class="btn btn-secondary" (click)="botaoClicado(livro.id)" value="Mais Detalhes">
-                                </p>
+            
                                 <a href="#"><i class="fa fa-heart"></i> Adicionar aos favoritos</a>
                             </div> <!-- action-wrap.// -->
                         </aside> <!-- col.// -->
