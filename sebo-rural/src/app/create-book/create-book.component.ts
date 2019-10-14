@@ -168,27 +168,28 @@ export class CreateBookComponent implements OnInit {
     },{ headers: headers }).subscribe(
       response => {
         this.course = response.id
-        console.log(this.course)
-      }
-    );
+        console.log("Este é o curso: " + this.course)
+        this.http.post('https://sebo-rural.herokuapp.com/api/book', {
+          titulo: this.titulo,
+          autor: this.autor,
+          curso: this.course,
+          periodo: this.periodo,
+          disciplina: this.disciplina,
+          descricao: this.descricao,
+          urlFoto: this.urlFoto,
+          preco: this.preco,
+          data: this.data,
+          student: this.student
+        }, { headers: headers }).subscribe(
+          response =>  { 
+            window.console.log(response)
+            this.router.navigate(['/listBook'])
+          }
+        );
+          }
+      );
 
-    this.http.post('https://sebo-rural.herokuapp.com/api/book', {
-      titulo: this.titulo,
-      autor: this.autor,
-      course: this.course,
-      periodo: this.periodo,
-      disciplina: this.disciplina,
-      descricao: this.descricao,
-      urlFoto: this.urlFoto,
-      preco: this.preco,
-      data: this.data,
-      student: this.student
-    }, { headers: headers }).subscribe(
-      response =>  { 
-        window.console.log(response)
-        this.router.navigate(['/listBook'])
-      }
-    );
+    
 
   }
 

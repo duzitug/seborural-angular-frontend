@@ -26,14 +26,14 @@
                     </form>
     
                     <ul class="list-unstyled list-lg" *ngFor="let course of courses">
-                        <li (click)="listBookByCourse(course.nome)"><a class="fakeLink" id="listCourse">{{course.nome}}</a> <span class="float-right badge badge-light round">142</span> </li>
+                        <li (click)="listBookByCourse(course.nome)"><a class="fakeLink" id="listCourse">{{course.nome}}</a> <span class="float-right badge badge-light round"></span> </li>
                         
-                    </ul>  
+                    </ul>   
                 </div> <!-- card-body.// -->
             </div> <!-- collapse .// -->
         </article> <!-- card-group-item.// -->  
         <article class="card-group-item">
-            <header class="card-header">
+            <header class="card-header">    
 
                 
                 <a href="#" data-toggle="collapse" data-target="#collapse33">
@@ -76,18 +76,22 @@
                         <article class="col-sm-6">
                                 <h4 class="title"> {{livro.titulo}} </h4>
                               
-                                <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam </p>
+                                <p> {{livro.descricao}} </p>
                                 <dl class="dlist-align">
-                                  <dt>Color</dt>
-                                  <dd>Black and white</dd>
+                                  <dt>Autor</dt>
+                                  <dd>{{livro.autor}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
-                                  <dt>Material</dt>
-                                  <dd>Syntetic, wooden</dd>
+                                  <dt>Curso</dt>
+                                  <dd>{{livro.curso['id']}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
-                                  <dt>Delivery</dt>
-                                  <dd>Russia, USA, and Europe</dd>
+                                  <dt>Disciplina</dt>
+                                  <dd>{{livro.disciplina}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align">
+                                  <dt>Estudante</dt>
+                                  <dd>{{livro.student['id']}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
                             
                         </article> <!-- col.// -->
