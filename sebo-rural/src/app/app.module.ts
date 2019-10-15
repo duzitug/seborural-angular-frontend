@@ -7,12 +7,6 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-//! INÌCIO imports do angularFire
-
-import { firebaseConfig } from '../environments/environment';
-
-
-
 // ! ngx-bootstrap
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +24,8 @@ import { PageNotFoundComponent } from './commons/page-not-found/page-not-found.c
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+
+import { RouterModule } from '@angular/router';
 
 
 
@@ -55,7 +51,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
     ReactiveFormsModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

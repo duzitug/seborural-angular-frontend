@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -16,19 +17,25 @@ export class CreateUserComponent implements OnInit {
   password: string;  
   nome: string;
   email: string;
-  courses: any[];
+  courses;
   courseName: string;
-  course;
-  studentId;
+  course: number;
+  studentId: number;
+  url: string;
 
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private formBuilder: FormBuilder,
+              public router: Router) {
+
+               this.url = 'https://seborural.digital'; 
+
+               }
 
   ngOnInit() {
 
-    let headers = new HttpHeaders();
+    // let headers = new HttpHeaders();
 
-    headers = headers.set('Authorization', localStorage.getItem('access_token'));
+    // headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
     // this.aFormGroup = new FormGroup({
     //    recaptcha: new FormControl()
@@ -39,8 +46,11 @@ export class CreateUserComponent implements OnInit {
     });
 
  
-    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course', { headers: headers}).subscribe(
-      courses => this.courses = courses
+    this.http.get<any>(this.url + '/api/course').subscribe(
+      courses => { this.courses = courses;
+                    console.log(this.courses);
+      }
+
     );
 
   }
@@ -49,53 +59,56 @@ export class CreateUserComponent implements OnInit {
   async createUser() {
 
 
-    let headers = new HttpHeaders();
+    // let headers = new HttpHeaders();
 
-    headers = headers.set('Authorization', localStorage.getItem('access_token'));
+    // headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
     //pega o id do curso a partir do nome do mesmo
-    this.http.post<any>('https://sebo-rural.herokuapp.com/api/course/getCourseByNome', {
+    this.http.post<any>(this.url + '/api/course/getCourseByNome', {
       nome: this.courseName
-    },{ headers: headers }).subscribe(
+    }).subscribe(
       response => {
-        this.course = response.id
-        console.log(this.course)
-      }
-    );
+          this.course = response.id
+          console.log(this.course)
+          //obtem o username
+          //ele será o peimeiro nome do usuário
+          this.username = this.nome.split(" ")[0];
 
-    //obtem o username
-    //ele será o peimeiro nome do usuário
-    this.username = this.nome.split(" ")[0];
+          let inst = this.email.split("@");
 
-    let inst = this.email.split("@");
+          if (inst[1] === "ufrpe.br") {
 
-    if (inst[1] === "ufrpe.br") {
+            this.http.post<any>(this.url + '/api/student', {
+              username: this.username,
+              password: this.password,
+              email: this.email,
+              course: this.course,
+              nome: this.nome
+            }).subscribe(
+              response => {
+                
+                //console.log(this.studentId = response.id)
+                
+                this.http.post<any>(this.url + '/api/userRole/', {
+                  user: response.id,
+                  role: 1  
+                }).subscribe(
+                  r => {
+                    console.log(r)
+                  }
+                )
+              }
+            );
 
-      this.http.post<any>('https://sebo-rural.herokuapp.com/api/student', {
-        username: this.username,
-        password: this.password,
-        email: this.email,
-        course: this.course,
-        nome: this.nome
-      }, { headers: headers }).subscribe(
-        response => {
-          
-          //console.log(this.studentId = response.id)
-          
-          this.http.post<any>('https://sebo-rural.herokuapp.com/api/userRole/', {
-            user: response.id,
-            role: 39  
-          }, { headers: headers }).subscribe(
-            r => {
-              console.log(r)
-            }
-          )
-        }
-      );
+            this.router.navigate(['newHomePage']);
 
-    } else {
-      alert("Você deve possuir um email institucional: nome.sobrenome@ufrpe.br");
+          } else {
+            alert("Você deve possuir um email institucional: nome.sobrenome@ufrpe.br");
+          }
     }
+  );
+
+    
 
   }
 

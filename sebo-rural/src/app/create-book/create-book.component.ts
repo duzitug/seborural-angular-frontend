@@ -183,7 +183,7 @@ export class CreateBookComponent implements OnInit {
         }, { headers: headers }).subscribe(
           response =>  { 
             window.console.log(response)
-            this.router.navigate(['/listBook'])
+            this.router.navigate(['listBook'])
           }
         );
           }
