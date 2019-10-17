@@ -1,33 +1,34 @@
-<div class="container" style="margin-top:20px; margin-bottom: 20px">
+<div class="bg-light">
+    <div class="container" style="padding-top: 3%; padding-bottom:2%;">
     <div class="row justify-content-center">
-        <form class="col-md-4" (ngSubmit)=createBook()>
+        <form class="col-md-5">
             
             <!-- Form Name -->
-            <legend>Anunciar Livro</legend>
+            <legend>Anuncie o seu livro:</legend>
             
             <!-- TÍTULO-->
             <div class="form-group">
-                <label class=" control-label" for="tituloLivro">Título</label>
-                <input id="tituloLivro" type="text" placeholder="" class="form-control input-md" required=""
+                <label class=" control-label" for="tituloLivro">Título:</label>
+                <input id="tituloLivro" type="text" placeholder="digite o título do livro" class="form-control input-md" required=""
                 [(ngModel)]="titulo" name="tituloLivro">
             </div>
             
             <!-- AUTOR-->
             <div class="form-group">
-                <label class="control-label" for="autorLivro">Autor</label>
-                <input id="autorLivro" name="autorLivro" type="text" placeholder="" class="form-control input-md" required=""
+                <label class="control-label" for="autorLivro">Autor:</label>
+                <input id="autorLivro" name="autorLivro" type="text" placeholder="digite o autor do livro" class="form-control input-md" required=""
                 [(ngModel)]="autor">
             </div>
             
             <!-- PRECO-->
             <div class="form-group">
-                <label class="control-label" for="precoLivro">Preco</label>
-                <input id="precoLivro" name="precoLivro" type="text" placeholder="" class="form-control input-md" required=""
+                <label class="control-label" for="precoLivro">Preço:</label>
+                <input id="precoLivro" name="precoLivro" type="text" placeholder="por quanto você quer vender o seu livro?" class="form-control input-md" required=""
                 [(ngModel)]="preco">
             </div>
             
             <!--  UPLOAD DA FOTO DO LIVRO   -->
-            <label class="control-label" for="file">Foto do Livro</label><br>
+            <label class="control-label" for="file">Selecione uma foto do seu livro:</label><br>
             <!-- chamando a função handleFileSelect() desta forma os atributos do objeto - do componente - são alterados-->
             <input type="file" id="file"  style="margin-bottom: 20px;" (change)='handleFileSelect($event)'/>
             <br>
@@ -36,68 +37,64 @@
         
             <!-- CURSO -->
 
-            <label>Curso</label>
+             <div class="form-group">
+              <label>Curso:</label>
               <div>
                 <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
-                  <option label=" "></option>
-                  <option *ngFor="let course of courses" placeholder=" " [ngValue]="course.nome"> {{course.nome}} </option>
+                  <!-- <option label=""></option> -->
+                  <option *ngFor="let course of courses" placeholder=""> {{course.nome}} </option>
                 </select>
+                <span class="help-block" style="font-size: 14px;">Selecione um curso no qual o livro é utilizado</span>
               </div>
-              
-            <!-- <div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
-                <label class="control-label" for="curso">Curso</label>
-                <div class="">
-                    <input id="curso" name="curso" type="text" placeholder="" class="form-control input-md" [(ngModel)]="curso">
-                    <span class="help-block">disciplina na qual o livro é usado</span>
-                </div>
-            </div> -->
+
+             </div>
+
+              <div class="form-group">
+                <label>Período:</label>
+                      <div>
+                        <select class="form-control" [(ngModel)]="periodo" name="periodoSelection">
+                              <!-- <option label=""></option> -->
+                              <option value="1º"> 1º </option>
+                              <option value="2º"> 2º </option>
+                              <option value="3º"> 3º </option>
+                              <option value="4º"> 4º </option>
+                              <option value="5º"> 5º </option>  
+                              <option value="6º"> 6º </option>
+                              <option value="7º"> 7º </option>
+                              <option value="8º"> 8º </option>
+                              <option value="9º"> 9º </option>
+                        </select>
+                        <span class="help-block" style="font-size: 14px;">Selecione o período no qual o livro é utilizado</span>
+                      </div>
+              </div>
             
-            <!-- PERÌODO-->
-            <div class="form-group">
-                <label class="control-label" for="periodo">Período</label>
-                <div class="">
-                    <!-- <input id="periodo" name="periodo" type="text" placeholder="" class="form-control input-md"
-                    [(ngModel)]="periodo">
-                    <span class="help-block">disciplina na qual o livro é usado</span> -->
-                    <select class="form-control" [(ngModel)]="periodo" name="periodoSelection">
-                      <option label=" "></option>
-                      <option placeholder=" " value="1º"> 1º </option>
-                      <option placeholder=" " value="2º"> 2º </option>
-                      <option placeholder=" " value="3º"> 3º </option>
-                      <option placeholder=" " value="4º"> 4º </option>
-                      <option placeholder=" " value="5º"> 5º </option>
-                      <option placeholder=" " value="6º"> 6º </option>
-                      <option placeholder=" " value="7º"> 7º </option>
-                      <option placeholder=" " value="8º"> 8º </option>
-                      <option placeholder=" " value="9º"> 9º </option>
-                    </select>
-                </div>
-            </div>
+           
             
             <!-- DISCIPLINA-->
             <div class="form-group">
-                <label class=" control-label" for="disciplinaLivro">Disciplina</label>
+                <label class=" control-label" for="disciplinaLivro">Disciplina:</label>
                 <div class="">
-                    <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="" class="form-control input-md"
+                    <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="digite a disciplina na qual o livro é usado (apenas uma)" class="form-control input-md"
                     [(ngModel)]="disciplina">
-                    <span class="help-block">disciplina na qual o livro é usado</span>
+                    <!-- <span class="help-block">disciplina na qual o livro é usado</span> -->
                 </div>
             </div>
             
             <!-- DESCRIÇÂO -->
             <div class="form-group">
-                <label class=" control-label" for="descricaoLivro">Descrição</label>
+                <label class=" control-label" for="descricaoLivro">Descrição:</label>
                 <div class="">
                     <textarea class="form-control" id="descricaoLivro" name="descricaoLivro"
-                    [(ngModel)]="descricao">insira uma breve descrição </textarea>
+                    [(ngModel)]="descricao" placeholder="digite uma breve descrição sobre o estado de conservação do livro">insira uma breve descrição </textarea>
                 </div>
             </div>
             
             <!-- BOTÂO SUBMETER -->
             <div class="form-group">
                 <!--diretiva (change) executa função apenas uma vez-->
-                <button class="btn btn-primary"  type="button" (click)="createBook()">Submeter</button>
+                <button class="btn btn-primary btn-dark"  type="button" (click)="createBook()">Submeter</button>
             </div>
     </form>
+</div>
 </div>
 </div>

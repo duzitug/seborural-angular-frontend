@@ -27,6 +27,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 
 import { RouterModule } from '@angular/router';
 
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
+
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { RouterModule } from '@angular/router';
     CollapseModule.forRoot(),
     ReactiveFormsModule,
     NgxCaptchaModule,
-    RouterModule
+    RouterModule,
+    NgbCollapseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

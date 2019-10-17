@@ -32,6 +32,7 @@ export class CreateBookComponent implements OnInit {
   student;
   courses;
   courseName;
+  periodos: [];
 
 
   constructor(private http: HttpClient, private router: Router) {
@@ -48,18 +49,22 @@ export class CreateBookComponent implements OnInit {
       appId: "1:64536651121:web:362d662ea98524bf"
     };
     // Initialize Firebase
-    firebase.initializeApp(this.firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(this.firebaseConfig);
+    }
+    
 
   }
 
   ngOnInit() {
+
 
     let headers = new HttpHeaders();
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
 
-    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course', { headers: headers}).subscribe(
+    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course').subscribe(
       response => this.courses = response.sort(function(a, b){
                                                                     if(a.nome < b.nome) { return -1; }
                                                                     if(a.nome > b.nome) { return 1; }
@@ -78,7 +83,7 @@ export class CreateBookComponent implements OnInit {
       }
     );
 
-
+    
     const auth = firebase.auth();
     // chamando a função handleFileSelect desta forma as variáveis do objeto não são alteradas.
     // document.getElementById('file').addEventListener('change', this.handleFileSelect, false);
@@ -114,6 +119,16 @@ export class CreateBookComponent implements OnInit {
     const metadata = {
       contentType: file.type
     };
+
+    await storageRef.child('images/' + file.name).put(file, metadata).on('state_changed', snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      const uploader = (document.getElementById('uploader') as HTMLInputElement);
+      uploader.value = progress.toString();
+    }, error => {
+      console.error('Upload failed:', error);
+    });
+
+    document.getElementById('envioImagem').innerHTML = '<p>A sua imagem está sendo enviada.</p>';
     // Push to child path.
     // [START oncomplete]
     await storageRef.child('images/' + file.name).put(file, metadata)
@@ -127,7 +142,8 @@ export class CreateBookComponent implements OnInit {
             console.log('this.urlFoto: ' + url);
             console.log('File available at', this.urlFoto);
             // [START_EXCLUDE]
-            document.getElementById('envioImagem').innerHTML = '<p>Imagem enviada com sucesso.</p>';
+            document.getElementById('envioImagem').innerHTML += '<p>Imagem enviada com sucesso!</p>';
+            document.getElementById('envioImagem').innerHTML += '<p>Preencha só mais alguns dados abaixo. Estamos quase terminando.</p>';
             // [END_EXCLUDE]
           });
       })
@@ -137,13 +153,7 @@ export class CreateBookComponent implements OnInit {
         // [END onfailure]
       });
     // [END oncomplete]
-    await storageRef.child('images/' + file.name).put(file, metadata).on('state_changed', snapshot => {
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      const uploader = (document.getElementById('uploader') as HTMLInputElement);
-      uploader.value = progress.toString();
-    }, error => {
-      console.error('Upload failed:', error);
-    });
+    
 
   }
 

@@ -1,34 +1,47 @@
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  
 
-  <div class="relative" data-spy="scroll" data-target=".navbar-landing">
-    <div class="section-header">
-        <nav class="navbar navbar-landing navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand mr-auto" routerLink="/newHomePage"> <img class="logo" src="../../assets/images/open-book.png">
-                    Sebo Rural <span style="color: red; font-size: 16px;"> <strong>Beta</strong> </span> </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbar1">
-                    <ul class="navbar-nav ml-auto">
+<header>
+     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand"><img class="logo" src="../../assets/images/favicon.png">
+              <span style="color: white;">Sebo Rural</span>  <span style="color: red; font-size: 16px; margin-left: 2%;"> <strong>Beta</strong> </span></a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span> </button>-->
+        <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+        
+        <div class="collapse navbar-collapse" id="navbarCollapse" [ngbCollapse]="isCollapsed">
+          <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item">
+                          <a class="nav-link" routerLink="/newHomePage">Início <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link" routerLink="/userLogin">Entrar <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" routerLink='/createBook'>Anuncie</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link page-scroll" routerLink='/createUser'>Cadastre-se</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" routerLink="/createBook">Anuncie</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link page-scroll" href="#">Contato</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#more">More info</a>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="http://bootstrap-ecommerce.com"> Download </a>
-                        </li> -->
-                    </ul>
-                </div>
-            </div> <!-- container //  -->
-        </nav>
-    </div>
-</div>
+
+           
+          </ul>
+        </div>
+      </nav>
+    
+</header>
+        
+
+
+       

@@ -1,60 +1,61 @@
-<div class="container" style="margin-top:20px; margin-bottom: 20px">
+<div class="bg-light">
+  <div class="container" style="padding-top: 6%; padding-bottom:10%;">
   <div class="row justify-content-center">
     <form class="col-md-4">
 
       <!-- Form Name -->
-      <legend>Cadastre-se</legend>
+      <legend>Crie a sua conta:</legend>
 
       <!-- NOME-->
       <div class="form-group">
-        <label class=" control-label" for="nomeUsuario">Nome</label>
-        <input id="nomeUsuario" type="text" placeholder="" class="form-control input-md" required=""
+        <label class=" control-label" for="nomeUsuario">Nome:</label>
+        <input id="nomeUsuario" type="text" placeholder="digite o seu nome" class="form-control input-md" required=""
           [(ngModel)]="nome" name="nomeUsuario">
 
       </div>
 
       <!-- EMAIL-->
       <div class="form-group">
-        <label class="control-label" for="autorLivro">Email</label>
+        <label class="control-label" for="autorLivro">Email:</label>
 
-        <input id="autorLivro" name="autorLivro" type="email" placeholder="" class="form-control input-md" required=""
+        <input id="autorLivro" name="autorLivro" type="email" placeholder="digite o seu email institucional da UFRPE" class="form-control input-md" required=""
           [(ngModel)]="email">
 
       </div>
 
+      <div class="form-group">
+        <label>Curso:</label>
+              <div>
+                <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
+                  <option label="Selecione o seu curso"></option>
+                  <option *ngFor="let course of courses" placeholder=" "> {{course.nome}} </option>
+                </select>
+              </div>
+
+      </div>
+
+              
+
 
       <!-- SENHA-->
       <div class="form-group">
-        <label class="control-label" for="password">Senha</label>
+        <label class="control-label" for="password">Senha:</label>
         <div class="">
-          <input id="password" name="password" type="password" placeholder="" class="form-control input-md"
+          <input id="password" name="password" type="password" placeholder="a sua senha para o sebo rural" class="form-control input-md"
             [(ngModel)]="password">
         </div>
       </div>
 
-      <!-- USERNAME-->
-      <!-- <div class="form-group">
-        <label class=" control-label" for="username">Username</label>
-        <div class="">
-          <input id="username" name="username" type="text" placeholder="" class="form-control input-md"
-            [(ngModel)]="username">
-        </div>
-      </div> -->
+   
 
-              <label>Curso</label>
-              <div>
-                <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
-                  <option label=" "></option>
-                  <option *ngFor="let course of courses" placeholder=" "> {{course.nome}} </option>
-                </select>
-              </div>
+              
 
 
 
       <!-- BOTÂO SUBMETER -->
       <div class="form-group" style="margin-top: 20px;">
           <!--diretiva (change) executa função apenas uma vez-->
-          <button class="btn btn-primary"  type="button" (click)="createUser()">Submeter</button>
+          <button class="btn btn-primary btn-dark"  type="button" (click)="createUser()">Submeter</button>
       </div>
 
     </form>
@@ -75,6 +76,8 @@
         </ngx-recaptcha2>
       </form> -->
   </div>
+</div>
+
 </div>
 
 

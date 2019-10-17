@@ -1,16 +1,17 @@
-<div class="user-login">
+<div class="user-login" style="padding-top: 11%; padding-bottom: 18%;">
     <form class="form-signin" >
         <h1 class="h3 mb-3 font-weight-normal">Seja bem vindo(a):</h1>
         <label for="inputEmail" class="sr-only">Login</label>
         <input type="text" id="inputEmail" class="form-control" placeholder="login" required autofocus [(ngModel)]="username" name="username">
         <label for="inputPassword" class="sr-only">Senha</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="senha" required [(ngModel)]="password" name="password">
-        <div class="checkbox mb-3">
+        <!-- <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="userLogin()">Entrar</button>
+        </div> -->
+        <button class="btn btn-lg btn-primary btn-block btn-dark" type="submit" (click)="userLogin()">Entrar</button>
+        <div style="font-size: 14px; margin-top: 2%;">Clique <a routerLink="/createUser">aqui</a> para criar um conta.</div>
     </form>
 </div>
 

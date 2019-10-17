@@ -47,7 +47,11 @@ export class CreateUserComponent implements OnInit {
 
  
     this.http.get<any>(this.url + '/api/course').subscribe(
-      courses => { this.courses = courses;
+      courses => { this.courses = courses.sort(function(a, b){
+                                                                    if(a.nome < b.nome) { return -1; }
+                                                                    if(a.nome > b.nome) { return 1; }
+                                                                    return 0;
+                                                                    });
                     console.log(this.courses);
       }
 
@@ -88,6 +92,8 @@ export class CreateUserComponent implements OnInit {
               response => {
                 
                 //console.log(this.studentId = response.id)
+
+                alert("Olá, " + this.username + ", foi enviado um email de confirmação para " + this.email);
                 
                 this.http.post<any>(this.url + '/api/userRole/', {
                   user: response.id,
@@ -99,6 +105,8 @@ export class CreateUserComponent implements OnInit {
                 )
               }
             );
+
+            
 
             this.router.navigate(['newHomePage']);
 
