@@ -27,7 +27,7 @@ export class CreateUserComponent implements OnInit {
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
               public router: Router) {
 
-               this.url = 'https://seborural.digital'; 
+               this.url = 'http://localhost:8080'; 
 
                }
 
@@ -93,7 +93,7 @@ export class CreateUserComponent implements OnInit {
                 
                 //console.log(this.studentId = response.id)
 
-                alert("Olá, " + this.username + ", foi enviado um email de confirmação para " + this.email);
+                
                 
                 this.http.post<any>(this.url + '/api/userRole/', {
                   user: response.id,
@@ -106,6 +106,8 @@ export class CreateUserComponent implements OnInit {
               }
             );
 
+
+            alert("Olá, " + this.username + ", foi enviado um email de confirmação para " + this.email);
             
 
             this.router.navigate(['newHomePage']);

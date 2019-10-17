@@ -47,16 +47,13 @@ export class UserLoginComponent implements OnInit {
             this.isEmailVerified = response.isEmailVerified
             console.log(this.isEmailVerified)
             if(this.isEmailVerified) {
-              this.router.navigate(['newHomePage']);
+              this.router.navigate(['listBook']);
             } else {
               alert("O seu email ainda não foi verificado.")
             }
           }  
         );
-
-        
-
-        
+   
       }
     );
 
