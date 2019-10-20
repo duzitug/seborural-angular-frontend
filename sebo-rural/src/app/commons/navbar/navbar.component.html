@@ -1,45 +1,44 @@
   
 
-<header>
-     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand"><img class="logo" src="../../assets/images/favicon.png">
-              <span style="color: white;">Sebo Rural</span>  <span style="color: red; font-size: 16px; margin-left: 2%;"> <strong>Beta</strong> </span></a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span> </button>-->
+<header style="margin-bottom: 0;">
+     <nav class="navbar navbar-expand-md fixed-top bg-light" style="" >
+        <a class="navbar-brand" style="margin-left: 5%;"><img class="logo" src="../../assets/images/favicon.png">
+              <span style="">Sebo Rural</span>  <span style="color: red; font-size: 14px; margin-left: 2%;"> Beta </span></a>
+        
         <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
 
-
-        
         <div class="collapse navbar-collapse" id="navbarCollapse" [ngbCollapse]="isCollapsed">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav ml-auto" style="margin-right: 5%;">
 
-                        <li class="nav-item">
-                          <a class="nav-link" routerLink="/newHomePage">Início <span class="sr-only">(current)</span></a>
+                        <li class="nav-item float-right">
+                          <a class="nav-link" style="color: black;" routerLink="/newHomePage">Início</a>
                         </li>
 
                         <li class="nav-item">
-                          <a class="nav-link" routerLink="/userLogin">Entrar <span class="sr-only">(current)</span></a>
+                          <a class="nav-link"  style="color: black;" routerLink="/userLogin">Entrar</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link page-scroll" routerLink='/createBook'>Anuncie</a>
+                            <a class="nav-link"  style="color: black;" routerLink='/createBook'>Anunciar</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link page-scroll" routerLink='/createUser'>Cadastre-se</a>
+                            <a class="nav-link" style="color: black;" routerLink='/createUser'>Cadastrar-se</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#">Contato</a>
+                            <a class="nav-link" style="color: black;" href="#">Contato</a>
                         </li>
 
            
           </ul>
+           <form class="form-inline my-2 my-lg-0">
+      
+        </form>
         </div>
       </nav>
-    
 </header>
         
 

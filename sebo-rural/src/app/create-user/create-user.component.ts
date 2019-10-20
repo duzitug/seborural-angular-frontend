@@ -27,7 +27,7 @@ export class CreateUserComponent implements OnInit {
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
               public router: Router) {
 
-               this.url = 'http://localhost:8080'; 
+               this.url = 'https://seborural.digital'; 
 
                }
 

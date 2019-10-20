@@ -1,34 +1,40 @@
-<div class="bg-light">
-    <div class="container" style="padding-top: 3%; padding-bottom:2%;">
+
+
+<div class="" style="padding-top: 6%; background-color: #6E757D;">
+    <div class="container" style="padding-bottom:3%;">
     <div class="row justify-content-center">
-        <form class="col-md-5">
-            
-            <!-- Form Name -->
-            <legend>Anuncie o seu livro:</legend>
+        <form class="col-md-4">
+
+          <div class="card" style="width: 26rem;">
+  <div class="card-body">
+   
+    <!-- Form Name -->
+             <h1 class="h3 mb-3 font-weight-normal" style="margin-bottom: 3%;">Anuncie o seu livro</h1>
+           
             
             <!-- TÍTULO-->
             <div class="form-group">
-                <label class=" control-label" for="tituloLivro">Título:</label>
-                <input id="tituloLivro" type="text" placeholder="digite o título do livro" class="form-control input-md" required=""
+                <!-- <label class=" control-label" for="tituloLivro">Título:</label> -->
+                <input id="tituloLivro" type="text" placeholder="título" class="form-control input-md" required=""
                 [(ngModel)]="titulo" name="tituloLivro">
             </div>
             
             <!-- AUTOR-->
             <div class="form-group">
-                <label class="control-label" for="autorLivro">Autor:</label>
-                <input id="autorLivro" name="autorLivro" type="text" placeholder="digite o autor do livro" class="form-control input-md" required=""
+                <!-- <label class="control-label" for="autorLivro">Autor:</label> -->
+                <input id="autorLivro" name="autorLivro" type="text" placeholder="autor" class="form-control input-md" required=""
                 [(ngModel)]="autor">
             </div>
             
             <!-- PRECO-->
             <div class="form-group">
-                <label class="control-label" for="precoLivro">Preço:</label>
+               <!--  <label class="control-label" for="precoLivro">Preço:</label> -->
                 <input id="precoLivro" name="precoLivro" type="text" placeholder="por quanto você quer vender o seu livro?" class="form-control input-md" required=""
                 [(ngModel)]="preco">
             </div>
             
             <!--  UPLOAD DA FOTO DO LIVRO   -->
-            <label class="control-label" for="file">Selecione uma foto do seu livro:</label><br>
+            <label class="control-label" for="file">Selecione uma foto do seu livro</label><br>
             <!-- chamando a função handleFileSelect() desta forma os atributos do objeto - do componente - são alterados-->
             <input type="file" id="file"  style="margin-bottom: 20px;" (change)='handleFileSelect($event)'/>
             <br>
@@ -37,8 +43,8 @@
         
             <!-- CURSO -->
 
-             <div class="form-group">
-              <label>Curso:</label>
+             <div class="form-group" style="margin-top: 3%;">
+              <!-- <label>Curso:</label> -->
               <div>
                 <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
                   <!-- <option label=""></option> -->
@@ -50,7 +56,7 @@
              </div>
 
               <div class="form-group">
-                <label>Período:</label>
+                <!-- <label>Período:</label> -->
                       <div>
                         <select class="form-control" [(ngModel)]="periodo" name="periodoSelection">
                               <!-- <option label=""></option> -->
@@ -72,9 +78,9 @@
             
             <!-- DISCIPLINA-->
             <div class="form-group">
-                <label class=" control-label" for="disciplinaLivro">Disciplina:</label>
+                <!-- <label class=" control-label" for="disciplinaLivro">Disciplina:</label> -->
                 <div class="">
-                    <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="digite a disciplina na qual o livro é usado (apenas uma)" class="form-control input-md"
+                    <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="disciplina na qual o livro é usado" class="form-control input-md"
                     [(ngModel)]="disciplina">
                     <!-- <span class="help-block">disciplina na qual o livro é usado</span> -->
                 </div>
@@ -82,18 +88,22 @@
             
             <!-- DESCRIÇÂO -->
             <div class="form-group">
-                <label class=" control-label" for="descricaoLivro">Descrição:</label>
+                <!-- <label class=" control-label" for="descricaoLivro">Descrição:</label> -->
                 <div class="">
                     <textarea class="form-control" id="descricaoLivro" name="descricaoLivro"
-                    [(ngModel)]="descricao" placeholder="digite uma breve descrição sobre o estado de conservação do livro">insira uma breve descrição </textarea>
+                    [(ngModel)]="descricao" placeholder="faça uma breve descrição sobre o estado de conservação do livro">insira uma breve descrição </textarea>
                 </div>
             </div>
             
             <!-- BOTÂO SUBMETER -->
             <div class="form-group">
                 <!--diretiva (change) executa função apenas uma vez-->
-                <button class="btn btn-primary btn-dark"  type="button" (click)="createBook()">Submeter</button>
+                <button class="btn btn-primary btn-dark btn-lg btn-block"  type="button" (click)="createBook()">Anunciar</button>
             </div>
+  </div>
+</div>
+            
+           
     </form>
 </div>
 </div>

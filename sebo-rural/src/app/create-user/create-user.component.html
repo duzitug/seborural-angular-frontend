@@ -1,14 +1,20 @@
-<div class="bg-light">
-  <div class="container" style="padding-top: 6%; padding-bottom:10%;">
+
+
+<div  class="" style="background-color: #6E757D;">
+  
+  <div class="container" style="padding-top: 6%; padding-bottom:19%;">
   <div class="row justify-content-center">
     <form class="col-md-4">
 
-      <!-- Form Name -->
-      <legend>Crie a sua conta:</legend>
+      <div class="card" style="width: 26rem;">
+  <div class="card-body">
+    <!-- Form Name -->
+      <h1 class="h3 mb-3 font-weight-normal">Crie a sua conta</h1>
+     
 
       <!-- NOME-->
       <div class="form-group">
-        <label class=" control-label" for="nomeUsuario">Nome:</label>
+        <!-- <label class=" control-label" for="nomeUsuario">Nome:</label> -->
         <input id="nomeUsuario" type="text" placeholder="digite o seu nome" class="form-control input-md" required=""
           [(ngModel)]="nome" name="nomeUsuario">
 
@@ -16,7 +22,7 @@
 
       <!-- EMAIL-->
       <div class="form-group">
-        <label class="control-label" for="autorLivro">Email:</label>
+        <!-- <label class="control-label" for="autorLivro">Email:</label> -->
 
         <input id="autorLivro" name="autorLivro" type="email" placeholder="digite o seu email institucional da UFRPE" class="form-control input-md" required=""
           [(ngModel)]="email">
@@ -24,7 +30,7 @@
       </div>
 
       <div class="form-group">
-        <label>Curso:</label>
+        <!-- <label>Curso:</label> -->
               <div>
                 <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
                   <option label="Selecione o seu curso"></option>
@@ -39,7 +45,7 @@
 
       <!-- SENHA-->
       <div class="form-group">
-        <label class="control-label" for="password">Senha:</label>
+        <!-- <label class="control-label" for="password">Senha:</label> -->
         <div class="">
           <input id="password" name="password" type="password" placeholder="a sua senha para o sebo rural" class="form-control input-md"
             [(ngModel)]="password">
@@ -55,29 +61,20 @@
       <!-- BOTÂO SUBMETER -->
       <div class="form-group" style="margin-top: 20px;">
           <!--diretiva (change) executa função apenas uma vez-->
-          <button class="btn btn-primary btn-dark"  type="button" (click)="createUser()">Submeter</button>
+          <button class="btn btn-lg btn-primary btn-dark btn-block"  type="button" (click)="createUser()">Enviar</button>
       </div>
 
-    </form>
-
-    <!-- <form [formGroup]="aFormGroup">
-        <ngx-recaptcha2 #captchaElem
-          [siteKey]="'6LcuMboUAAAAAPYceG4FsqTMRhxtTJZtLn078vv-'"
-          (reset)="handleReset()"
-          (expire)="handleExpire()"
-          (load)="handleLoad()"
-          (success)="handleSuccess($event)"
-          [useGlobalDomain]="false"
-          [size]="size"
-          [hl]="lang"
-          [theme]="theme"
-          [type]="type"
-          formControlName="recaptcha">    
-        </ngx-recaptcha2>
-      </form> -->
+    
   </div>
 </div>
 
+      
+    </form>
+  </div>
 </div>
+</div>
+
+
+
 
 
