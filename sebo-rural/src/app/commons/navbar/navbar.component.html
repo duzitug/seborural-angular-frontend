@@ -1,13 +1,13 @@
   
-
+<!-- 
 <header style="margin-bottom: 0;">
-     <nav class="navbar navbar-expand-md fixed-top bg-light" style="" >
+     <nav class="navbar navbar-expand-sm fixed-top bg-light" style="" >
         <a class="navbar-brand" style="margin-left: 5%;"><img class="logo" src="../../assets/images/favicon.png">
               <span style="">Sebo Rural</span>  <span style="color: red; font-size: 14px; margin-left: 2%;"> Beta </span></a>
         
-        <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
+          <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse" [ngbCollapse]="isCollapsed">
           <ul class="navbar-nav ml-auto" style="margin-right: 5%;">
@@ -17,7 +17,7 @@
                         </li>
 
                         <li class="nav-item">
-                          <a class="nav-link"  style="color: black;" routerLink="/userLogin">Entrar</a>
+                          <a class="nav-link"   style="color: black;" (click)="entrar()" [routerLink]="">Entrar</a>
                         </li>
 
                         <li class="nav-item">
@@ -29,8 +29,22 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" style="color: black;" href="#">Contato</a>
+                            <a class="nav-link"  style="color: black;" routerLink="/listBook"> Acervo</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: black;" [routerLink]="">Favoritos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: black;" [routerLink]="" >Mensagens</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: black;" [routerLink]="">Contato</a>
+                        </li>
+
+                        
 
            
           </ul>
@@ -40,7 +54,54 @@
         </div>
       </nav>
 </header>
-        
+         -->
 
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" style="margin-left: 5%;"><img class="logo" src="../../assets/images/favicon.png">
+              <span style="">Sebo Rural</span>  <span style="color: red; font-size: 14px;"> Beta </span></a>
+  
+   <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+  <div class="collapse navbar-collapse" id="navbarCollapse" [ngbCollapse]="!isCollapsed">
+    <ul class="navbar-nav mr-auto" style="margin-left: 40%;">
+       <li class="nav-item">
+                          <a class="nav-link" style="color: black;" routerLink="/newHomePage">Início</a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link"   style="color: black;" (click)="entrar()" [routerLink]="">Entrar</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: black;" routerLink='/createBook'>Anunciar</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: black;" routerLink='/createUser'>Cadastrar-se</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: black;" routerLink="/listBook"> Acervo</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: black;" [routerLink]="">Favoritos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: black;" (click)="mensagem()" [routerLink]="" >Mensagens</a>
+                        </li>
+
+                      
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: black;" [routerLink]="">Contato</a>
+                        </li>
+    </ul>
+   
+  </div>
+</nav>
        

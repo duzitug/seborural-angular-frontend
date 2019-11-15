@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { url } from '../config_url';
+
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
@@ -27,7 +29,7 @@ export class CreateUserComponent implements OnInit {
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
               public router: Router) {
 
-               this.url = 'https://seborural.digital'; 
+               this.url = url; 
 
                }
 
@@ -80,7 +82,7 @@ export class CreateUserComponent implements OnInit {
 
           let inst = this.email.split("@");
 
-          if (inst[1] === "ufrpe.br") {
+          // if (inst[1] === "ufrpe.br") usado para verificar se o email terminal com ufrpe.br 
 
             this.http.post<any>(this.url + '/api/student', {
               username: this.username,
@@ -91,9 +93,7 @@ export class CreateUserComponent implements OnInit {
             }).subscribe(
               response => {
                 
-                //console.log(this.studentId = response.id)
-
-                
+                //console.log(this.studentId = response.id) 
                 
                 this.http.post<any>(this.url + '/api/userRole/', {
                   user: response.id,
@@ -112,9 +112,7 @@ export class CreateUserComponent implements OnInit {
 
             this.router.navigate(['newHomePage']);
 
-          } else {
-            alert("Você deve possuir um email institucional: nome.sobrenome@ufrpe.br");
-          }
+         
     }
   );
 

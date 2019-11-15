@@ -7,7 +7,7 @@ import { ListBookComponent } from './list-book/list-book.component';
 import { NewHomepageComponent } from './new-homepage/new-homepage.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
-
+import { ShowBooksByStudentComponent } from './show-books-by-student/show-books-by-student.component'
 
 
 const routes: Routes = [
@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'bookDetails',
     component: BookDetailsComponent
+  },
+  {
+    path: 'showBooksByStudentComponent',
+    component: ShowBooksByStudentComponent
   },
   {
     path: '',

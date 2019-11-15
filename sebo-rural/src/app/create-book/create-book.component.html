@@ -29,14 +29,15 @@
             <!-- PRECO-->
             <div class="form-group">
                <!--  <label class="control-label" for="precoLivro">Preço:</label> -->
-                <input id="precoLivro" name="precoLivro" type="text" placeholder="por quanto você quer vender o seu livro?" class="form-control input-md" required=""
+                <input id="precoLivro" name="precoLivro" type="number" placeholder="por quanto você quer vender o seu livro?" class="form-control input-md" required=""
                 [(ngModel)]="preco">
             </div>
             
             <!--  UPLOAD DA FOTO DO LIVRO   -->
-            <label class="control-label" for="file">Selecione uma foto do seu livro</label><br>
+            <label class="control-label" for="file" style="font-size: 14px;">Selecione abaixo uma foto do seu livro</label><br>
+            <label class="control-label" for="file" style="font-size: 14px;"><strong>A foto deve ser tirada com o celular na vertical (em pé)</strong></label>
             <!-- chamando a função handleFileSelect() desta forma os atributos do objeto - do componente - são alterados-->
-            <input type="file" id="file"  style="margin-bottom: 20px;" (change)='handleFileSelect($event)'/>
+            <input type="file" id="file"  style="margin-bottom: 20px; font-size: 14px;" (change)='handleFileSelect($event)'/>
             <br>
             <progress value="0" id="uploader" max="100">0%</progress>
             <div id="envioImagem" ></div>

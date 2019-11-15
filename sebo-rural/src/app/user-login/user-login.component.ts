@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ServicoService } from '../servico.service';
+import { url } from '../config_url';
 
 @Component({
   selector: 'app-user-login',
@@ -12,10 +14,13 @@ export class UserLoginComponent implements OnInit {
   username: string;
   password: string;
   isEmailVerified: boolean;
+  url: string;
 
-  constructor(private http: HttpClient, public router: Router) { }
+  constructor(private http: HttpClient, public router: Router, private servico: ServicoService) {
+    this.url = url;
+   }
 
-  ngOnInit() {
+   ngOnInit() {
   }
 
   userLogin() {
@@ -23,9 +28,12 @@ export class UserLoginComponent implements OnInit {
     let headers = new HttpHeaders();
 
     //if(this.isEmailVerified) {
-      
-    this.http.post<any>('https://sebo-rural.herokuapp.com/api/login', {
-      username: this.username,
+
+    //muda o primeiro caractere para uppercase  
+    window.console.log(this.username.charAt(0).toUpperCase() + this.username.slice(1));  
+
+    this.http.post<any>(this.url + '/api/login', {
+      username: this.username,  
       password: this.password
     }).subscribe(
       response => {
@@ -35,23 +43,27 @@ export class UserLoginComponent implements OnInit {
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('username', response.username);
 
+        this.servico.setAux(true);
+
         headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
         //console.log(localStorage.getItem('username'));
 
        //ver se conta foi ou não verificada
-        this.http.post<any>('https://sebo-rural.herokuapp.com/api/student/getStudentByUsername', {
+        this.http.post<any>(this.url + '/api/student/getStudentByUsername', {
           username: this.username
         }, { headers: headers }).subscribe(
           response => {
             this.isEmailVerified = response.isEmailVerified
             console.log(this.isEmailVerified)
-            if(this.isEmailVerified) {
-              this.router.navigate(['listBook']);
-            } else {
-              alert("O seu email ainda não foi verificado.")
-            }
-          }  
+            // if(this.isEmailVerified) {
+            //   this.router.navigate(['listBook']);
+            // } else {
+            //   alert("O seu email ainda não foi verificado.")
+            // }
+            this.router.navigate(['listBook']);
+          },
+          err => alert("erro!")
         );
    
       }

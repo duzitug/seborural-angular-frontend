@@ -29,6 +29,10 @@ import { RouterModule } from '@angular/router';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
 
+import { ServicoService } from './servico.service';
+import { ShowBooksByStudentComponent } from './show-books-by-student/show-books-by-student.component';
+import { EditBookComponent } from './edit-book/edit-book.component'
+
 
 
 @NgModule({
@@ -43,7 +47,9 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
     PageNotFoundComponent,
     NewHomepageComponent,
     UserLoginComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    ShowBooksByStudentComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
     RouterModule,
     NgbCollapseModule
   ],
-  providers: [],
+  providers: [ServicoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

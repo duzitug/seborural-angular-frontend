@@ -10,6 +10,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
 import { Router } from "@angular/router";
+import { url } from '../config_url';
 
 
 @Component({
@@ -33,9 +34,11 @@ export class CreateBookComponent implements OnInit {
   courses;
   courseName;
   periodos: [];
-
+  url: string;
 
   constructor(private http: HttpClient, private router: Router) {
+
+    this.url = url;  
 
     this.data = new Date();
 
@@ -58,13 +61,12 @@ export class CreateBookComponent implements OnInit {
 
   ngOnInit() {
 
-
     let headers = new HttpHeaders();
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
 
-    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course').subscribe(
+    this.http.get<any>(this.url + '/api/course').subscribe(
       response => this.courses = response.sort(function(a, b){
                                                                     if(a.nome < b.nome) { return -1; }
                                                                     if(a.nome > b.nome) { return 1; }
@@ -74,7 +76,7 @@ export class CreateBookComponent implements OnInit {
 
     let usernameLocal = localStorage.getItem('username');
 
-    this.http.post<any>('https://sebo-rural.herokuapp.com/api/student/getStudentByUsername', {
+    this.http.post<any>(this.url + '/api/student/getStudentByUsername', {
       username: usernameLocal
     }, { headers: headers}).subscribe(
       response => {
@@ -173,13 +175,13 @@ export class CreateBookComponent implements OnInit {
     console.log("executando createBook");
 
     //pega o id do curso
-    this.http.post<any>('https://sebo-rural.herokuapp.com/api/course/getCourseByNome', {
+    this.http.post<any>(this.url + '/api/course/getCourseByNome', {
       nome: this.courseName
     },{ headers: headers }).subscribe(
       response => {
         this.course = response.id
         console.log("Este é o curso: " + this.course)
-        this.http.post('https://sebo-rural.herokuapp.com/api/book', {
+        this.http.post(this.url + '/api/book', {
           titulo: this.titulo,
           autor: this.autor,
           curso: this.course,

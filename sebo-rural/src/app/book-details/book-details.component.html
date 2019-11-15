@@ -1,18 +1,19 @@
 
-<section class="section-content bg padding-y">
+<section class="section-content bg padding-y" style="padding-top: 1%;">
     <div class="container">
     
     <div class="row">
         
         
-        <main class="col-sm-9" style="margin-left: 13%; margin-bottom: 10%;">
+        <main class="col-sm-9" style="margin-left: 13%; margin-bottom: 8%;">
     
             <tr>
                 <article class="card card-product" style="margin-top: 5%;">
                     <div class="card-body">
                     <div class="row">
-                        <aside class="col-sm-3" style="margin-top: 2%;">
-                            <div class="img-wrap"><img src="{{livro['urlFoto']}}" style="width: 200px; height: 160px; transform: rotate(90deg);"></div>
+                        <aside class="col-sm-3" style="margin-top: 5%;">
+                            <div class="img-wrap"><img src="{{livro['urlFoto']}}" style="width: 100%;"></div> 
+                            <!-- transform: rotate(90deg) -->
                         </aside> <!-- col.// -->
                         <article class="col-sm-6">
                                 <h4 class="title">{{livro['titulo']}}</h4>
@@ -38,6 +39,10 @@
                                   <dt>Estudante</dt>
                                   <dd>{{student.username}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align">
+                                  <dt>E-mail para contato</dt>
+                                  <dd>{{student.email}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
                             
                         </article> <!-- col.// -->
                         <aside class="col-sm-3 border-left">
@@ -47,8 +52,10 @@
                                     <!-- <del class="price-old"> $98</del> -->
                                 </div> <!-- info-price-detail // -->
                                 <br>
-            
-                                <a href="#"><i class="fa fa-heart"></i> Adicionar aos favoritos</a>
+                                <input type="button" name="" class="btn btn-secondary" (click)="favoritar(livro['id'])" value="Editar"> <br> <br>
+                                <input type="button" name="" class="btn btn-secondary" (click)="favoritar(livro['id'])" value="Deletar"> <br> <br>
+                                <input type="button" name="" class="btn btn-secondary" (click)="favoritar(livro['id'])" value="Favoritar livro">
+                                <!-- <a href="#"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
                             </div> <!-- action-wrap.// -->
                         </aside> <!-- col.// -->
                     </div> <!-- row.// -->

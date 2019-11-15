@@ -2,9 +2,9 @@
 
 <div  class="" style="background-color: #6E757D;">
   
-  <div class="container" style="padding-top: 6%; padding-bottom:19%;">
-  <div class="row justify-content-center">
-    <form class="col-md-4">
+  <div class="container" style="padding-bottom:9%;">
+  <div class="row">
+    <form class="col-md-4" style="margin-top: 12%; margin-left: 7%;">
 
       <div class="card" style="width: 26rem;">
   <div class="card-body">
@@ -15,7 +15,7 @@
       <!-- NOME-->
       <div class="form-group">
         <!-- <label class=" control-label" for="nomeUsuario">Nome:</label> -->
-        <input id="nomeUsuario" type="text" placeholder="digite o seu nome" class="form-control input-md" required=""
+        <input id="nomeUsuario" type="text" placeholder="nome" class="form-control input-md" required=""
           [(ngModel)]="nome" name="nomeUsuario">
 
       </div>
@@ -24,7 +24,7 @@
       <div class="form-group">
         <!-- <label class="control-label" for="autorLivro">Email:</label> -->
 
-        <input id="autorLivro" name="autorLivro" type="email" placeholder="digite o seu email institucional da UFRPE" class="form-control input-md" required=""
+        <input id="autorLivro" name="autorLivro" type="email" placeholder="email" class="form-control input-md" required=""
           [(ngModel)]="email">
 
       </div>
@@ -47,7 +47,7 @@
       <div class="form-group">
         <!-- <label class="control-label" for="password">Senha:</label> -->
         <div class="">
-          <input id="password" name="password" type="password" placeholder="a sua senha para o sebo rural" class="form-control input-md"
+          <input id="password" name="password" type="password" placeholder="senha" class="form-control input-md"
             [(ngModel)]="password">
         </div>
       </div>
@@ -70,6 +70,11 @@
 
       
     </form>
+
+    <div class="col-md-4" style="margin-left: 16%; margin-top: 5%;">
+      <img src="../../assets/images/technology.png" class="" style="width: 120%;" >
+    </div>
+
   </div>
 </div>
 </div>

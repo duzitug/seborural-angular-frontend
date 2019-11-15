@@ -1,44 +1,6 @@
-<section class="section-content bg padding-y" style="padding-top: 1%; padding-bottom: 7%;">
-    <div class="container">
-    
+<div class="component">
     <div class="row">
-        <aside class="col-sm-3">
-    
-    <div class="card card-filter">
-        <article class="card-group-item">
-            <header class="card-header">
-
-                <a class="title" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapse22">
-                   <!--  <i class="icon-action fa fa-chevron-down"  ></i> -->
-                    <h6 class="fakeLink">Por Curso</h6>
-                </a>
-            </header>
-            <div style="" class="filter-content collapse show" id="collapse22" data-target="#collapse22" [collapse]="isCollapsed" [isAnimated]="true" >
-                <div class="card-body">
-                    <!-- <form class="pb-3">
-                    <div class="input-group">
-                      <input class="form-control" placeholder="Search" type="text">
-                      <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                    </form> -->
-    
-                    <ul class="list-unstyled list-lg" *ngFor="let course of courses">
-                        <li (click)="listBookByCourse(course.nome)"><a class="fakeLink" id="listCourse">{{course.nome}}</a> <span class="float-right badge badge-light round"></span> </li>
-                        
-                    </ul>   
-                </div> <!-- card-body.// -->
-            </div> <!-- collapse .// -->
-        </article> <!-- card-group-item.// -->  
-        
-    </div> <!-- card.// -->
-    
-    
-        </aside> <!-- col.// -->
-        
-        <main class="col-sm-9" style="padding-left: 1%;">
+        <main class="col-sm-9" style="padding-left: 25%; padding-top: 2%; padding-bottom: 20%;">
     
             <tr *ngFor="let livro of livros">
                 <article class="card card-product" style="margin-top: 0%;">
@@ -70,13 +32,13 @@
                         <aside class="col-sm-3 border-left">
                             <div class="action-wrap">
                                 <div class="price-wrap h4">
-                                    <span class="price"> R$ {{livro.preco}} </span>	
+                                    <span class="price"> R$ {{livro.preco}} </span> 
                                     <!-- <del class="price-old"> $98</del> -->
                                 </div> <!-- info-price-detail // -->
                                 <br>
                                 <p>
                                     <!-- <a href="#" class="btn btn-primary"> Buy now </a> -->
-                                    <input type="button" name="" class="btn btn-secondary" (click)="botaoClicado(livro.id)" value="Mais Detalhes">
+                                    <input type="button" name="" class="btn btn-secondary" (click)="bookDetails(livro.id)" value="Mais Detalhes">
                                 </p>
                                 <!-- <a class="fakeLink badge-light " (click)="favoritar(livro.id)"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
                             </div> <!-- action-wrap.// -->
@@ -88,12 +50,15 @@
   
         </main> <!-- col.// -->
 
+
     </div>
+</div>
+
+
+
     
-    </div> <!-- container .//  -->
-    </section>
     
-    
+
 
 
 

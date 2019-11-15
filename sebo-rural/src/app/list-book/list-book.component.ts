@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Book } from './book';
+import { url } from '../config_url';
 
 
 @Component({
@@ -18,18 +19,14 @@ export class ListBookComponent implements OnInit {
   livros;
   isCollapsed = false;
   courses;
+  url: string;
 
-  constructor(private http:HttpClient, public router: Router) { }
+  constructor(private http:HttpClient, public router: Router) {
+    this.url = url;
+   }
 
   ngOnInit() {
    this.listBook();
-
-
-    //this.listStudent();
-
-    //this.createStudent();
-
-    //this.listStudent();
   }
 
   listBook () {
@@ -38,11 +35,11 @@ export class ListBookComponent implements OnInit {
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
-    window.console.log(this.http.get('https://sebo-rural.herokuapp.com/api/book', { headers: headers }).subscribe(
+    window.console.log(this.http.get(this.url + '/api/book', { headers: headers }).subscribe(
       response => window.console.log(this.livros = response)
     ));
 
-    this.http.get<any>('https://sebo-rural.herokuapp.com/api/course', { headers: headers }).subscribe(
+    this.http.get<any>(this.url + '/api/course', { headers: headers }).subscribe(
       response => window.console.log(this.courses = response.sort(function(a, b){
                                                                     if(a.nome < b.nome) { return -1; }
                                                                     if(a.nome > b.nome) { return 1; }
@@ -62,18 +59,24 @@ export class ListBookComponent implements OnInit {
     let course;
 
     //pega o id do curso a partir do nome do mesmo
-    this.http.post<any>('https://sebo-rural.herokuapp.com/api/course/getCourseByNome', {
+    this.http.post<any>(this.url + '/api/course/getCourseByNome', {
       nome: courseName
     },{ headers: headers }).subscribe(
       response => {
         course = response.id
         console.log(course)
 
-        this.http.get<any>('https://sebo-rural.herokuapp.com/api/book/listBooksByCourseId/' + course , { headers: headers }).subscribe(
-          response => window.console.log(this.livros = response)
+        this.http.get<any>(this.url + '/api/book/listBooksByCourseId/' + course , { headers: headers }).subscribe(
+          response =>  {  this.livros = response;
+            console.log(response);
+            window.console.log(courseName);
+            window.console.log(this.livros);
+
+
+          }
         )
 
-        window.console.log(courseName);
+        
 
       }
     );
@@ -89,6 +92,10 @@ export class ListBookComponent implements OnInit {
     //passar id do livro
     window.console.log(livroId);
     this.router.navigate(['bookDetails'], { state: { example: livroId } });
+  }
+
+  favoritar(livroId) {
+    alert("Favoritar clicaddo " + livroId);
   }
 
   listStudent () {
