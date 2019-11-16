@@ -13,6 +13,7 @@ export class ShowBooksByStudentComponent implements OnInit {
   student;
   livros;
   url;
+  studentName;
 
   constructor(private http:HttpClient, public router: Router) {
     this.url = url;
@@ -20,7 +21,14 @@ export class ShowBooksByStudentComponent implements OnInit {
 
   ngOnInit() {
 
-  	let usernameLocal = localStorage.getItem('username');
+    if (!localStorage.getItem('username')) {
+      this.router.navigate(['newHomePage']);
+    }     
+
+
+    this.studentName = localStorage.getItem('username');
+
+    let usernameLocal = localStorage.getItem('username');
 
     let headers = new HttpHeaders();
 
@@ -40,14 +48,12 @@ export class ShowBooksByStudentComponent implements OnInit {
         );
 
       }
-    );
-
-    
+    ); 
 
   }
-  
+
   bookDetails(livroId) {
-    this.router.navigate(['bookDetails'], { state: { example: livroId } });
+    this.router.navigate(['ownBookDetails'], { state: { example: livroId } });
   }
 
 }

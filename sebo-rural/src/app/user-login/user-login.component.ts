@@ -29,21 +29,21 @@ export class UserLoginComponent implements OnInit {
 
     //if(this.isEmailVerified) {
 
-    //muda o primeiro caractere para uppercase  
-    window.console.log(this.username.charAt(0).toUpperCase() + this.username.slice(1));  
+    //muda o primeiro caractere para uppercase
+    //window.console.log(this.username.charAt(0).toUpperCase() + this.username.slice(1));
 
     this.http.post<any>(this.url + '/api/login', {
-      username: this.username,  
+      username: this.username,
       password: this.password
     }).subscribe(
       response => {
-        window.console.log(response.access_token);
+        //window.console.log(response.access_token);
         //  window.console.log(response.username);
-        
+
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('username', response.username);
 
-        this.servico.setAux(true);
+        this.servico.setAux(false);
 
         headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
@@ -55,23 +55,24 @@ export class UserLoginComponent implements OnInit {
         }, { headers: headers }).subscribe(
           response => {
             this.isEmailVerified = response.isEmailVerified
-            console.log(this.isEmailVerified)
-            // if(this.isEmailVerified) {
-            //   this.router.navigate(['listBook']);
-            // } else {
-            //   alert("O seu email ainda não foi verificado.")
-            // }
-            this.router.navigate(['listBook']);
+            //console.log(this.isEmailVerified)
+            if(this.isEmailVerified) {
+              this.router.navigate(['listBook']);
+            } else {
+              alert("O seu email ainda não foi verificado.")
+            }
+            //this.router.navigate(['listBook']);
           },
-          err => alert("erro!")
+          
         );
-   
-      }
+
+      },
+      err => alert("Usuário não encontrado. Verifique se a primeira letra do login é maiúscula ou minúscula.")
     );
 
 
     // } else {
-    //     alert("O seu email ainda não foi verificado.") 
+    //     alert("O seu email ainda não foi verificado.")
     // }
 
   }

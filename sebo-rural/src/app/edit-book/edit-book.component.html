@@ -1,1 +1,109 @@
-<p>edit-book works!</p>
+<section class="section-content bg padding-y" style="padding-top: 1%;">
+    <div class="container">
+    
+    <div class="row">
+        
+
+        
+        <main class="col-sm-9" style="margin-left: 13%; margin-bottom: 1%;">
+    
+            <tr>
+                <article class="card card-product" style="margin-top: 2%;">
+                    <div class="card-body">
+                    <div class="row" style="padding-left: 25%;">
+                        <aside class="col-sm-3">
+                            <div class="img-wrap"><img src="{{livro['urlFoto']}}" style="width: 100%;"></div> 
+                            <!-- transform: rotate(90deg) -->
+                        </aside> <!-- col.// -->
+                        <article class="col-sm-12">
+                           
+
+                                <dl class="dlist-align">
+                                  <dt>Título</dt>
+                                  <dd><input [(ngModel)]="titulo" size="40" [ngModelOptions]="{ updateOn: 'blur' }" placeholder="{{livro['titulo']}}"></dd>
+                                </dl>  <!-- item-property-hor .// -->
+            
+                              
+                                <p>{{livro['descricao']}} </p>
+                                <dl class="dlist-align">
+                                  <dt>Autor</dt>
+                                  <dd><input [(ngModel)]="autor" size="40" [ngModelOptions]="{ updateOn: 'blur' }" placeholder="{{livro['autor']}}"></dd>
+                                </dl>  <!-- item-property-hor .// -->
+
+                                <dl class="dlist-align">
+                                  <dt>Preco</dt>
+                                  <dd><input [(ngModel)]="preco" size="40" [ngModelOptions]="{ updateOn: 'blur' }" placeholder="{{livro['preco']}}"></dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                
+
+
+                                <dl class="dlist-align">
+                                  <dt>Disciplina</dt>
+                                  <dd><input [(ngModel)]="disciplina" size="40" [ngModelOptions]="{ updateOn: 'blur' }" placeholder="{{livro['disciplina']}}"></dd>
+                                </dl>  <!-- item-property-hor .// -->
+
+                                <dl class="dlist-align">
+                                  <dt>Curso</dt>
+                                   <div class="form-group">
+                                
+                                <!-- <label>Curso:</label> -->
+                                <div>
+                                  <select class="form-control" [(ngModel)]="courseName" name="nameSelection" style="width: 69%;">
+                                    <!-- <option label=""></option> -->
+                                    <option selected="selected">{{course.nome}}</option>
+                                    <option *ngFor="let course of courses" placeholder=""> {{course.nome}} </option>
+                                  </select>
+                                  <span class="help-block" style="font-size: 14px;">Selecione um curso no qual o livro é utilizado</span>
+                                </div>
+
+                               </div>
+                                </dl>  <!-- item-property-hor .// -->
+
+                               
+
+                                <dl class="dlist-align">
+                                  <dt>Periodo</dt>
+                                  <div class="form-group">
+                <!-- <label>Período:</label> -->
+                      <div>
+                        <select class="form-control" name="periodoSelection" style="width: 68%;" [(ngModel)]="periodo" >
+                              <!-- <option label=""></option> -->
+                              <option value="1º"> 1º </option>
+                              <option value="2º"> 2º </option>
+                              <option value="3º"> 3º </option>
+                              <option value="4º"> 4º </option>
+                              <option value="5º"> 5º </option>  
+                              <option value="6º"> 6º </option>
+                              <option value="7º"> 7º </option>
+                              <option value="8º"> 8º </option>
+                              <option value="9º"> 9º </option>
+                        </select>
+                        <span class="help-block" style="font-size: 14px;">Selecione o período no qual o livro é utilizado</span>
+                      </div>
+              </div>
+                                </dl>  <!-- item-property-hor .// -->
+
+
+
+                                
+                            
+                        </article> <!-- col.// -->
+                        <aside class="col-sm-3 border-left">
+                            <div class="action-wrap">
+                                <br>
+                                <input type="button" name="" class="btn btn-outline-dark" (click)="editBook()" value="Salvar"> <br> <br>
+                               
+                                <!-- <a href="#"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
+                            </div> <!-- action-wrap.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    </div> <!-- card-body .// -->
+                </article> <!-- card product .// -->
+            </tr>
+  
+        </main> <!-- col.// -->
+
+    </div>
+    
+    </div> <!-- container .//  -->
+    </section>

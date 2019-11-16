@@ -8,7 +8,8 @@ import { NewHomepageComponent } from './new-homepage/new-homepage.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { ShowBooksByStudentComponent } from './show-books-by-student/show-books-by-student.component'
-
+import { EditBookComponent } from './edit-book/edit-book.component'
+import { OwnBookDetailsComponent } from './own-book-details/own-book-details.component'
 
 const routes: Routes = [
   {
@@ -40,8 +41,16 @@ const routes: Routes = [
     component: BookDetailsComponent
   },
   {
-    path: 'showBooksByStudentComponent',
+    path: 'showBooksByStudent',
     component: ShowBooksByStudentComponent
+  },
+  {
+    path: 'editBook',
+    component: EditBookComponent
+  },
+  {
+    path: 'ownBookDetails',
+    component: OwnBookDetailsComponent
   },
   {
     path: '',

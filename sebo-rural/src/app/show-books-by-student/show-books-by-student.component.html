@@ -1,9 +1,12 @@
 <div class="component">
     <div class="row">
-        <main class="col-sm-9" style="padding-left: 25%; padding-top: 2%; padding-bottom: 20%;">
+
+        <h3 style="padding-left: 25%; padding-top: 1%;"> {{studentName}}, estes são os seus anúncios: </h3>
+
+        <main class="col-sm-9" style="padding-left: 20%; padding-top: 2%; padding-bottom: 18%;">
     
             <tr *ngFor="let livro of livros">
-                <article class="card card-product" style="margin-top: 0%;">
+                <article class="card card-product">
                     <div class="card-body">
                     <div class="row">
                         <aside class="col-sm-3" style="margin-top: 2%;" >
@@ -38,7 +41,7 @@
                                 <br>
                                 <p>
                                     <!-- <a href="#" class="btn btn-primary"> Buy now </a> -->
-                                    <input type="button" name="" class="btn btn-secondary" (click)="bookDetails(livro.id)" value="Mais Detalhes">
+                                    <input type="button" name="" class="btn btn-outline-dark" (click)="bookDetails(livro.id)" value="Mais Detalhes">
                                 </p>
                                 <!-- <a class="fakeLink badge-light " (click)="favoritar(livro.id)"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
                             </div> <!-- action-wrap.// -->

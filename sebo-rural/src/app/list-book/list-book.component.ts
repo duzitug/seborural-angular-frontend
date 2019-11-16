@@ -20,12 +20,21 @@ export class ListBookComponent implements OnInit {
   isCollapsed = false;
   courses;
   url: string;
+  busca;
+  page: number = 1;
+  numeros = [1,2,3];
 
   constructor(private http:HttpClient, public router: Router) {
     this.url = url;
+
    }
 
   ngOnInit() {
+
+    if (!localStorage.getItem('username')) {
+      this.router.navigate(['newHomePage']);
+    }  
+    
    this.listBook();
   }
 
@@ -80,10 +89,32 @@ export class ListBookComponent implements OnInit {
 
       }
     );
+  }
 
 
+  buscarLivros() {
 
-   
+    let headers = new HttpHeaders();
+
+    headers = headers.set('Authorization', localStorage.getItem('access_token'));
+    
+
+        this.http.post<any>(this.url + '/api/book/listBooksByTitulo', {
+          titulo: this.busca
+        }, { headers: headers }).subscribe(
+          response =>  {  this.livros = response;
+      
+            if(response.length == 0) {
+              alert('Ops. Nenhum livro encontrado. Tente novamente usando acentos. ');
+              this.http.get(this.url + '/api/book', { headers: headers }).subscribe(
+      response => this.livros = response
+    );
+            }
+
+          }
+        )
+
+     
     
   }
 

@@ -15,8 +15,7 @@ export class NavbarComponent implements OnInit {
 	auxObservable;
 
   constructor(public router: Router, private servico: ServicoService) {
-  	this.auxObservable  = this.servico.getAuxObservable();
-  	console.log("navbar constructor!");
+    this.auxObservable  = this.servico.getAuxObservable();
     this.isCollapsed = false;
    }
 
@@ -33,10 +32,8 @@ export class NavbarComponent implements OnInit {
     
         this.auxObservable.subscribe((auxData) => {
             this.aux = auxData;
-            console.log(this.aux);
         });
 
-        console.log("Navbar init!");
   }
 
 
@@ -44,7 +41,7 @@ export class NavbarComponent implements OnInit {
 
    entrar() {
 
-    this.aux = true;
+    // this.aux = true;
 
   	this.router.navigate(['userLogin']);
   	
@@ -63,7 +60,8 @@ export class NavbarComponent implements OnInit {
 
   sair() {
   	localStorage.removeItem('access_token');
-  	this.aux = this.servico.setAux(false);
+    localStorage.removeItem('username');
+  	this.aux = this.servico.setAux(true);
   	this.router.navigate(['newHomePage']);
   }
 

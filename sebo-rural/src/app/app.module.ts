@@ -31,7 +31,10 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { ServicoService } from './servico.service';
 import { ShowBooksByStudentComponent } from './show-books-by-student/show-books-by-student.component';
-import { EditBookComponent } from './edit-book/edit-book.component'
+import { EditBookComponent } from './edit-book/edit-book.component';
+import { OwnBookDetailsComponent } from './own-book-details/own-book-details.component';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -49,7 +52,8 @@ import { EditBookComponent } from './edit-book/edit-book.component'
     UserLoginComponent,
     BookDetailsComponent,
     ShowBooksByStudentComponent,
-    EditBookComponent
+    EditBookComponent,
+    OwnBookDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import { EditBookComponent } from './edit-book/edit-book.component'
     ReactiveFormsModule,
     NgxCaptchaModule,
     RouterModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    NgbPaginationModule
   ],
   providers: [ServicoService],
   bootstrap: [AppComponent]

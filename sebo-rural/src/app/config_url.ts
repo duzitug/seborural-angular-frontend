@@ -1,1 +1,1 @@
-export var url:string = 'http://localhost:8080';
+export var url:string = 'https://sebo-rural.herokuapp.com';

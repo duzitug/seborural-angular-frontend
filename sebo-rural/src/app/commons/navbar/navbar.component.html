@@ -80,25 +80,32 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" style="color: black;" routerLink='/createUser'>Cadastrar-se</a>
+                            <a class="nav-link" *ngIf="aux" style="color: black;" routerLink='/createUser'>Cadastrar-se</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link"  style="color: black;" routerLink="/listBook"> Acervo</a>
                         </li>
 
-                        <li class="nav-item">
+                       <!--  <li class="nav-item">
                             <a class="nav-link"  style="color: black;" [routerLink]="">Favoritos</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link"  style="color: black;" (click)="mensagem()" [routerLink]="" >Mensagens</a>
-                        </li>
-
-                      
+                        </li> -->
 
                         <li class="nav-item">
-                            <a class="nav-link" style="color: black;" [routerLink]="">Contato</a>
+                            <a class="nav-link"  style="color: black;" routerLink="/showBooksByStudent"> Seus Anúncios</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: black;" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/SeboRural/">Contato</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: black;"  (click)="sair()" [routerLink]="">Sair</a>
                         </li>
     </ul>
    

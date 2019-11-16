@@ -9,7 +9,7 @@ export class ServicoService {
   aux: boolean	;	
 
   constructor() {
-  	this.aux = false;
+  	this.aux = true;
    }
 
    public getAuxObservable(): any {

@@ -2,7 +2,14 @@
     <div class="container">
     
     <div class="row">
+
+
         <aside class="col-sm-3">
+
+        <form class="form-inline my-2 my-sm-0" style="padding-bottom: 5%;">
+      <input class="form-control mr-sm-2" type="search" name="entradaBusca" [(ngModel)]="busca" placeholder="titulo ou autor" aria-label="Search" style="width: 65%;">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" (click)="buscarLivros()">Buscar</button>
+    </form>
     
     <div class="card card-filter">
         <article class="card-group-item">
@@ -11,7 +18,7 @@
                 <a class="title" (click)="isCollapsed = !isCollapsed"
           [attr.aria-expanded]="!isCollapsed" aria-controls="collapse22">
                    <!--  <i class="icon-action fa fa-chevron-down"  ></i> -->
-                    <h6 class="fakeLink">Por Curso</h6>
+                    <h6 class="">Por Curso</h6>
                 </a>
             </header>
             <div style="" class="filter-content collapse show" id="collapse22" data-target="#collapse22" [collapse]="isCollapsed" [isAnimated]="true" >
@@ -76,7 +83,7 @@
                                 <br>
                                 <p>
                                     <!-- <a href="#" class="btn btn-primary"> Buy now </a> -->
-                                    <input type="button" name="" class="btn btn-secondary" (click)="botaoClicado(livro.id)" value="Mais Detalhes">
+                                    <input type="button" name="" class="btn btn-outline-dark" (click)="botaoClicado(livro.id)" value="Mais Detalhes">
                                 </p>
                                 <!-- <a class="fakeLink badge-light " (click)="favoritar(livro.id)"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
                             </div> <!-- action-wrap.// -->
