@@ -78,9 +78,15 @@ export class CreateUserComponent implements OnInit {
           console.log(this.course)
           //obtem o username
           //ele será o peimeiro nome do usuário
-          this.username = this.nome.split(" ")[0];
 
-          let inst = this.email.split("@");
+          if (this.nome.split(" ")[1] == undefined) {
+            alert ("Olá, " + this.nome.split(" ")[0] +  ". Por favor, insira também um segundo nome.");
+          } else {
+
+
+          this.username = this.nome.split(" ")[0] + '.' + this.nome.split(" ")[1];
+
+         // let inst = this.email.split("@");
 
           // if (inst[1] === "ufrpe.br") usado para verificar se o email terminal com ufrpe.br 
 
@@ -111,6 +117,9 @@ export class CreateUserComponent implements OnInit {
             
 
             this.router.navigate(['newHomePage']);
+
+          }
+
 
          
     }
