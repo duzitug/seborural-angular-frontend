@@ -56,7 +56,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     OwnBookDetailsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,  
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
