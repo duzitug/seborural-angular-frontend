@@ -34,6 +34,7 @@ import { ShowBooksByStudentComponent } from './show-books-by-student/show-books-
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { OwnBookDetailsComponent } from './own-book-details/own-book-details.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -68,7 +69,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     NgbCollapseModule,
     NgbPaginationModule
   ],
-  providers: [ServicoService],
+  providers: [ServicoService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
