@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicoService } from '../../servico.service';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { url } from '../../config_url';
 
 @Component({
   selector: 'app-navbar',
@@ -11,28 +13,24 @@ import { ServicoService } from '../../servico.service';
 export class NavbarComponent implements OnInit {
 
 	isCollapsed;
-	aux: boolean;
-	auxObservable;
+	aux;
+  url: string;
 
-  constructor(public router: Router, private servico: ServicoService) {
-    this.auxObservable  = this.servico.getAuxObservable();
-    this.isCollapsed = false;
+  constructor(public router: Router, public servico: ServicoService, private http:HttpClient) {
+  
+      
+      this.aux = this.servico.getAux();
    }
 
   ngOnInit() {
-  	// if (localStorage.getItem('access_token')) {
-   //    this.aux = true;
-   //  } else {
-   //   this.aux = false;
-   //  }
-    
+  
 
-    //window.console.log(this.value);	
-
+        //this.aux = this.servico.verificar();
+  
     
-        this.auxObservable.subscribe((auxData) => {
-            this.aux = auxData;
-        });
+        // this.auxObservable.subscribe((auxData) => {
+        //     this.aux = auxData;
+        // });
 
   }
 
@@ -40,18 +38,13 @@ export class NavbarComponent implements OnInit {
   
 
    entrar() {
+    
 
-    // this.aux = true;
+    this.router.navigate(['userLogin']);
+    
 
-  	this.router.navigate(['userLogin']);
-  	
-  	
-    //ao clicar em entrar os access_token só é criado após a submição dos dados e recepção do mesmo pelo servidor
+  
 
-  	 // this.auxObservable.subscribe((auxData) => {
-    //         this.aux = auxData;
-    //   });
-   
   }
 
   mensagem() {
@@ -59,9 +52,12 @@ export class NavbarComponent implements OnInit {
   }
 
   sair() {
+
+    this.servico.setAux(true);
   	localStorage.removeItem('access_token');
     localStorage.removeItem('username');
-  	this.aux = this.servico.setAux(true);
+  	// this.aux = this.servico.setAux(true);
+   //  this.aux2 = false;
   	this.router.navigate(['newHomePage']);
   }
 

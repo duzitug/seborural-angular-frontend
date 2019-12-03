@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +11,10 @@ export class ServicoService {
 
   aux: boolean	;	
 
-  constructor() {
+  constructor(private http:HttpClient) {
   	this.aux = true;
    }
-
-   public getAuxObservable(): any {
-     const auxObservable = new Observable(observer => {
-           
-                observer.next(this.aux);
-          
-     });
-
-     return auxObservable;
- 	}
-
+ 
   getAux() { 
       return this.aux; 
    } 

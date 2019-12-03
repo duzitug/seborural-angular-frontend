@@ -35,7 +35,12 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { OwnBookDetailsComponent } from './own-book-details/own-book-details.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
+import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { EmailPasswordRecoveryComponent } from './email-password-recovery/email-password-recovery.component';
+import { ChooseBookTypeComponent } from './choose-book-type/choose-book-type.component';
+import { CreateBookLiteraryComponent } from './create-book-literary/create-book-literary.component';
+import { ChooseOwnBookTypeComponent } from './choose-own-book-type/choose-own-book-type.component';
+import { ShowBooksLiteraryByStudentComponent } from './show-books-literary-by-student/show-books-literary-by-student.component';
 
 
 
@@ -54,7 +59,13 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     BookDetailsComponent,
     ShowBooksByStudentComponent,
     EditBookComponent,
-    OwnBookDetailsComponent
+    OwnBookDetailsComponent,
+    PasswordRecoveryComponent,
+    EmailPasswordRecoveryComponent,
+    ChooseBookTypeComponent,
+    CreateBookLiteraryComponent,
+    ChooseOwnBookTypeComponent,
+    ShowBooksLiteraryByStudentComponent
   ],
   imports: [
     BrowserModule,  
@@ -67,6 +78,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     NgxCaptchaModule,
     RouterModule,
     NgbCollapseModule,
+    NgbPaginationModule,
     NgbPaginationModule
   ],
   providers: [ServicoService, {provide: LocationStrategy, useClass: HashLocationStrategy}],

@@ -16,11 +16,18 @@ export class BookDetailsComponent implements OnInit {
   course;
 	bookId: number;
   url: string;
+  courseId;
+  genreId;
+  genre;
 
   constructor(private http:HttpClient, private router: Router ) { 
   	
     if (this.router.getCurrentNavigation().extras.state) {
       this.bookId = this.router.getCurrentNavigation().extras.state.example;
+      this.courseId = this.router.getCurrentNavigation().extras.state.courseId;
+      this.genreId = this.router.getCurrentNavigation().extras.state.genreId;
+      window.console.log(this.courseId);
+      window.console.log(this.genreId);
     } else {
       this.router.navigate(['listBook']);
     }
@@ -37,23 +44,61 @@ export class BookDetailsComponent implements OnInit {
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
-    window.console.log("BookId: " + this.bookId);
+    //window.console.log("BookId: " + this.bookId);
 
-    this.http.get(this.url + '/api/book/' + this.bookId , { headers: headers }).subscribe(
+    if(this.courseId != undefined) {
+      this.http.get(this.url + '/api/book/' + this.bookId , { headers: headers }).subscribe(
       response => {
           
-        window.console.log("Livro retornado: " + (this.livro = response));
+        this.livro = response;
         
         this.http.get<any>(this.url + '/api/course/' + this.livro.curso['id'] , { headers: headers }).subscribe(
-          response => window.console.log(this.course = response)
+          response => this.course = response
         );
 
         this.http.get<any>(this.url + '/api/student/' + this.livro.student['id'] , { headers: headers }).subscribe(
-          response => window.console.log(this.student = response)
+          response => this.student = response
         );
 
         }
     );
+    } else if(this.genreId != undefined) {
+      this.http.get(this.url + '/api/bookLiterary/' + this.bookId , { headers: headers }).subscribe(
+      response => { 
+          
+          window.console.log(this.livro = response);
+        
+        
+        this.http.get<any>(this.url + '/api/genre/' + this.livro.genre['id'] , { headers: headers }).subscribe(
+          response => this.genre = response
+        );
+
+        this.http.get<any>(this.url + '/api/student/' + this.livro.student['id'] , { headers: headers }).subscribe(
+          response => this.student = response
+        );
+
+        }
+    );
+
+    } else {
+      this.http.get(this.url + '/api/book/' + this.bookId , { headers: headers }).subscribe(
+      response => {
+          
+        this.livro = response;
+        
+        this.http.get<any>(this.url + '/api/course/' + this.livro.curso['id'] , { headers: headers }).subscribe(
+          response => this.course = response
+        );
+
+        this.http.get<any>(this.url + '/api/student/' + this.livro.student['id'] , { headers: headers }).subscribe(
+          response => this.student = response
+        );
+
+        }
+    );
+    }
+
+    
  
   }
 

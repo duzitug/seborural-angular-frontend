@@ -10,6 +10,10 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { ShowBooksByStudentComponent } from './show-books-by-student/show-books-by-student.component'
 import { EditBookComponent } from './edit-book/edit-book.component'
 import { OwnBookDetailsComponent } from './own-book-details/own-book-details.component'
+import { EmailPasswordRecoveryComponent } from './email-password-recovery/email-password-recovery.component';
+import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { ChooseBookTypeComponent } from './choose-book-type/choose-book-type.component';
+import { CreateBookLiteraryComponent } from './create-book-literary/create-book-literary.component';
 
 const routes: Routes = [
   {
@@ -53,6 +57,22 @@ const routes: Routes = [
     component: OwnBookDetailsComponent
   },
   {
+    path: 'emailPasswordRecovery',
+    component: EmailPasswordRecoveryComponent
+  },
+  {
+    path: 'passwordRecovery/:id',
+    component: PasswordRecoveryComponent
+  },
+  {
+    path: 'chooseBookType',
+    component: ChooseBookTypeComponent
+  }, 
+  {
+    path: 'createBookLiterary',
+    component: CreateBookLiteraryComponent
+  },
+  {
     path: '',
     redirectTo: '/newHomePage',
     pathMatch: 'full'
@@ -65,6 +85,7 @@ const routes: Routes = [
     redirectTo: '/newHomePage'
   }
 ];
+
 
 
 @NgModule({

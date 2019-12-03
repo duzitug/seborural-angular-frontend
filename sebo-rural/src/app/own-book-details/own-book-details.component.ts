@@ -93,7 +93,10 @@ export class OwnBookDetailsComponent implements OnInit {
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
     this.http.delete<any>(this.url + '/api/book/' + livroId , { headers: headers }).subscribe(
-          response => window.console.log(response)
+          response =>  { window.console.log(response) 
+
+            alert("O seu anúncio foi deletado. Torcemos pra que agora ele esteja nas mãos de outra pessoa.")
+          }
         );
   }
 

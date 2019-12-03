@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { url } from '../config_url';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-show-books-by-student',
@@ -22,7 +23,8 @@ export class ShowBooksByStudentComponent implements OnInit {
   ngOnInit() {
 
     if (!localStorage.getItem('username')) {
-      this.router.navigate(['newHomePage']);
+      alert("Você precisa estar logado para ver os seus anúncios.");
+        this.router.navigate(['newHomePage']);
     }     
 
 
@@ -30,9 +32,19 @@ export class ShowBooksByStudentComponent implements OnInit {
 
     let usernameLocal = localStorage.getItem('username');
 
+
     let headers = new HttpHeaders();
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
+
+    this.http.get(this.url + '/api/book', { headers: headers })
+    .pipe(catchError(err => {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('username'); 
+      this.router.navigate(['newHomePage']);
+      return err;
+    })).subscribe(data => {} );
+
 
     this.http.post<any>(this.url + '/api/student/getStudentByUsername', {
       username: usernameLocal

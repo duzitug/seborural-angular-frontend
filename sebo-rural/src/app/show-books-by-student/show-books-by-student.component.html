@@ -3,7 +3,7 @@
 
             <div class="col-sm-6 mx-auto">
                 
-                <h3 style="padding-top: 3%;"> {{studentName}}, estes são os seus anúncios: </h3>
+                <h6 style="padding-top: 3%;" class="text-center"> {{studentName}}, estes são os seus anúncios: </h6>
             </div>
 
             
@@ -22,7 +22,7 @@
                     <div class="row">
                         <aside class="col-sm-3" style="margin-top: 2%;" >
                             <!-- transform: rotate(90deg);  -->
-                            <div class="img-wrap" style="margin-top: 15%;"><img  src="{{livro.urlFoto}}" style="width: 70%; height: 70%;"></div>
+                            <div class="img-wrap" style="padding-bottom: 5%;"><img  src="{{livro.urlFoto}}" style="width: 70%; height: 70%;"></div>
                         </aside> <!-- col.// -->
                         <article class="col-sm-6">
                                 <h4 class="title"> {{livro.titulo}} </h4>
@@ -52,7 +52,7 @@
                                 <br>
                                 <p>
                                     <!-- <a href="#" class="btn btn-primary"> Buy now </a> -->
-                                    <input type="button" name="" class="btn btn-outline-dark" (click)="bookDetails(livro.id)" value="Mais Detalhes">
+                                    <input type="button" name="" class="btn btn-outline-dark" (click)="bookDetails(livro.id)" value="Editar ou Deletar">
                                 </p>
                                 <!-- <a class="fakeLink badge-light " (click)="favoritar(livro.id)"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
                             </div> <!-- action-wrap.// -->

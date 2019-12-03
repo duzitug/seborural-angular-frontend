@@ -27,7 +27,7 @@
             <!-- PRECO-->
             <div class="form-group">
                <!--  <label class="control-label" for="precoLivro">Preço:</label> -->
-                <input id="precoLivro" name="precoLivro" type="number" placeholder="preço de revenda, caso queira doar coloque 0" class="form-control input-md" required=""
+                <input id="precoLivro" name="precoLivro" type="number" placeholder="caso queira doar coloque 0" class="form-control input-md" required=""
                 [(ngModel)]="preco">    
             </div>
             
@@ -40,54 +40,23 @@
             <progress value="0" id="uploader" max="100">0%</progress>
             <div id="envioImagem" ></div>
         
-            <!-- CURSO -->
+            <!-- GÊNERO -->
 
 
              <div class="form-group" style="margin-top: 3%;">
               <!-- <label>Curso:</label> -->
               <div>
-                <select class="form-control" [(ngModel)]="courseName" name="nameSelection">
+                <select class="form-control" [(ngModel)]="genreName" name="nameSelection">
                   <!-- <option label=""></option> -->
-                  <option label="curso no qual o livro é utilizado"></option>
-                  <option *ngFor="let course of courses" > {{course.nome}} </option>
+                  <option label="Selecione o gênero do livro"></option>
+                  <option *ngFor="let genre of genres" > {{genre.nome}} </option>
                 </select>
                 <!-- <span class="help-block" style="font-size: 14px;">Selecione um curso no qual o livro é utilizado</span> -->
               </div>
 
              </div>
 
-              <div class="form-group">
-                <!-- <label>Período:</label> -->
-                      <div>
-                        <select class="form-control" [(ngModel)]="periodo" name="periodoSelection">
-                              <!-- <option label=""></option> -->
-                              <option value="1º"> 1º </option>
-                              <option value="2º"> 2º </option>
-                              <option value="3º"> 3º </option>
-                              <option value="4º"> 4º </option>
-                              <option value="5º"> 5º </option>  
-                              <option value="6º"> 6º </option>
-                              <option value="7º"> 7º </option>
-                              <option value="8º"> 8º </option>
-                              <option value="9º"> 9º </option>
-                              <option value="9º"> Indefinido </option>
-                        </select>
-                        <span class="help-block" style="font-size: 14px;">Selecione o período no qual o livro é utilizado</span>
-                      </div>
-              </div>
-            
-           
-            
-            <!-- DISCIPLINA-->
-            <div class="form-group">
-                <!-- <label class=" control-label" for="disciplinaLivro">Disciplina:</label> -->
-                <div class="">
-                    <input id="disciplinaLivro" name="disciplinaLivro" type="text" placeholder="disciplina na qual o livro é usado" class="form-control input-md"
-                    [(ngModel)]="disciplina">
-                    <!-- <span class="help-block">disciplina na qual o livro é usado</span> -->
-                </div>
-            </div>
-            
+      
             <!-- DESCRIÇÂO -->
             <div class="form-group">
                 <!-- <label class=" control-label" for="descricaoLivro">Descrição:</label> -->
@@ -100,7 +69,7 @@
             <!-- BOTÂO SUBMETER -->
             <div class="form-group">
                 <!--diretiva (change) executa função apenas uma vez-->
-                <button class="btn btn-lg btn-block btn-outline-dark"  type="button" (click)="createBook()">Anunciar</button>
+                <button class="btn btn-lg btn-block btn-outline-dark"  type="button" (click)="createBookLiterary()">Anunciar</button>
             </div>
   </div>
 </div>
@@ -110,3 +79,4 @@
 </div>
 </div>
 </div>
+

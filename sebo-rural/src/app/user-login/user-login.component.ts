@@ -37,17 +37,16 @@ export class UserLoginComponent implements OnInit {
       password: this.password
     }).subscribe(
       response => {
-        //window.console.log(response.access_token);
-        //  window.console.log(response.username);
+ 
 
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('username', response.username);
 
+    
         this.servico.setAux(false);
 
         headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
-        //console.log(localStorage.getItem('username'));
 
        //ver se conta foi ou não verificada
         this.http.post<any>(this.url + '/api/student/getStudentByUsername', {
@@ -67,7 +66,7 @@ export class UserLoginComponent implements OnInit {
         );
 
       },
-      err => alert("Usuário não encontrado. Verifique se a primeira letra do login é maiúscula ou minúscula.")
+      err => alert("Usuário não encontrado. Favor verificar acentos, maiúsculas e menúsculas.")
     );
 
 

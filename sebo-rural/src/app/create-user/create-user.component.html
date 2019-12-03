@@ -15,7 +15,7 @@
       <!-- NOME-->
       <div class="form-group">
         <!-- <label class=" control-label" for="nomeUsuario">Nome:</label> -->
-        <input id="nomeUsuario" type="text" placeholder="nome" class="form-control input-md" required=""
+        <input id="nomeUsuario" type="text" placeholder="nome e sobrenome" class="form-control input-md" required=""
           [(ngModel)]="nome" name="nomeUsuario">
 
       </div>
@@ -49,6 +49,15 @@
         <div class="">
           <input id="password" name="password" type="password" placeholder="senha" class="form-control input-md"
             [(ngModel)]="password">
+        </div>
+      </div>
+
+      <!-- SENHA-->
+      <div class="form-group">
+        <!-- <label class="control-label" for="password">Senha:</label> -->
+        <div class="">
+          <input id="password" name="password" type="password" placeholder="confirme a sua senha" class="form-control input-md"
+            [(ngModel)]="passwordConfirmacao">
         </div>
       </div>
 

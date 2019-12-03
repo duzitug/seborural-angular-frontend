@@ -1,6 +1,6 @@
 
-<section class="section-content bg padding-y" style="padding-top: 1%;">
-    <div class="container">
+<section class="section-content bg padding-y">
+    <div class="container" style="padding-top: 2%;">
     
     <div class="row">
         
@@ -8,11 +8,11 @@
         <main class="col-sm-9 mx-auto" style="margin-bottom: 8%;">
     
             <tr>
-                <article class="card card-product" style="margin-top: 5%;">
+                <article class="card card-product" >
                     <div class="card-body">
                     <div class="row">
                         <aside class="col-sm-3" style="margin-top: 5%;">
-                            <div class="img-wrap"><img src="{{livro['urlFoto']}}" style="width: 100%;"></div> 
+                            <div class="img-wrap"><img src="{{livro['urlFoto']}}" style="width: 100%; padding-bottom: 5%;"></div> 
                             <!-- transform: rotate(90deg) -->
                         </aside> <!-- col.// -->
                         <article class="col-sm-6">
@@ -23,10 +23,10 @@
                                   <dt>Autor</dt>
                                   <dd>{{livro['autor']}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
-                                <dl class="dlist-align">
+                                <!-- <dl class="dlist-align">
                                   <dt>Curso</dt>
                                   <dd>{{course.nome}}</dd>
-                                </dl>  <!-- item-property-hor .// -->
+                                </dl> -->  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
                                   <dt>Disciplina</dt>
                                   <dd>{{livro['disciplina']}}</dd>
@@ -40,13 +40,14 @@
                                   <dd>{{student.username}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
-                                  <dt>E-mail para contato</dt>
-                                  <dd>{{student.email}}</dd>
+                                  <dt>Clique no email para enviar uma mensagem</dt>
+                                  <a href="mailto:{{student.email}}" target="_top">{{student.email}}</a>
+                                  <!-- <dd>{{student.email}}</dd> -->
                                 </dl>  <!-- item-property-hor .// -->
                             
                         </article> <!-- col.// -->
                         <aside class="col-sm-3 border-left">
-                            <div class="action-wrap">
+                            <div class="action-wrap" >
                                 <div class="price-wrap h4">
                                     <span class="price"> R$ {{livro['preco']}} </span>	
                                     <!-- <del class="price-old"> $98</del> -->

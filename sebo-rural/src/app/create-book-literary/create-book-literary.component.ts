@@ -1,4 +1,4 @@
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import * as firebase from 'firebase/app';
@@ -7,17 +7,16 @@ import 'firebase/storage';
 import { Router } from "@angular/router";
 import { url } from '../config_url';
 
-
 @Component({
-  selector: 'app-create-book',
-  templateUrl: './create-book.component.html',
-  styleUrls: ['./create-book.component.css']
+  selector: 'app-create-book-literary',
+  templateUrl: './create-book-literary.component.html',
+  styleUrls: ['./create-book-literary.component.css']
 })
-export class CreateBookComponent implements OnInit {
-
+export class CreateBookLiteraryComponent implements OnInit {
+	course
   titulo: string;
   autor: string;
-  course: string;
+  genre: string;
   periodo: number;
   disciplina: string;
   descricao: string;
@@ -26,14 +25,16 @@ export class CreateBookComponent implements OnInit {
   dataCriacaoAnuncio: Date;
   firebaseConfig: object;
   student;
-  courses;
-  courseName;
+  genres;
+  genreName;
   periodos: [];
   url: string;
 
-  constructor(private http: HttpClient, private router: Router) {
 
-    this.url = url;
+
+
+  constructor(private http: HttpClient, private router: Router) { 
+  	this.url = url;
 
     this.dataCriacaoAnuncio = new Date();
 
@@ -51,12 +52,11 @@ export class CreateBookComponent implements OnInit {
       firebase.initializeApp(this.firebaseConfig);
     }
 
-
   }
 
   ngOnInit() {
 
-    if (!localStorage.getItem('username')) {
+  	if (!localStorage.getItem('username')) {
       alert("Você precisa estar logado para poder anunciar.");
     }
 
@@ -65,8 +65,8 @@ export class CreateBookComponent implements OnInit {
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
 
-    this.http.get<any>(this.url + '/api/course').subscribe(
-      response => this.courses = response.sort(function(a, b){
+    this.http.get<any>(this.url + '/api/genre', { headers: headers}).subscribe(
+      response => this.genres = response.sort(function(a, b){
                                                                     if(a.nome < b.nome) { return -1; }
                                                                     if(a.nome > b.nome) { return 1; }
                                                                     return 0;
@@ -80,7 +80,6 @@ export class CreateBookComponent implements OnInit {
     }, { headers: headers}).subscribe(
       response => {
         this.student = response.id
-        console.log(this.student)
       }
     );
 
@@ -105,7 +104,6 @@ export class CreateBookComponent implements OnInit {
         });
       }
     });
-
   }
 
   // Chamar através de um botão
@@ -158,9 +156,8 @@ export class CreateBookComponent implements OnInit {
 
   }
 
-
   // colocarno cabeçalho  Content-Type
-  createBook() {
+  createBookLiterary() {
 
   
     if(this.titulo == undefined) {
@@ -169,10 +166,6 @@ export class CreateBookComponent implements OnInit {
        alert("Por favor, insira o autor do livro.")
     } else if (this.preco == undefined) {
       alert("Por favor, insira um preço pretendido. Coloque 0 caso quira doá-lo");
-    } else if (this.periodo == undefined) {
-      alert("Por favor, indique um período no qual o livro é utilizado.")
-    } else if (this.disciplina == undefined) {
-      alert("Por favor, indique uma ou mais disciplinas no qual o livro é utilizado. Insira interdisciplinar, caso não haja uma disciplina definida.")
     } else {
         
     let headers = new HttpHeaders();
@@ -187,23 +180,22 @@ export class CreateBookComponent implements OnInit {
     }
 
         //pega o id do curso
-        this.http.post<any>(this.url + '/api/course/getCourseByNome ', {
-          nome: this.courseName
+        this.http.post<any>(this.url + '/api/genre/getGenreByNome ', {
+          nome: this.genreName
         },{ headers: headers }).subscribe(
           response => {
-            this.course = response.id
+            this.genre = response.id
             //console.log("Este é o curso: " + this.course)
-            this.http.post(this.url + '/api/book', {
+            this.http.post(this.url + '/api/bookLiterary', {
               titulo: this.titulo,
               autor: this.autor,
-              curso: this.course,
-              periodo: this.periodo,
-              disciplina: this.disciplina,
               descricao: this.descricao,
               urlFoto: this.urlFoto,
               preco: this.preco,
-              dataCriacaoAnuncio: this.dataCriacaoAnuncio,
-              student: this.student
+              student: this.student,
+              genre: this.genre,
+              periodo: "Indefinido",
+              disciplina: "Indefinido"
             }, { headers: headers }).subscribe(
               response =>  {
                // window.console.log(response)

@@ -24,6 +24,7 @@ export class CreateUserComponent implements OnInit {
   course: number;
   studentId: number;
   url: string;
+  passwordConfirmacao: string;
 
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
@@ -54,7 +55,6 @@ export class CreateUserComponent implements OnInit {
                                                                     if(a.nome > b.nome) { return 1; }
                                                                     return 0;
                                                                     });
-                    console.log(this.courses);
       }
 
     );
@@ -64,7 +64,19 @@ export class CreateUserComponent implements OnInit {
 
   async createUser() {
 
+    if(this.nome == undefined) {
+      alert("Por favor, insira o seu nome.");
+    } else if(this.nome.split(" ")[1] == undefined || this.nome.split(" ")[1] == "") {
+      alert ("Olá, " + this.nome.split(" ")[0] +  ". Por favor, insira também um segundo nome.");
+    } else if(this.email == undefined) {
+      alert("Por favor, insira o seu email.");
+    } else if(this.password == undefined) {
+      alert("Por favor, insira a sua senha.");
+     } else if(this.password != this.passwordConfirmacao) {
+      alert("As senhas não conferem."); 
+    }  else {
 
+     
     // let headers = new HttpHeaders();
 
     // headers = headers.set('Authorization', localStorage.getItem('access_token'));
@@ -75,17 +87,16 @@ export class CreateUserComponent implements OnInit {
     }).subscribe(
       response => {
           this.course = response.id
-          console.log(this.course)
-          //obtem o username
-          //ele será o peimeiro nome do usuário
 
-          if (this.nome.split(" ")[1] == undefined) {
-            alert ("Olá, " + this.nome.split(" ")[0] +  ". Por favor, insira também um segundo nome.");
+          if(this.nome.split(" ")[1] == "de"  || this.nome.split(" ")[1] == "De" || this.nome.split(" ")[1] == "DE" || this.nome.split(" ")[1] == "da"  || this.nome.split(" ")[1] == "Da" || this.nome.split(" ")[1] == "DA" || this.nome.split(" ")[1] == "do"  || this.nome.split(" ")[1] == "Do" || this.nome.split(" ")[1] == "DO") {
+            
+              this.username = this.nome.split(" ")[0] + '.' + this.nome.split(" ")[2];
+           
           } else {
-
-
-          this.username = this.nome.split(" ")[0] + '.' + this.nome.split(" ")[1];
-
+            this.username = this.nome.split(" ")[0] + '.' + this.nome.split(" ")[1];
+          }
+          
+          
          // let inst = this.email.split("@");
 
           // if (inst[1] === "ufrpe.br") usado para verificar se o email terminal com ufrpe.br 
@@ -113,17 +124,20 @@ export class CreateUserComponent implements OnInit {
             );
 
 
-            alert("Olá, " + this.username + ", foi enviado um email de confirmação para " + this.email);
+            alert("Olá, " + this.nome.split(" ")[0] + ". Foi enviado um email de confirmação para " + this.email);
             
 
             this.router.navigate(['newHomePage']);
-
-          }
-
-
          
     }
   );
+
+  } //fim do else
+
+
+    
+
+
 
     
 
