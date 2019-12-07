@@ -14,6 +14,11 @@ import { EmailPasswordRecoveryComponent } from './email-password-recovery/email-
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { ChooseBookTypeComponent } from './choose-book-type/choose-book-type.component';
 import { CreateBookLiteraryComponent } from './create-book-literary/create-book-literary.component';
+import { ShowBooksLiteraryByStudentComponent } from './show-books-literary-by-student/show-books-literary-by-student.component';
+import { ChooseOwnBookTypeComponent } from './choose-own-book-type/choose-own-book-type.component';
+import { OwnBookLiteraryDetailsComponent } from './own-book-literary-details/own-book-literary-details.component';
+import { EditBookLiteraryComponent } from './edit-book-literary/edit-book-literary.component';
+
 
 const routes: Routes = [
   {
@@ -71,6 +76,22 @@ const routes: Routes = [
   {
     path: 'createBookLiterary',
     component: CreateBookLiteraryComponent
+  },
+  {
+    path: 'showBooksLiteraryByStudentComponent',
+    component: ShowBooksLiteraryByStudentComponent
+  },
+  {
+    path: 'chooseOwnBookTypeComponent',
+    component: ChooseOwnBookTypeComponent
+  },
+  {
+    path: 'ownBookLiteraryDetailsComponent',
+    component: OwnBookLiteraryDetailsComponent
+  },
+  {
+    path: 'editBookLiteraryComponent',
+    component: EditBookLiteraryComponent
   },
   {
     path: '',

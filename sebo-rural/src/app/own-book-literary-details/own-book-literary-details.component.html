@@ -1,0 +1,64 @@
+
+<section class="section-content bg padding-y" style="padding-top: 1%;">
+    <div class="container">
+    
+    <div class="row">
+        
+        <main class="col-md-9 mx-auto" style="margin-bottom: 8%;">
+    
+            <tr>
+                <article class="card card-product">
+                    <div class="card-body">
+                    <div class="row">
+                        <aside class="col-sm-3" style="margin-top: 5%;">
+                            <div class="img-wrap"><img src="{{livro['urlFoto']}}" style="width: 100%; padding-bottom: 5%;"></div> 
+                            <!-- transform: rotate(90deg) -->
+                        </aside> <!-- col.// -->
+                        <article class="col-sm-6">
+                                <h4 class="title">{{livro['titulo']}}</h4>
+                              
+                                <p>{{livro['descricao']}} </p>
+                                <dl class="dlist-align">
+                                  <dt>Autor</dt>
+                                  <dd>{{livro['autor']}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align">
+                                  <dt>Gênero</dt>
+                                  <dd>{{course.nome}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align">
+                                  <dt>Estudante</dt>
+                                  <dd>{{student.username}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align">
+                                  <dt>E-mail para contato</dt>
+                                  <dd>{{student.email}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                            
+                        </article> <!-- col.// -->
+                        <aside class="col-sm-3 border-left">
+                            <div class="action-wrap">
+                                <div class="price-wrap h4">
+                                    <span class="price"> R$ {{livro['preco']}} </span>	
+                                    <!-- <del class="price-old"> $98</del> -->
+                                </div> <!-- info-price-detail // -->
+                                <br>
+                                <input type="button" name="" class="btn btn-outline-dark" (click)="editBookLiterary(livro['id'])" value="Editar"> <br> <br>
+                                <input type="button" name="" class="btn btn-outline-dark" (click)="deletarBookLiterary(livro['id'])" value="Deletar"> <br> <br>
+                        
+                                <!-- <a href="#"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
+                            </div> <!-- action-wrap.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    </div> <!-- card-body .// -->
+                </article> <!-- card product .// -->
+            </tr>
+  
+        </main> <!-- col.// -->
+
+    </div>
+    
+    </div> <!-- container .//  -->
+    </section>
+
+

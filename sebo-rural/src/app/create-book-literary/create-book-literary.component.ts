@@ -13,12 +13,10 @@ import { url } from '../config_url';
   styleUrls: ['./create-book-literary.component.css']
 })
 export class CreateBookLiteraryComponent implements OnInit {
-	course
+	course;
   titulo: string;
   autor: string;
   genre: string;
-  periodo: number;
-  disciplina: string;
   descricao: string;
   urlFoto;
   preco: number;
@@ -194,15 +192,15 @@ export class CreateBookLiteraryComponent implements OnInit {
               preco: this.preco,
               student: this.student,
               genre: this.genre,
-              periodo: "Indefinido",
-              disciplina: "Indefinido"
+              periodo: "indefinido",
+              disciplina: "indefinido"
             }, { headers: headers }).subscribe(
               response =>  {
                // window.console.log(response)
                 this.router.navigate(['listBook'])
               }
             );
-              }
+              } 
           );
 
     }

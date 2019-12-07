@@ -39,14 +39,14 @@ export class OwnBookDetailsComponent implements OnInit {
     this.http.get(this.url + '/api/book/' + this.bookId , { headers: headers }).subscribe(
       response => {
           
-        window.console.log("Livro retornado: " + (this.livro = response));
+        this.livro = response;
         
         this.http.get<any>(this.url + '/api/course/' + this.livro.curso['id'] , { headers: headers }).subscribe(
-          response => window.console.log(this.course = response)
+          response => this.course = response
         );
 
         this.http.get<any>(this.url + '/api/student/' + this.livro.student['id'] , { headers: headers }).subscribe(
-          response => window.console.log(this.student = response)
+          response => this.student = response
         );
 
         }

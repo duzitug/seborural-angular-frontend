@@ -3,25 +3,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { url } from '../config_url';
 
+
 @Component({
-  selector: 'app-edit-book',
-  templateUrl: './edit-book.component.html',
-  styleUrls: ['./edit-book.component.css']
+  selector: 'app-edit-book-literary',
+  templateUrl: './edit-book-literary.component.html',
+  styleUrls: ['./edit-book-literary.component.css']
 })
-export class EditBookComponent implements OnInit {
+export class EditBookLiteraryComponent implements OnInit {
 
   livro;
   studentId;
   student;
-  course;
+  genre;
   bookId: number;
   url: string;
 
   titulo: string;
   autor: string;
 
-  periodo: number;
-  disciplina: string;
   descricao: string;
   urlFoto;
   preco: number;
@@ -30,12 +29,12 @@ export class EditBookComponent implements OnInit {
  
   courses;
   courseName;
-  periodos: [];
+  periodos: [];	
 
 
-   constructor(private http:HttpClient, private router: Router ) { 
-  	
-    if (this.router.getCurrentNavigation().extras.state) {
+  constructor(private http:HttpClient, private router: Router) { 
+
+  	if (this.router.getCurrentNavigation().extras.state) {
       this.bookId = this.router.getCurrentNavigation().extras.state.example;
     } else {
       this.router.navigate(['listBook']);
@@ -50,7 +49,7 @@ export class EditBookComponent implements OnInit {
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
-    this.http.get<any>(this.url + '/api/course').subscribe(
+    this.http.get<any>(this.url + '/api/genre').subscribe(
       response => this.courses = response.sort(function(a, b){
                                                                     if(a.nome < b.nome) { return -1; }
                                                                     if(a.nome > b.nome) { return 1; }
@@ -58,35 +57,33 @@ export class EditBookComponent implements OnInit {
                                                                     })
     );
 
-    this.http.get(this.url + '/api/book/' + this.bookId , { headers: headers }).subscribe(
+    this.http.get(this.url + '/api/bookLiterary/' + this.bookId , { headers: headers }).subscribe(
       response => {
           
-        window.console.log("Livro retornado: " + (this.livro = response));
+        this.livro = response;
         
-        this.http.get<any>(this.url + '/api/course/' + this.livro.curso['id'] , { headers: headers }).subscribe(
-          response => window.console.log(this.course = response)
+        this.http.get<any>(this.url + '/api/genre/' + this.livro.curso['id'] , { headers: headers }).subscribe(
+          response => this.genre = response
         );
 
         this.http.get<any>(this.url + '/api/student/' + this.livro.student['id'] , { headers: headers }).subscribe(
-          response => window.console.log(this.student = response)
+          response => this.student = response
         );
 
         }
     );
   }
 
-  editBook(){
+  editBookLiterary(){
 
   	let headers = new HttpHeaders();
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
-    this.http.put(this.url + '/api/book/' + this.bookId, {
+    this.http.put(this.url + '/api/bookLiterary/' + this.bookId, {
           titulo: this.titulo,
           autor: this.autor,
-          curso: this.course,
-          periodo: this.periodo,
-          disciplina: this.disciplina,
+          genre: this.genre,
           descricao: this.descricao,
           preco: this.preco
         }, { headers: headers }).subscribe(

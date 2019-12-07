@@ -1,1 +1,79 @@
-<p>show-books-literary-by-student works!</p>
+<div class="component">
+     <div class="row">
+
+            <div class="col-sm-6 mx-auto">
+                
+                <h6 style="padding-top: 3%;" class="text-center"> {{studentName}}, estes são os seus anúncios: </h6>
+            </div>
+
+            
+
+        </div>
+
+
+    <div class="row">
+
+       
+        <main class="col-sm-6 mx-auto" style="padding-top: 2%; padding-bottom: 5%;">
+    
+            <tr *ngFor="let livro of livros">
+                <article class="card card-product">
+                    <div class="card-body">
+                    <div class="row">
+                        <aside class="col-sm-3" style="margin-top: 2%;" >
+                            <!-- transform: rotate(90deg);  -->
+                            <div class="img-wrap" style="padding-bottom: 5%;"><img  src="{{livro.urlFoto}}" style="width: 70%; height: 70%;"></div>
+                        </aside> <!-- col.// -->
+                        <article class="col-sm-6">
+                                <h4 class="title"> {{livro.titulo}} </h4>
+                              
+                                <p> {{livro.descricao}} </p>
+                                <dl class="dlist-align">
+                                  <dt>Autor</dt>
+                                  <dd>{{livro.autor}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align">
+                                  <dt>Disciplina</dt>
+                                  <dd>{{livro.disciplina}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align">
+                                  <dt>Período</dt>
+                                  <dd>{{livro.periodo}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                              
+                            
+                        </article> <!-- col.// -->
+                        <aside class="col-sm-3 border-left">
+                            <div class="action-wrap">
+                                <div class="price-wrap h4">
+                                    <span class="price"> R$ {{livro.preco}} </span> 
+                                    <!-- <del class="price-old"> $98</del> -->
+                                </div> <!-- info-price-detail // -->
+                                <br>
+                                <p>
+                                    <!-- <a href="#" class="btn btn-primary"> Buy now </a> -->
+                                    <input type="button" name="" class="btn btn-outline-dark" (click)="bookLiteraryDetails(livro.id)" value="Editar ou Deletar">
+                                </p>
+                                <!-- <a class="fakeLink badge-light " (click)="favoritar(livro.id)"><i class="fa fa-heart"></i> Adicionar aos favoritos</a> -->
+                            </div> <!-- action-wrap.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    </div> <!-- card-body .// -->
+                </article> <!-- card product .// -->
+            </tr>
+  
+        </main> <!-- col.// -->
+
+
+    </div>
+</div>
+
+
+
+    
+    
+
+
+
+
+

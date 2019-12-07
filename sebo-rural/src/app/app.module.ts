@@ -41,6 +41,8 @@ import { ChooseBookTypeComponent } from './choose-book-type/choose-book-type.com
 import { CreateBookLiteraryComponent } from './create-book-literary/create-book-literary.component';
 import { ChooseOwnBookTypeComponent } from './choose-own-book-type/choose-own-book-type.component';
 import { ShowBooksLiteraryByStudentComponent } from './show-books-literary-by-student/show-books-literary-by-student.component';
+import { OwnBookLiteraryDetailsComponent } from './own-book-literary-details/own-book-literary-details.component';
+import { EditBookLiteraryComponent } from './edit-book-literary/edit-book-literary.component';
 
 
 
@@ -65,7 +67,9 @@ import { ShowBooksLiteraryByStudentComponent } from './show-books-literary-by-st
     ChooseBookTypeComponent,
     CreateBookLiteraryComponent,
     ChooseOwnBookTypeComponent,
-    ShowBooksLiteraryByStudentComponent
+    ShowBooksLiteraryByStudentComponent,
+    OwnBookLiteraryDetailsComponent,
+    EditBookLiteraryComponent
   ],
   imports: [
     BrowserModule,  
