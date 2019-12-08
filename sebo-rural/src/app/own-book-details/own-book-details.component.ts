@@ -40,6 +40,14 @@ export class OwnBookDetailsComponent implements OnInit {
       response => {
           
         this.livro = response;
+
+            if (this.livro.urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livro.urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livro.urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
         
         this.http.get<any>(this.url + '/api/course/' + this.livro.curso['id'] , { headers: headers }).subscribe(
           response => this.course = response

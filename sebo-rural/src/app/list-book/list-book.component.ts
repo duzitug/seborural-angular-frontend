@@ -58,12 +58,13 @@ export class ListBookComponent implements OnInit {
 
     })).subscribe(data => {} );
 
-    
-    
+
    this.listBookInitial();
   }
 
   listBookInitial () {
+
+        
 
     let headers = new HttpHeaders();
 
@@ -75,7 +76,37 @@ export class ListBookComponent implements OnInit {
 
     this.http.get<any>(this.url + '/api/book/bookList', { headers: headers }).subscribe(
       response => { 
-        this.livros = response 
+
+
+          this.livros = response 
+
+
+          for (let i = 0; i < this.livros.length; i++) {
+
+            if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
+
+          }
+
+
+          // this.livros.forEach(livro => {
+
+
+          // let fileName = livro.urlFoto.split('%2F')[1].split('?')[0];
+
+          // 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_NOME ARQUIVO?alt=media'
+
+          // this.livros[aux].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+          // aux++;
+
+          //  })
+
       }
     );
 
@@ -120,9 +151,18 @@ export class ListBookComponent implements OnInit {
         this.http.get<any>(this.url + '/api/book/listBooksByCourseId/' + response.id , { headers: headers })
         .subscribe(
           response =>  {  this.livros = response;
-            // console.log(response);
-            // window.console.log(courseName);
-            // window.console.log(this.livros);
+            
+            for (let i = 0; i < this.livros.length; i++) {
+
+            if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
+
+          }
 
              if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(navigator.userAgent)) {
                 if(response.length != 0) {
@@ -165,6 +205,18 @@ export class ListBookComponent implements OnInit {
         .subscribe(
           response =>  {  this.livros = response;
 
+            for (let i = 0; i < this.livros.length; i++) {
+
+            if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
+
+          }
+
              if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(navigator.userAgent)) {
                 if(response.length != 0) {
                   alert("Conteúdo encontrado e carregado abaixo. Deslize a tela para vê-lo.");
@@ -202,6 +254,18 @@ export class ListBookComponent implements OnInit {
           titulo: this.busca
         }, { headers: headers }).subscribe(
           response =>  {  this.livros = response;
+
+            for (let i = 0; i < this.livros.length; i++) {
+
+            if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
+
+          }
       
 
             if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(navigator.userAgent)) {
@@ -287,19 +351,75 @@ export class ListBookComponent implements OnInit {
       this.http.get<any>(this.url + '/api/book/bookListOffset', { headers: headers }).subscribe(
       response => { 
         this.livros = response 
+
+        for (let i = 0; i < this.livros.length; i++) {
+
+            if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
+
+          }
       }
     );
     } else if (this.genreId == undefined) {
       this.http.get<any>(this.url + '/api/book/listBooksByCourseIdOffset/' + this.courseId , { headers: headers }).subscribe(
-          response =>  {  this.livros = response; }
+          response =>  {  this.livros = response; 
+                        for (let i = 0; i < this.livros.length; i++) {
+                          if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                          let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                          this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                       }
+
+          }
+          }
             
         )
     } else if (this.courseId == undefined) {
       this.http.get<any>(this.url + '/api/bookLiterary/listBooksByGenreIdOffset/' + this.genreId , { headers: headers }).subscribe(
-          response =>  {  this.livros = response; }
+          response =>  {  this.livros = response;
+
+                  for (let i = 0; i < this.livros.length; i++) {
+
+                 if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
+
+          }
+
+           }
             
         )
     }
+
+  }
+
+  getThumbnailUrl() {
+
+
+            for (let i = 0; i < this.livros.length; i++) {
+
+                if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                  let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                  this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                }
+
+                
+            }
+
 
   }
 

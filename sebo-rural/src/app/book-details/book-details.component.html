@@ -23,10 +23,14 @@
                                   <dt>Autor</dt>
                                   <dd>{{livro['autor']}}</dd>
                                 </dl>  <!-- item-property-hor .// -->
-                                <!-- <dl class="dlist-align">
+                                <dl class="dlist-align" *ngIf="courseId != undefined">
                                   <dt>Curso</dt>
                                   <dd>{{course.nome}}</dd>
-                                </dl> -->  <!-- item-property-hor .// -->
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="dlist-align" *ngIf="genreId != undefined">
+                                  <dt>Gênero</dt>
+                                  <dd>{{genre.nome}}</dd>
+                                </dl>  <!-- item-property-hor .// -->
                                 <dl class="dlist-align">
                                   <dt>Disciplina</dt>
                                   <dd>{{livro['disciplina']}}</dd>

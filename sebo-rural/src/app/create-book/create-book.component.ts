@@ -139,9 +139,13 @@ export class CreateBookComponent implements OnInit {
         // Let's get a download URL for the file.
         await snapshot.ref.getDownloadURL()
           .then(url => {
-            this.urlFoto = url;
-            console.log('this.urlFoto: ' + url);
-            console.log('File available at', this.urlFoto);
+            
+           let fileName = url.split('%2F')[1].split('?')[0];
+
+           this.urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' ;
+
+            // console.log('this.urlFoto: ' + url);
+            // console.log('File available at', this.urlFoto);
             // [START_EXCLUDE]
             document.getElementById('envioImagem').innerHTML += '<p>Imagem enviada com sucesso!</p>';
             document.getElementById('envioImagem').innerHTML += '<p>Preencha só mais alguns dados abaixo. Estamos quase terminando.</p>';

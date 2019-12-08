@@ -51,10 +51,21 @@ export class ShowBooksByStudentComponent implements OnInit {
     }, { headers: headers}).subscribe(
       response => {
         this.student = response.id
-        console.log(this.student)
 
         this.http.get<any>(this.url + '/api/book/listBooksByStudentId/' + this.student, { headers: headers }).subscribe(
           response => { this.livros = response;
+
+                         for (let i = 0; i < this.livros.length; i++) {
+
+                            if (this.livros[i].urlFoto.split('thumb_').length == 1) {
+                  
+                              let fileName = this.livros[i].urlFoto.split('%2F')[1].split('?')[0];
+
+                              this.livros[i].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
+
+                          }
+
+          }
 
                       }
         );
