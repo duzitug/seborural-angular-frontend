@@ -11,6 +11,7 @@ export class NewHomepageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
