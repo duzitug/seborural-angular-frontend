@@ -130,15 +130,20 @@
             </tr>
 
             <nav aria-label="Page navigation example" style="padding-top: 3%; padding-left: 30%;">
-              <ul class="pagination">
+              <ul class="pagination" >
                 <li class="page-item">
                   <a class="page-link"  aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                   </a>
                 </li>
-                <li class="page-item fakeLink"><a class="page-link fakeLink" (click)="listBook()">1</a></li>
-                <li class="page-item fakeLink"><a class="page-link fakeLink" (click)="listBookOffset()">2</a></li>
+                <!--inserir ngFor
+                //numeroDePaginas e ArrayAuxiliar-->
+                    <!-- O OFFSET DINÂMICO PODE SER O NÚMERO DO arrayAuxiliar multiplicado por 10 (numero de livros por página)  -->
+                
+                <li class="page-item fakeLink" *ngFor = "let elemento of arrayAuxiliar"><a class="page-link fakeLink" (click)="listBook()">{{elemento}}</a></li>
+                <!--<li class="page-item fakeLink"><a class="page-link fakeLink" (click)="listBook()">1</a></li>
+                <li class="page-item fakeLink"><a class="page-link fakeLink" (click)="listBookOffset()">2</a></li>-->
                 <li class="page-item">
                   <a class="page-link"  aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>

@@ -13,7 +13,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ListBookComponent implements OnInit {
 
-  //two-say data binding com o template HTML
+  //two-way data binding com o template HTML
   name: string;
   username: string;
   password: string;
@@ -22,15 +22,17 @@ export class ListBookComponent implements OnInit {
   courses;
   url: string;
   busca;
-  page: number = 1;
-  numeros = [1,2,3];
   courseId;
   genreId;
   genres;
 
+  arrayAuxiliar;
+  numeroDePaginas;
+  quantidadeDeLivros: number;
+
   constructor(private http:HttpClient, public router: Router) {
     this.url = url;
-
+    this.arrayAuxiliar = [];
    }
 
   ngOnInit() {
@@ -38,12 +40,6 @@ export class ListBookComponent implements OnInit {
     if (!localStorage.getItem('username')) {
       alert("Você precisa estar logado para ter acesso aos anúncios.");
     }  
-
-    //  this.http.get<any>(this.url + '/api/book', { headers: headers }).subscribe(
-    //   response => { 
-    //     this.livros = response 
-    //   }
-    // );
 
     let headers = new HttpHeaders();
 
@@ -57,6 +53,32 @@ export class ListBookComponent implements OnInit {
       return err;
 
     })).subscribe(data => {} );
+
+    //invoca a função countBook() para obter o total de livros didáticos cadastrados no banco
+    this.http.get<any>(this.url + '/api/book/countBook', { headers: headers }).subscribe(
+      response => { 
+        this.quantidadeDeLivros = response as number;
+        window.console.log("Quantidade de livros:" + this.quantidadeDeLivros); 
+        
+        this.numeroDePaginas = Math.ceil(this.quantidadeDeLivros/10);   
+        window.console.log(this.numeroDePaginas);
+      
+        //problema no sincronismo?
+        //não está entrando no array
+        for ( let i = 1; i <= this.numeroDePaginas; i = i + 1 ) {  
+          this.arrayAuxiliar.push(i);
+          // console.log("valor de 1" + i);
+          console.log("dentro do loop");
+
+        }
+
+        window.console.log(this.arrayAuxiliar);
+
+
+      }
+    );
+
+
 
 
    this.listBookInitial();
