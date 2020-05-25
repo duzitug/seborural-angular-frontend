@@ -6,6 +6,3 @@ export class User {
 	isEmailVerified: boolean;
 
 }
-
-
-
