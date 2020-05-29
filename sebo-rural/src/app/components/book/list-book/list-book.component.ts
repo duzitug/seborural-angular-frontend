@@ -5,6 +5,8 @@ import { Book } from './book';
 import { url } from '../../../config_url';
 import { catchError } from 'rxjs/operators';
 
+import  { BookService } from '../../../services/book.service';
+
 
 @Component({
   selector: 'app-list-book',
@@ -30,9 +32,12 @@ export class ListBookComponent implements OnInit {
   numeroDePaginas;
   quantidadeDeLivros: number;
 
-  constructor(private http:HttpClient, public router: Router) {
+  bookService: BookService; 
+
+  constructor(private http:HttpClient, public router: Router, bookService: BookService) {
     this.url = url;
     this.arrayAuxiliar = [];
+    this.bookService = bookService;
    }
 
   ngOnInit() {
@@ -86,6 +91,8 @@ export class ListBookComponent implements OnInit {
 
   listBookInitial () {
 
+
+    
         
 
     let headers = new HttpHeaders();
@@ -94,13 +101,12 @@ export class ListBookComponent implements OnInit {
 
     headers = headers.set('Authorization', localStorage.getItem('access_token'));
 
-
+    //this.http.get<any>(this.url + '/api/book/bookList', { headers: headers })
 
     this.http.get<any>(this.url + '/api/book/bookList', { headers: headers }).subscribe(
       response => { 
-
-
-          this.livros = response 
+          
+          this.livros = response;
 
 
           for (let i = 0; i < this.livros.length; i++) {
@@ -115,20 +121,8 @@ export class ListBookComponent implements OnInit {
 
           }
 
-
-          // this.livros.forEach(livro => {
-
-
-          // let fileName = livro.urlFoto.split('%2F')[1].split('?')[0];
-
-          // 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_NOME ARQUIVO?alt=media'
-
-          // this.livros[aux].urlFoto = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_' + fileName + '?alt=media' 
-
-          // aux++;
-
-          //  })
-
+      }, error => {
+        window.console.log(error);
       }
     );
 
@@ -150,6 +144,14 @@ export class ListBookComponent implements OnInit {
                                                                     })}
     )
 
+    window.console.log("Olá, mundo!");
+
+    window.console.log(this.bookService.test());
+
+
+    //this.bookService.listBooks()
+      //.subscribe(data => {console.log(data)},
+       //          error => {console.log(error)} );
     
 
   }

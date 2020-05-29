@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 
 import { Book } from '../models/book.model';
 
+import { catchError } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -13,22 +15,31 @@ import { Book } from '../models/book.model';
 })
 export class BookService {
 
-	http: HttpClient;
+	httpClient: HttpClient;
 	httpHeaders: HttpHeaders;
 
-  constructor(http: HttpClient, httpHeaders: HttpHeaders) {
-  	this.http = http;
-  	//this.httpHeader = httpHeader;
+  constructor(httpClient: HttpClient, httpHeaders: HttpHeaders) {
+  	this.httpClient = httpClient;
   	this.httpHeaders = httpHeaders.set('Authorization', localStorage.getItem('access_token'));
    }
 
 
-   getBookById(id: number) : Observable<Book> {
+   getBookById(id: number): Observable<Book> {
    	
-   	return this.http.get<Book>('https://sebo-rural.herokuapp.com/api' + id);
+   	return this.httpClient.get<Book>('https://sebo-rural.herokuapp.com/api' + id);
    
    }
 
+   listBooks(): Observable<Book[]> {
+
+   	return this.httpClient.get<Book[]>('https://sebo-rural.herokuapp.com/api/book/bookList', { headers: this.httpHeaders })
+   
+   }
+
+
+   test() {
+   	return "retornando do método test()";
+   }
    
 
 
