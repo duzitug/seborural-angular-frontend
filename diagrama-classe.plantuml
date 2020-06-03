@@ -1,0 +1,72 @@
+@startuml
+
+title Classes - Class Diagram
+
+
+class Dwelling {
+  +Int Windows
+  +void Lock()
+}
+
+class Livro {
+
+    -String titulo
+    -String autor
+    -String descricao
+    -String urlFoto
+    -String periodo
+    -String disciplina
+    -String preco
+    -Date dataCriacaoAnuncio
+
+   + List<Livrvo> listarLivrvos()
+   + Livro listarLivroPorCurso(Long id)
+   + Livro listarLivroPorEstudante(Long id)
+
+}
+
+class Usuário {
+    - String username
+    - String senha
+    - String chaveDeVerificacao
+    - Boolean isEmailVerified
+}
+
+class Curso {
+    - String nome
+}
+
+class ControladorCurso {
+  + List<Curso> index(Integer max)
+  + Curso show(Long id)
+  + Curso getCursoByNome(Curso curso)
+  + Curso save(Curso curso)
+  + Curso update(Curso curso)
+  + void delete(Long id)
+}
+
+class ServicoCurso {
+  + Curso buscarPorId(Serializable id)
+  + Long contar()
+  + List<Curso> listar(Map args)
+  + void salvar(Curso curso)
+  + Curso remover(Serializable id)
+}
+
+class Gênero {
+    - String nome
+}
+
+class Estudante {
+    - Strin gnome
+    - String email
+}
+
+
+
+ControladorCurso -> ServicoCurso
+Livro -> Curso
+Livro -> Estudante
+Usuário <|-- Estudante 
+
+@enduml
