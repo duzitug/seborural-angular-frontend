@@ -139,14 +139,15 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "sebo-rural",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "sebo-rural",
       "kebab-case"
-    ]
+    ],
+    "no-trailing-whitespace": false
   }
 }

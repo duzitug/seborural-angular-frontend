@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CourseService} from './services/course.service';
+import {Course} from './models/course.model';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: '<router-outlet></router-outlet>'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'angular11-route';
+  courses: Course[] = [];
+
+  constructor( private courseService: CourseService ) {
+  }
+
+  ngOnInit(): void {
+
+    this.courseService.getAllElements()
+      .subscribe(
+        response => { this.courses.push(response); }
+      );
+
+    console.log(this.courses);
+
+  }
 }
