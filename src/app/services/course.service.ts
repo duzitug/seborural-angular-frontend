@@ -9,15 +9,6 @@ import {AbstractApiService} from './abstract-api.service';
 @Injectable({providedIn: 'root'})
 export class CourseService extends AbstractApiService<Course> {
 
-
-
-  // API_URL = 'http://localhost:8080/api/v1/courses.json';
-  // elementName = 'courses';
-
-  // getAllElements(): Observable<Course> {
-  //    return this.http.get<Course>(this.API_URL);
-  // }
-
   constructor(http: HttpClient) {
     super(http);
     this.elementName = 'courses';
