@@ -1,20 +1,29 @@
-import {HttpClient} from '@angular/common/http';
-
-import {ApiCrudInterface} from '../utils/api-crud.interface';
-import {Course} from '../models/course.model';
-import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+import {Course} from '../models/course.model';
+import {AbstractApiService} from './abstract-api.service';
+
 
 @Injectable({providedIn: 'root'})
-export class CourseService implements ApiCrudInterface<Course> {
+export class CourseService extends AbstractApiService<Course> {
 
-    API_URL = 'https://psychiatric-compass.000webhostapp.com/api/v1/courses.json';
 
-  constructor(private http: HttpClient) {
+
+  // API_URL = 'http://localhost:8080/api/v1/courses.json';
+  // elementName = 'courses';
+
+  // getAllElements(): Observable<Course> {
+  //    return this.http.get<Course>(this.API_URL);
+  // }
+
+  constructor(http: HttpClient) {
+    super(http);
+    this.elementName = 'courses';
   }
 
-  getAllElements(): Observable<Course> {
-     return this.http.get<Course>(this.API_URL);
+  getAllCourses(): Observable<Course[]> {
+    return this.getAllElements();
   }
 }
-// criar classe abstrata de servico
