@@ -1,0 +1,9 @@
+<p>genre-list works!</p>
+
+<ul>
+
+  <li *ngFor="let genre of genres$ | async" >
+    <a routerLink="/footer"> {{ genre.nome }}  </a>
+  </li>
+
+</ul>
