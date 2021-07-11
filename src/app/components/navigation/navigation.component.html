@@ -11,6 +11,7 @@
       <a mat-list-item >Estudantes</a>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
@@ -24,11 +25,9 @@
       <span>angular11-route</span>
     </mat-toolbar>
 
-    <sebo-rural-dashboard></sebo-rural-dashboard>
+    <router-outlet></router-outlet>
 
-
-
-
+    <sebo-rural-footer></sebo-rural-footer>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
