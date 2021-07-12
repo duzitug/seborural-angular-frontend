@@ -1,0 +1,19 @@
+2021-06-30 19:33:11 Error: [Error] Class 'Router' not found in /home/merciof/Downloads/pastas/cakephp-4-2-7/config/routes.php on line 92
+Stack Trace:
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/vendor/cakephp/cakephp/src/Http/BaseApplication.php:197
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/vendor/cakephp/cakephp/src/Console/CommandRunner.php:399
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/vendor/cakephp/cakephp/src/Console/CommandRunner.php:147
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/bin/cake.php:12
+
+
+
+2021-06-30 19:33:43 Error: [Error] Using $this when not in object context in /home/merciof/Downloads/pastas/cakephp-4-2-7/vendor/cakephp/cakephp/src/Routing/RouteBuilder.php on line 930
+Stack Trace:
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/config/routes.php:129
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/vendor/cakephp/cakephp/src/Http/BaseApplication.php:197
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/vendor/cakephp/cakephp/src/Console/CommandRunner.php:399
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/vendor/cakephp/cakephp/src/Console/CommandRunner.php:147
+- /home/merciof/Downloads/pastas/cakephp-4-2-7/bin/cake.php:12
+
+
+

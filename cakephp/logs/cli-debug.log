@@ -1,0 +1,9 @@
+2021-06-30 19:33:43 Notice: Deprecated (8192): Non-static method Cake\Routing\RouteBuilder::scope() should not be called statically in [/home/merciof/Downloads/pastas/cakephp-4-2-7/config/routes.php, line 92]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 188
+require - ROOT/config/routes.php, line 92
+Cake\Http\BaseApplication::routes() - CORE/src/Http/BaseApplication.php, line 197
+Cake\Console\CommandRunner::loadRoutes() - CORE/src/Console/CommandRunner.php, line 399
+Cake\Console\CommandRunner::run() - CORE/src/Console/CommandRunner.php, line 147
+[main] - ROOT/bin/cake.php, line 12
+
