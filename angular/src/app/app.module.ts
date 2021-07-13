@@ -4,14 +4,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import {FooterComponent} from './components/footer/footer.component';
 import { MaterialModule } from './material/material.module';
-import { CourseListComponent } from './components/course/course-list/course-list.component';
-import { GenreListComponent } from './components/genre/genre-list/genre-list.component';
+import { CourseComponent } from './components/course/course.component';
+import { BookComponent } from './components/book/book.component';
+import { GenreComponent } from './components/genre/genre.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -21,9 +28,10 @@ import { GenreListComponent } from './components/genre/genre-list/genre-list.com
     AppComponent,
     FooterComponent,
     NavigationComponent,
-    DashboardComponent,
-    CourseListComponent,
-    GenreListComponent
+    CourseComponent,
+    BookComponent,
+    GenreComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,12 @@ import { GenreListComponent } from './components/genre/genre-list/genre-list.com
     HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
   ],
   bootstrap: [AppComponent]
 })
