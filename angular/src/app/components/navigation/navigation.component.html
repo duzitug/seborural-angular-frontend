@@ -5,9 +5,9 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="listarCursos()">Cursos</a>
-      <a mat-list-item >Gêneros</a>
-      <a mat-list-item >Livros</a>
+      <a mat-list-item routerLink="cursos">Cursos</a>
+      <a mat-list-item routerLink="generos">Gêneros</a>
+      <a mat-list-item routerLink="livros">Livros</a>
       <a mat-list-item >Estudantes</a>
     </mat-nav-list>
   </mat-sidenav>
