@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FooterComponent } from './components/footer/footer.component';
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { CourseListComponent } from "./components/course/course-list/course-list.component";
-import { GenreListComponent } from "./components/genre/genre-list/genre-list.component";
+import { CourseComponent } from "./components/course/course.component";
+import { BookComponent } from "./components/book/book.component";
+import { GenreComponent } from "./components/genre/genre.component";
 
 const routes: Routes = [
-   {path: '', component: DashboardComponent},
-   {path: 'cursos', component: CourseListComponent},
-   {path: 'generos', component: GenreListComponent},
-   {path: 'estudantes', component: DashboardComponent},
+   {path: '', component: BookComponent},
+   {path: 'cursos', component: CourseComponent},
+   {path: 'livros', component: BookComponent},
+   {path: 'generos', component: GenreComponent},
    {path: 'footer', component: FooterComponent}
 ];
 
