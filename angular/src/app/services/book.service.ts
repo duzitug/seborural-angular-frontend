@@ -3,7 +3,6 @@ import { AbstractApiService } from './abstract-api.service';
 import { Book } from '../models/book.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import * as http from "http";
 
 @Injectable({
   providedIn: 'root'
