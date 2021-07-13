@@ -1,18 +1,13 @@
 <div class="grid-container">
-<!--  <h1 class="mat-h1">Dashboard</h1>-->
+  <!--  <h1 class="mat-h1">Dashboard</h1>-->
 
-<!--  Inserir  Loading durante o carregamento dos cartões -->
+  <!--  Inserir  Loading durante o carregamento dos cartões -->
   <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards$ | async">
-
-<!--      exibir listagem de cursos e gêneros -->
-
-
-
+    <mat-grid-tile *ngFor="let book of books$ | async">
       <mat-card class="dashboard-card" >
         <mat-card-header>
           <mat-card-title>
-            {{ card.titulo }}
+            {{ book.titulo }}
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -24,14 +19,11 @@
         </mat-card-header>
         <img mat-card-sm-image src="https://picsum.photos/200/300" alt="">
         <mat-card-content class="dashboard-card-content">
-            <div>{{ card.url_foto }}</div>
+          <div>{{ book.autor }}</div>
         </mat-card-content>
       </mat-card>
 
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-
-
-
 
