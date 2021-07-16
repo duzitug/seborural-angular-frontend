@@ -15,6 +15,7 @@ import { GenreComponent } from './components/genre/genre.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BookListByCourseIdComponent } from './components/book/book-list-by-course-id/book-list-by-course-id.component';
 import { BookCardComponent } from './components/book/book-card/book-card.component';
+import { ButtonLoadComponent } from './components/book/button-load/button-load.component';
 
 
 
@@ -29,7 +30,8 @@ import { BookCardComponent } from './components/book/book-card/book-card.compone
     BookListComponent,
     GenreComponent,
     BookListByCourseIdComponent,
-    BookCardComponent
+    BookCardComponent,
+    ButtonLoadComponent
   ],
   imports: [
     BrowserModule,
