@@ -118,6 +118,16 @@ $routes->scope('/api/v1', function (RouteBuilder $routes) {
         ]
     ]);
 
+    $routes->resources('Students', [
+      'map' => [
+        'indexWithPagination' => [
+          'action' => 'indexWithPagination',
+          'method' => 'GET',
+          'path' => '/indexWithPagination/:offset'
+        ],
+      ]
+    ]);
+
     // por que não funciona?
     $routes->resources('Courses', [
         'map' => [
