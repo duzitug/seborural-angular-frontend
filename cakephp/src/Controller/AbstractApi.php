@@ -89,9 +89,9 @@ trait AbstractApi
             case 'estudante':
                 return $this->elementTable->find('all', ['contain' => 'Courses'])->offset($offset)->limit(10)->all();
             case 'livro':
-                return $this->elementTable->find('all', ['contain' => ['Courses', 'Genres', 'Students'] ])->limit(10)->all();
+                return $this->elementTable->find('all', ['contain' => ['Courses', 'Genres', 'Students'] ])->offset($offset)->limit(10)->all();
             default:
-                return $this->elementTable->find('all')->all();
+                return $this->elementTable->find('all')->offset($offset)->all();
         }
     }
 
