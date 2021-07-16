@@ -21,6 +21,14 @@ trait AbstractApi
 
     }
 
+    public function indexWithPagination(): void
+    {
+      $offset = $this->request->getParam('offset');
+      $this->setElementToTemplate( $this->getAllElements( $offset ) );
+      $this->serializeElement();
+
+    }
+
     public function view($id): void
     {
         $element = $this->getElementById($id);
