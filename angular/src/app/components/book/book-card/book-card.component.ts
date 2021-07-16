@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class BookCardComponent implements OnInit {
 
   @Input()
-  books$: Observable<Book[]> = new Observable<Book[]>();
+  books: Book[] = [];
 
   imageLink = 'https://firebasestorage.googleapis.com/v0/b/projeto-teste-7dcf3.appspot.com/o/images%2Fthumb_';
 
