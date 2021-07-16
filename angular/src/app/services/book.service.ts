@@ -18,11 +18,17 @@ export class BookService extends AbstractApiService<Book> {
     return this.getAllElements();
   }
 
-  getBooksByCourseId($id: string): Observable<Book[]> {
-    return this.http.get<Book[]>('http://localhost:8080/api/v1/books/getBooksByCourseId/' + $id + this.responseFormat);
+  getAllBooksWithPagination(offset: string): Observable<Book[]> {
+    return this.http.get<Book[]>('http://localhost:8080/api/v1/books/indexWithPagination/' + offset + this.responseFormat);
   }
 
-  getBooksByGenreId($id: string): Observable<Book[]> {
-    return this.http.get<Book[]>('http://localhost:8080/api/v1/books/getBooksByGenreId/' + $id + this.responseFormat);
+  getBooksByCourseId(id: string): Observable<Book[]> {
+    return this.http.get<Book[]>('http://localhost:8080/api/v1/books/getBooksByCourseId/' + id + this.responseFormat);
   }
+
+  getBooksByGenreId(id: string): Observable<Book[]> {
+    return this.http.get<Book[]>('http://localhost:8080/api/v1/books/getBooksByGenreId/' + id + this.responseFormat);
+  }
+
+
 }
