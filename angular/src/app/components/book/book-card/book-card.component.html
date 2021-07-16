@@ -1,0 +1,37 @@
+
+<div class="grid-container">
+  <!--  <h1 class="mat-h1">Dashboard</h1>-->
+
+  <!--  Inserir  Loading durante o carregamento dos cartões -->
+  <mat-grid-list cols="2" rowHeight="4:3">
+
+<mat-grid-tile *ngFor="let book of books$ | async">
+  <mat-card class="dashboard-card" >
+    <mat-card-header>
+      <mat-card-title>
+        <a [routerLink] = "book?.course_id?.toString()">  {{ book.titulo }} </a>
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <div *ngIf="book.url_foto.includes('thumb'); else generateThumbnailSource">
+      <img mat-card-sm-image [src]="book.url_foto">
+    </div>
+    <ng-template #generateThumbnailSource>
+      <img mat-card-sm-image [src]="imageLink + book.url_foto.split('%2F')[1].split('?')[0] + '?alt=media'">
+    </ng-template>
+
+    <mat-card-content class="dashboard-card-content">
+      <div>{{ book.autor }}</div>
+    </mat-card-content>
+  </mat-card>
+
+</mat-grid-tile>
+
+  </mat-grid-list>
+</div>
