@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sebo-rural-button-load',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./button-load.component.css']
 })
 export class ButtonLoadComponent implements OnInit {
+
+  @Input()
+  hasMore = false;
 
   constructor() { }
 
