@@ -6,8 +6,8 @@
     <mat-grid-tile *ngFor="let curso of cursos$ | async">
       <mat-card class="dashboard-card" >
         <mat-card-header>
-          <mat-card-title>
-            {{ curso.nome }}
+          <mat-card-title >
+            <a [routerLink]="['/livros', curso?.id_antigo?.toString()]"> {{ curso.nome }} </a>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -22,7 +22,6 @@
           <div>{{ curso.nome }}</div>
         </mat-card-content>
       </mat-card>
-
     </mat-grid-tile>
   </mat-grid-list>
 </div>
