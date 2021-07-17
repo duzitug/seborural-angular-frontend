@@ -47,5 +47,6 @@ testem.log
 Thumbs.db
 
 cakephp/tmp
+cakephp/logs
 
 
