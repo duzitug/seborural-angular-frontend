@@ -38,13 +38,13 @@ export class CreateBookComponent implements OnInit {
     this.dataCriacaoAnuncio = new Date();
 
     this.firebaseConfig = {
-      apiKey: "AIzaSyD_RJeXxSxpw7LXZ5RWK_zUWwGXR7nv3M4",
-      authDomain: "projeto-teste-7dcf3.firebaseapp.com",
-      databaseURL: "https://projeto-teste-7dcf3.firebaseio.com",
-      projectId: "projeto-teste-7dcf3",
-      storageBucket: "projeto-teste-7dcf3.appspot.com",
-      messagingSenderId: "64536651121",
-      appId: "1:64536651121:web:362d662ea98524bf"
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: ""
     };
     // Initialize Firebase
     if (!firebase.apps.length) {
